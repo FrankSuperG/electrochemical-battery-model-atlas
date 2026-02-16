@@ -133,8 +133,6 @@ See: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 ## Contributors
 - Feng Guo — [Google Scholar](https://scholar.google.com/citations?user=z2SHUxkAAAAJ&hl=en), [ORCID](https://orcid.org/0000-0002-5141-8672)
 - Luis D. Couto — [Google Scholar](https://scholar.google.com/citations?user=_qgWXF4AAAAJ&hl=en)
-- Nicola Courtier — [Google Scholar](https://scholar.google.com/citations?user=TXaON-EAAAAJ&hl=en)
-- Ross Drummond — [Google Scholar](https://scholar.google.com/citations?hl=en&user=_fqk_tkAAAAJ)
 - ？- ?
 
 ## Disclaimer
