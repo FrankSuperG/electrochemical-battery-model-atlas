@@ -64,29 +64,27 @@ All entries below link to a short review page with **Quickstart**, **entry point
 
 <!-- MODEL_INDEX_START -->
 
-| Model | Family | Language | Extensions | Slug |
-|---|---|---|---|---|
-| [batP2dFoam](MODELS/batp2dfoam.md) | DFN | cpp | — | `batp2dfoam` |
-| [BattMo](MODELS/battmo.md) | DFN | matlab | thermal, degradation | `battmo` |
-| [battsimpy](MODELS/battsimpy.md) | SPM/DFN | python | — | `battsimpy` |
-| [CPG-SPMT](MODELS/cpg-spmt.md) | SPM | python | thermal | `cpg-spmt` |
-| [dfn](MODELS/dfn-scott-moura.md) | DFN/P2D | matlab | — | `dfn-scott-moura` |
-| [fastDFN](MODELS/fastdfn.md) | DFN/P2D | matlab | thermal | `fastdfn` |
-| [JuBat](MODELS/jubat.md) | DFN/SPM/SPME | julia | — | `jubat` |
-| [LIONSIMBA](MODELS/lionsimba.md) | DFN | matlab | — | `lionsimba` |
-| [MPET](MODELS/mpet.md) | P2D/DFN | python | — | `mpet` |
-| [p2d_li_ion_battery](MODELS/p2d-li-ion-battery-decaluwe.md) | DFN | python | — | `p2d-li-ion-battery-decaluwe` |
-| [p2d-model](MODELS/p2d-model-dkong8s93.md) | DFN | matlab | — | `p2d-model-dkong8s93` |
-| [p2d_solver](MODELS/p2d-solver-hanrach.md) | DFN | python | — | `p2d-solver-hanrach` |
-| [PETLION.jl](MODELS/petlion-jl.md) | P2D/DFN | julia | — | `petlion-jl` |
-| [Pseudo_sim](MODELS/pseudo-sim-liuyang12.md) | DFN | matlab | — | `pseudo-sim-liuyang12` |
-| [PyBaMM](MODELS/pybamm.md) | DFN/SPM/SPME | python | thermal, degradation | `pybamm` |
-| [SLIDE](MODELS/slide.md) | SPM | cpp + matlab | thermal, degradation | `slide` |
-| [Spectral_li-ion_SPM](MODELS/spectral-li-ion-spm.md) | SPM | matlab | — | `spectral-li-ion-spm` |
-| [SPMe_OED](MODELS/spme-oed.md) | SPME | python | — | `spme-oed` |
-| [SPMeT](MODELS/spmet.md) | SPME | matlab | thermal | `spmet` |
-
-> Full metadata (including “Best for”) is kept in [`data/models.yaml`](data/models.yaml) and individual pages under [`MODELS/`](MODELS/).
+| Slug                          | Name                | Family       | Language     | Extensions           | Best for                                         | Page                                                                           |
+|-------------------------------|---------------------|--------------|--------------|----------------------|--------------------------------------------------|--------------------------------------------------------------------------------|
+| `batp2dfoam`                  | batP2dFoam          | DFN          | cpp          | —                    | solver, openfoam, performance                    | [MODELS/batp2dfoam.md](MODELS/batp2dfoam.md)                                   |
+| `battmo`                      | BattMo              | DFN          | matlab       | thermal, degradation | framework, continuum, research                   | [MODELS/battmo.md](MODELS/battmo.md)                                           |
+| `battsimpy`                   | battsimpy           | SPM/DFN      | python       | —                    | framework, educational                           | [MODELS/battsimpy.md](MODELS/battsimpy.md)                                     |
+| `cpg-spmt`                    | CPG-SPMT            | SPM          | python       | thermal              | fast-simulation, control, estimation             | [MODELS/cpg-spmt.md](MODELS/cpg-spmt.md)                                       |
+| `dfn-scott-moura`             | dfn                 | DFN/P2D      | matlab       | —                    | reference-implementation, educational, research  | [MODELS/dfn-scott-moura.md](MODELS/dfn-scott-moura.md)                         |
+| `fastdfn`                     | fastDFN             | DFN/P2D      | matlab       | thermal              | fast-simulation, solver, research                | [MODELS/fastdfn.md](MODELS/fastdfn.md)                                         |
+| `jubat`                       | JuBat               | DFN/SPM/SPME | julia        | —                    | framework                                        | [MODELS/jubat.md](MODELS/jubat.md)                                             |
+| `lionsimba`                   | LIONSIMBA           | DFN          | matlab       | —                    | framework, control, educational                  | [MODELS/lionsimba.md](MODELS/lionsimba.md)                                     |
+| `mpet`                        | MPET                | P2D/DFN      | python       | —                    | framework, research                              | [MODELS/mpet.md](MODELS/mpet.md)                                               |
+| `p2d-li-ion-battery-decaluwe` | p2d_li_ion_battery  | DFN          | python       | —                    | reference-implementation, educational            | [MODELS/p2d-li-ion-battery-decaluwe.md](MODELS/p2d-li-ion-battery-decaluwe.md) |
+| `p2d-model-dkong8s93`         | p2d-model           | DFN          | matlab       | —                    | finite-difference, educational                   | [MODELS/p2d-model-dkong8s93.md](MODELS/p2d-model-dkong8s93.md)                 |
+| `p2d-solver-hanrach`          | p2d_solver          | DFN          | python       | —                    | solver, finite-difference, jax                   | [MODELS/p2d-solver-hanrach.md](MODELS/p2d-solver-hanrach.md)                   |
+| `petlion-jl`                  | PETLION.jl          | P2D/DFN      | julia        | —                    | solver, performance, research                    | [MODELS/petlion-jl.md](MODELS/petlion-jl.md)                                   |
+| `pseudo-sim-liuyang12`        | Pseudo_sim          | DFN          | matlab       | —                    | educational                                      | [MODELS/pseudo-sim-liuyang12.md](MODELS/pseudo-sim-liuyang12.md)               |
+| `pybamm`                      | PyBaMM              | DFN/SPM/SPME | python       | thermal, degradation | framework, research, reproducibility             | [MODELS/pybamm.md](MODELS/pybamm.md)                                           |
+| `slide`                       | SLIDE               | SPM          | cpp + matlab | thermal, degradation | fast-simulation, degradation                     | [MODELS/slide.md](MODELS/slide.md)                                             |
+| `spectral-li-ion-spm`         | Spectral_li-ion_SPM | SPM          | matlab       | —                    | spectral-method, educational                     | [MODELS/spectral-li-ion-spm.md](MODELS/spectral-li-ion-spm.md)                 |
+| `spme-oed`                    | SPMe_OED            | SPME         | python       | —                    | parameter-inference, optimal-experimental-design | [MODELS/spme-oed.md](MODELS/spme-oed.md)                                       |
+| `spmet`                       | SPMeT               | SPME         | matlab       | thermal              | control, estimation, educational                 | [MODELS/spmet.md](MODELS/spmet.md)                                             |
 
 <!-- MODEL_INDEX_END -->
 
@@ -137,6 +135,7 @@ See: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 - Luis D. Couto — [Google Scholar](https://scholar.google.com/citations?user=_qgWXF4AAAAJ&hl=en)
 - Nicola Courtier — [Google Scholar](https://scholar.google.com/citations?user=TXaON-EAAAAJ&hl=en)
 - Ross Drummond — [Google Scholar](https://scholar.google.com/citations?hl=en&user=_fqk_tkAAAAJ)
+— ？
 
 ## Disclaimer
 Reviews are subjective and based on public information and (when available) reproduction attempts.
