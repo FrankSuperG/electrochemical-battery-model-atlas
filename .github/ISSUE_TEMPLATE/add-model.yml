@@ -1,0 +1,29 @@
+name: Add a model
+description: Suggest an open-source electrochemical battery model (P2D/DFN family)
+labels: ["add-model"]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: Repository URL
+      placeholder: https://github.com/.../...
+    validations:
+      required: true
+  - type: dropdown
+    id: family
+    attributes:
+      label: Model family
+      options:
+        - DFN/P2D
+        - SPM
+        - SPMe
+        - Other/Unsure
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: What does it implement? Any paper reference? Any gotchas?
+    validations:
+      required: false

@@ -1,0 +1,230 @@
+# Electrochemical battery model zoo index
+# Each entry should have a corresponding MODELS/<slug>.md
+
+- slug: cpg-spmt
+  name: CPG-SPMT
+  url: https://github.com/FrankSuperG/CPG-SPMT
+  authors_or_org: FrankSuperG
+  license: Apache-2.0
+  language: [python]
+  family: [spm]
+  extensions: [thermal]
+  focus: [fast-simulation, control, estimation]
+  last_reviewed: 2026-01-25
+  entry: MODELS/cpg-spmt.md
+
+- slug: pybamm
+  name: PyBaMM
+  url: https://github.com/pybamm-team/PyBaMM
+  authors_or_org: pybamm-team
+  license: BSD-3-Clause
+  language: [python]
+  family: [dfn, spm, spme]
+  extensions: [thermal, degradation]
+  focus: [framework, research, reproducibility]
+  last_reviewed: 2026-01-25
+  entry: MODELS/pybamm.md
+
+- slug: battmo
+  name: BattMo
+  url: https://github.com/BattMoTeam/BattMo
+  authors_or_org: BattMoTeam
+  license: GPL-3.0
+  language: [matlab]
+  family: [dfn]
+  extensions: [thermal, degradation]
+  focus: [framework, continuum, research]
+  last_reviewed: 2026-01-25
+  entry: MODELS/battmo.md
+
+- slug: p2d-li-ion-battery-decaluwe
+  name: p2d_li_ion_battery
+  url: https://github.com/decaluwe/p2d_li_ion_battery
+  authors_or_org: decaluwe
+  license: BSD-3-Clause
+  language: [python]
+  family: [dfn]
+  extensions: []
+  focus: [reference-implementation, educational]
+  last_reviewed: 2026-01-25
+  entry: MODELS/p2d-li-ion-battery-decaluwe.md
+
+- slug: p2d-solver-hanrach
+  name: p2d_solver
+  url: https://github.com/hanrach/p2d_solver
+  authors_or_org: hanrach
+  license: NO-LICENSE
+  language: [python]
+  family: [dfn]
+  extensions: []
+  focus: [solver, finite-difference, jax]
+  last_reviewed: 2026-01-25
+  entry: MODELS/p2d-solver-hanrach.md
+
+- slug: p2d-model-dkong8s93
+  name: p2d-model
+  url: https://github.com/dkong8s93/p2d-model
+  authors_or_org: dkong8s93
+  license: NO-LICENSE
+  language: [matlab]
+  family: [dfn]
+  extensions: []
+  focus: [finite-difference, educational]
+  last_reviewed: 2026-01-25
+  entry: MODELS/p2d-model-dkong8s93.md
+
+- slug: pseudo-sim-liuyang12
+  name: Pseudo_sim
+  url: https://github.com/liuyang12/Pseudo_sim
+  authors_or_org: liuyang12
+  license: NO-LICENSE
+  language: [matlab]
+  family: [dfn]
+  extensions: []
+  focus: [educational]
+  last_reviewed: 2026-01-25
+  entry: MODELS/pseudo-sim-liuyang12.md
+
+- slug: jubat
+  name: JuBat
+  url: https://github.com/weilongai/JuBat
+  authors_or_org: weilongai
+  license: GPL-3.0
+  language: [julia]
+  family: [dfn, spm, spme]
+  extensions: []
+  focus: [framework]
+  last_reviewed: 2026-01-25
+  entry: MODELS/jubat.md
+
+- slug: batp2dfoam
+  name: batP2dFoam
+  url: https://github.com/redyxg/batP2dFoam
+  authors_or_org: redyxg
+  license: GPL-3.0
+  language: [cpp]
+  family: [dfn]
+  extensions: []
+  focus: [solver, openfoam, performance]
+  last_reviewed: 2026-01-25
+  entry: MODELS/batp2dfoam.md
+
+- slug: battsimpy
+  name: battsimpy
+  url: https://github.com/matthewpklein/battsimpy
+  authors_or_org: matthewpklein
+  license: GPL-3.0
+  language: [python]
+  family: [spm, dfn]
+  extensions: []
+  focus: [framework, educational]
+  last_reviewed: 2026-01-25
+  entry: MODELS/battsimpy.md
+
+- slug: spectral-li-ion-spm
+  name: Spectral_li-ion_SPM
+  url: https://github.com/davidhowey/Spectral_li-ion_SPM
+  authors_or_org: davidhowey
+  license: BSD-3-Clause
+  language: [matlab]
+  family: [spm]
+  extensions: []
+  focus: [spectral-method, educational]
+  last_reviewed: 2026-01-25
+  entry: MODELS/spectral-li-ion-spm.md
+
+- slug: spme-oed
+  name: SPMe_OED
+  url: https://github.com/tcoonsUM/SPMe_OED
+  authors_or_org: tcoonsUM
+  license: NO-LICENSE
+  language: [python]
+  family: [spme]
+  extensions: []
+  focus: [parameter-inference, optimal-experimental-design]
+  last_reviewed: 2026-01-25
+  entry: MODELS/spme-oed.md
+
+- slug: slide
+  name: SLIDE
+  url: https://github.com/Battery-Intelligence-Lab/SLIDE
+  authors_or_org: Battery-Intelligence-Lab
+  license: BSD-3-Clause
+  language: [cpp, matlab]
+  family: [spm]
+  extensions: [thermal, degradation]
+  focus: [fast-simulation, degradation]
+  last_reviewed: 2026-01-25
+  entry: MODELS/slide.md
+
+- slug: lionsimba
+  name: LIONSIMBA
+  url: https://github.com/lionsimbatoolbox/LIONSIMBA
+  authors_or_org: lionsimbatoolbox
+  license: MIT
+  language: [matlab]
+  family: [dfn]
+  extensions: []
+  focus: [framework, control, educational]
+  last_reviewed: 2026-02-15
+  entry: MODELS/lionsimba.md
+
+- slug: mpet
+  name: MPET
+  url: https://github.com/TRI-AMDD/mpet
+  authors_or_org: TRI-AMDD
+  license: MIT
+  language: [python]
+  family: [p2d, dfn]
+  extensions: []
+  focus: [framework, research]
+  last_reviewed: 2026-02-15
+  entry: MODELS/mpet.md
+
+- slug: petlion-jl
+  name: PETLION.jl
+  url: https://github.com/MarcBerliner/PETLION.jl
+  authors_or_org: MarcBerliner
+  license: MIT
+  language: [julia]
+  family: [p2d, dfn]
+  extensions: []
+  focus: [solver, performance, research]
+  last_reviewed: 2026-02-15
+  entry: MODELS/petlion-jl.md
+
+- slug: dfn-scott-moura
+  name: dfn
+  url: https://github.com/scott-moura/dfn
+  authors_or_org: scott-moura
+  license: NO-LICENSE
+  language: [matlab]
+  family: [dfn, p2d]
+  extensions: []
+  focus: [reference-implementation, educational, research]
+  last_reviewed: 2026-02-15
+  entry: MODELS/dfn-scott-moura.md
+
+- slug: fastdfn
+  name: fastDFN
+  url: https://github.com/scott-moura/fastDFN
+  authors_or_org: scott-moura
+  license: NO-LICENSE
+  language: [matlab]
+  family: [dfn, p2d]
+  extensions: [thermal]
+  focus: [fast-simulation, solver, research]
+  last_reviewed: 2026-02-15
+  entry: MODELS/fastdfn.md
+
+- slug: spmet
+  name: SPMeT
+  url: https://github.com/scott-moura/SPMeT
+  authors_or_org: scott-moura
+  license: GPL-3.0
+  language: [matlab]
+  family: [spme]
+  extensions: [thermal]
+  focus: [control, estimation, educational]
+  last_reviewed: 2026-02-15
+  entry: MODELS/spmet.md

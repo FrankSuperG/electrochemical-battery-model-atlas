@@ -1,0 +1,13 @@
+{
+  "name": "electrochemical-battery-model-zoo",
+  "version": "1.0.0",
+  "description": "<div align=\"center\">   <img src=\"assets/logo.svg\" width=\"120\" alt=\"Electrochemical Battery Model Zoo logo\" />",
+  "main": "index.js",
+  "scripts": {
+    "validate": "node scripts/models.js validate",
+    "render-readme": "node scripts/models.js render-readme"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
