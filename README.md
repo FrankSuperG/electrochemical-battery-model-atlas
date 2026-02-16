@@ -135,7 +135,7 @@ See: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 - Luis D. Couto — [Google Scholar](https://scholar.google.com/citations?user=_qgWXF4AAAAJ&hl=en)
 - Nicola Courtier — [Google Scholar](https://scholar.google.com/citations?user=TXaON-EAAAAJ&hl=en)
 - Ross Drummond — [Google Scholar](https://scholar.google.com/citations?hl=en&user=_fqk_tkAAAAJ)
-— ？
+- ？- ?
 
 ## Disclaimer
 Reviews are subjective and based on public information and (when available) reproduction attempts.
