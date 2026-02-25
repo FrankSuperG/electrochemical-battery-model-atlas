@@ -9,9 +9,9 @@
 
 **Abbreviation:** `E-BatMA`
 
-**Electrochemical Battery Model Atlas (E-BatMA)** is a curated index of open-source **electrochemical battery models**, with emphasis on the **Doyle–Fuller–Newman / pseudo-two-dimensional (DFN/P2D) family** and its reduced/extended variants: **Single Particle Model (SPM)**, **Single Particle Model with electrolyte (SPMe)**, thermal coupling, and degradation.
+**Electrochemical Battery Model Atlas (E-BatMA)** is a curated learning Atlas with two complementary parts: (1) an index and review of open-source **electrochemical battery models**, and (2) a curated set of **important references** for study. It emphasizes the **Doyle–Fuller–Newman / pseudo-two-dimensional (DFN/P2D) family** and its reduced/extended variants: **Single Particle Model (SPM)**, **Single Particle Model with electrolyte (SPMe)**, thermal coupling, and degradation.
 
-This Atlas is built for both beginners and electrochemical battery model researchers to learn, compare, and apply electrochemical battery models.
+This Atlas is built for both beginners and electrochemical battery model researchers to learn, compare, and apply electrochemical battery models, while using key references as a structured reading path.
 
 This repo is structured so a beginner can pick a model, run a first example, and know where to start reading code.
 
@@ -31,7 +31,7 @@ If acronym-heavy pages feel dense, start with [`GLOSSARY.md`](GLOSSARY.md).
 - Model pages: [`MODELS/`](MODELS/)
 - Machine-readable index: [`data/models.yaml`](data/models.yaml)
 - Review rubric: [`rubric.md`](rubric.md)
-- References: [`REFERENCES.md`](REFERENCES.md) + [`references.bib`](references.bib)
+- References: [`REFERENCES.md`](REFERENCES.md) + [`references.bib`](references.bib) *(curated key papers for learning and deep dives)*
 
 ---
 
