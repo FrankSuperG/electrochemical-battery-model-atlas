@@ -8,10 +8,10 @@
 - Family: based on the description/topics, it appears to cover SPM / P2D / SPMe (verify against the implementation)
 
 ## Extensions (if any)
-- Thermal/degradation not verified in this Zoo
+- Thermal/degradation not verified in this Atlas
 
 ## Reproducibility
-- Not reproduced in this Zoo (summary below is based on upstream repository structure).
+- Not reproduced in this Atlas (summary below is based on upstream repository structure).
 
 ### Quickstart
 - Install Julia

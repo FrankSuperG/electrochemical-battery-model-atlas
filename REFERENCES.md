@@ -1,6 +1,6 @@
 # References
 
-This Zoo includes key representative papers related to P2D/DFN and its reduced/extended variants (SPM, SPMe, thermal coupling, degradation), plus application areas such as BMS state estimation.
+This Atlas includes key representative papers related to P2D/DFN and its reduced/extended variants (SPM, SPMe, thermal coupling, degradation), plus application areas such as BMS state estimation.
 
 ## How references are used here
 - Each model page may list relevant papers (original formulation, numerical methods, validation, etc.).

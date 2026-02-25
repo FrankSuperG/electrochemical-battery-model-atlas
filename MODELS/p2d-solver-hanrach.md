@@ -10,10 +10,10 @@
 - Solver: repository description mentions JAX for the nonlinear solver (potential for AD/acceleration)
 
 ## Extensions (if any)
-- Thermal/degradation not verified in this Zoo
+- Thermal/degradation not verified in this Atlas
 
 ## Reproducibility
-- Not reproduced in this Zoo (summary below is based on upstream repository structure and README).
+- Not reproduced in this Atlas (summary below is based on upstream repository structure and README).
 
 ### Quickstart
 - Install deps (not pinned upstream): `jax` + standard scientific Python stack

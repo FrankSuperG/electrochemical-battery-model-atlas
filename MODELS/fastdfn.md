@@ -13,7 +13,7 @@
 - Degradation: not primary in base repository positioning
 
 ## Reproducibility
-- Not reproduced in this Zoo yet (summary based on upstream repository structure).
+- Not reproduced in this Atlas yet (summary based on upstream repository structure).
 
 ### Quickstart
 - Clone: `git clone https://github.com/scott-moura/fastDFN.git`

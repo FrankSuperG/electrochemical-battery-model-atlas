@@ -11,7 +11,7 @@
 - Focus is not multiphysics extensions but parameter inference + Bayesian optimal experimental design (OED)
 
 ## Reproducibility
-- Not reproduced in this Zoo (summary below is based on upstream repository structure).
+- Not reproduced in this Atlas (summary below is based on upstream repository structure).
 
 ### Quickstart
 - Install Python deps (not pinned upstream): `pybamm`, `numpy`, `matplotlib`, and `bayes_opt`

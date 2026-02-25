@@ -13,7 +13,7 @@
 - Degradation: supported (e.g., SEI, lithium plating, depending on version)
 
 ## Reproducibility
-- Not reproduced in this Zoo (steps below are extracted from upstream docs or inferred from repository structure).
+- Not reproduced in this Atlas (steps below are extracted from upstream docs or inferred from repository structure).
 
 ### Quickstart
 - Install: `pip install pybamm` (or `conda install -c conda-forge pybamm`)

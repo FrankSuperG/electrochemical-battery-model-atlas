@@ -12,7 +12,7 @@
 - Targets continuum modelling for electrochemical devices; often multiphysics-oriented (thermal/degradation depend on the specific modules)
 
 ## Reproducibility
-- Not reproduced in this Zoo (summary below is based on upstream docs/structure).
+- Not reproduced in this Atlas (summary below is based on upstream docs/structure).
 
 ### Quickstart
 - Prereq: install **Git LFS** (upstream requirement)

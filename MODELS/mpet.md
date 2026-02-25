@@ -13,7 +13,7 @@
 - Degradation: depends on configured model choices
 
 ## Reproducibility
-- Not reproduced in this Zoo yet (summary based on upstream docs/repository).
+- Not reproduced in this Atlas yet (summary based on upstream docs/repository).
 
 ### Quickstart
 - Clone: `git clone https://github.com/TRI-AMDD/mpet.git`

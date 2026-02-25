@@ -5,6 +5,8 @@
 
 </div>
 
+**Abbreviation:** `E-BatMa`
+
 A curated index of open-source **electrochemical battery models**, with emphasis on the **Doyle–Fuller–Newman / pseudo-two-dimensional (DFN/P2D) family** and its reduced/extended variants: **Single Particle Model (SPM)**, **Single Particle Model with electrolyte (SPMe)**, thermal coupling, and degradation.
 
 This repo is structured so a beginner can pick a model, run a first example, and know where to start reading code.
@@ -100,7 +102,7 @@ Included:
 Out of scope (by design):
 - Equivalent circuit model (**ECM**) collections
 
-Why: this Zoo focuses on **physics-based electrochemical models**, not equivalent-circuit abstractions.
+Why: this Atlas focuses on **physics-based electrochemical models**, not equivalent-circuit abstractions.
 
 ---
 
@@ -131,10 +133,10 @@ If you know “must-cite” papers (foundational formulation, key validation, nu
 See: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 
 ## Contributors
-- Feng Guo (VITO; Hasselt University / UHasselt) — [Google Scholar](https://scholar.google.com/citations?user=z2SHUxkAAAAJ&hl=en), [ORCID](https://orcid.org/0000-0002-5141-8672)
+- Feng Guo (VITO/UHasselt) — [Google Scholar](https://scholar.google.com/citations?user=z2SHUxkAAAAJ&hl=en), [ORCID](https://orcid.org/0000-0002-5141-8672)
 - Luis D. Couto (VITO) — [Google Scholar](https://scholar.google.com/citations?user=_qgWXF4AAAAJ&hl=en)
 - Nicola Courtier (University of Oxford) — [Google Scholar](https://scholar.google.com/citations?user=TXaON-EAAAAJ&hl=en)
-- Ross Drummond (The University of Sheffield) — [Google Scholar](https://scholar.google.com/citations?hl=en&user=_fqk_tkAAAAJ)
+- Ross Drummond (University of Sheffield) — [Google Scholar](https://scholar.google.com/citations?hl=en&user=_fqk_tkAAAAJ)
 
 ## Disclaimer
 Reviews are subjective and based on public information and (when available) reproduction attempts.

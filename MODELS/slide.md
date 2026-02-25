@@ -16,7 +16,7 @@
 - Degradation: yes (multiple aging/degradation models; selectable)
 
 ## Reproducibility
-- Not reproduced in this Zoo (summary below is based on upstream docs/structure).
+- Not reproduced in this Atlas (summary below is based on upstream docs/structure).
 
 ### Quickstart
 - Build: configure/compile with CMake (see upstream docs)

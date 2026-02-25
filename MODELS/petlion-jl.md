@@ -13,7 +13,7 @@
 - Degradation: not the primary focus in base repository description
 
 ## Reproducibility
-- Not reproduced in this Zoo yet (summary based on upstream README/repository metadata).
+- Not reproduced in this Atlas yet (summary based on upstream README/repository metadata).
 
 ### Quickstart
 - Clone: `git clone https://github.com/MarcBerliner/PETLION.jl.git`

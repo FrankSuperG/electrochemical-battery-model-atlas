@@ -13,7 +13,7 @@
 - Degradation: not the primary focus in the base description (check specific examples)
 
 ## Reproducibility
-- Not reproduced in this Zoo yet (metadata and summary based on upstream repository/docs).
+- Not reproduced in this Atlas yet (metadata and summary based on upstream repository/docs).
 
 ### Quickstart
 - Clone: `git clone https://github.com/lionsimbatoolbox/LIONSIMBA.git`

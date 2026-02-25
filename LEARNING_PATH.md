@@ -27,7 +27,7 @@ This repository provides an onboarding path to help beginners and researchers un
 - Rapid parameter sweeps, algorithm prototyping
 
 ### What to read/do next
-- Read one SPM implementation page in this Zoo (start with **PyBaMM** and/or **CPG-SPMT**).
+- Read one SPM implementation page in this Atlas (start with **PyBaMM** and/or **CPG-SPMT**).
 - If your goal is degradation simulation, also read **SLIDE** (SPM + thermal + degradation).
 - Identify where the code computes:
   - solid diffusion update
@@ -69,7 +69,7 @@ This repository provides an onboarding path to help beginners and researchers un
 - Extending physics (thermal, aging, mechanics)
 
 ### What to read/do next
-- Use **PyBaMM DFN** as a baseline and compare other DFN/P2D implementations in the Zoo.
+- Use **PyBaMM DFN** as a baseline and compare other DFN/P2D implementations in the Atlas.
 
 ---
 

@@ -8,10 +8,10 @@
 - Family: DFN/P2D (pseudo two-dimensional model)
 
 ## Extensions (if any)
-- Thermal/degradation not verified in this Zoo
+- Thermal/degradation not verified in this Atlas
 
 ## Reproducibility
-- Not reproduced in this Zoo (summary below is based on upstream repository structure).
+- Not reproduced in this Atlas (summary below is based on upstream repository structure).
 
 ### Quickstart
 - Requires MATLAB

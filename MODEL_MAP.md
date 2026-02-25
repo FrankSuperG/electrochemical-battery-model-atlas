@@ -59,7 +59,7 @@ Usually decomposed into:
 
 ---
 
-## How to use this Zoo with the map
+## How to use this Atlas with the map
 - Start with a framework entry (e.g., PyBaMM) to establish a baseline.
 - For each repository entry, identify:
   1) which blocks are included/omitted

@@ -6,13 +6,13 @@
 
 ## Model lineage
 - Family: SPM + DFN/P2D (the repository description explicitly mentions Single-Particle and full Pseudo-2D)
-- Note: this repository also includes equivalent-circuit models (ECM). This Zoo focuses on the SPM/DFN parts.
+- Note: this repository also includes equivalent-circuit models (ECM). This Atlas focuses on the SPM/DFN parts.
 
 ## Extensions (if any)
 - Thermal/degradation support not verified here
 
 ## Reproducibility
-- Not reproduced in this Zoo (summary below is based on upstream docs).
+- Not reproduced in this Atlas (summary below is based on upstream docs).
 
 ### Quickstart
 - Upstream targets legacy Python: Python 2.7 + NumPy/SciPy/Matplotlib + `assimulo`
@@ -33,7 +33,7 @@
 
 ## Known limitations
 - GPL license may be restrictive for some commercial use cases
-- For this Zoo’s focus, it is important to clearly point users to the SPM/DFN entry points
+- For this Atlas’s focus, it is important to clearly point users to the SPM/DFN entry points
 
 ## Who is it for?
 - Users who want to try SPM or DFN in Python and compare across model fidelities

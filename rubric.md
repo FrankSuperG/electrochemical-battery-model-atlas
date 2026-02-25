@@ -40,4 +40,4 @@ Each model page should cover at least:
 - **C**: Incomplete run instructions, weak verification signals, or significant ambiguity for first-time users.
 
 > Note: If you did not actually run the code, state "not reproduced".
-> Note: "author-validated" is useful evidence but should usually be graded conservatively unless independently reproduced in this Zoo.
+> Note: "author-validated" is useful evidence but should usually be graded conservatively unless independently reproduced in this Atlas.

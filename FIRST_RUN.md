@@ -1,6 +1,6 @@
 # First run (beginner checklist)
 
-The goal of this Zoo is to help you run a model and build intuition with a concrete workflow.
+The goal of this Atlas is to help you run a model and build intuition with a concrete workflow.
 
 ## 0) Pick a baseline (recommended)
 If you are new, start with one of these:

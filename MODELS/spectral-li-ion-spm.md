@@ -13,7 +13,7 @@
 - Thermal/degradation not verified here
 
 ## Reproducibility
-- Not reproduced in this Zoo (summary below is based on upstream docs/structure).
+- Not reproduced in this Atlas (summary below is based on upstream docs/structure).
 
 ### Quickstart
 - Requires MATLAB (upstream notes it was developed/tested on MATLAB R2015b)

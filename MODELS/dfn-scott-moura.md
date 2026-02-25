@@ -13,7 +13,7 @@
 - Degradation: not primary in this repository
 
 ## Reproducibility
-- Not reproduced in this Zoo yet (metadata and summary based on upstream repository/docstrings).
+- Not reproduced in this Atlas yet (metadata and summary based on upstream repository/docstrings).
 
 ### Quickstart
 - Clone: `git clone https://github.com/scott-moura/dfn.git`
@@ -32,7 +32,7 @@
 - Useful as a compact reference implementation for equation-level study
 
 ## Known limitations
-- No standard license metadata in repo (currently `NO-LICENSE` in this Zoo)
+- No standard license metadata in repo (currently `NO-LICENSE` in this Atlas)
 - Reproducibility depends on MATLAB version and missing environment pinning
 
 ## Who is it for?

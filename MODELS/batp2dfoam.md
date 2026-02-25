@@ -9,10 +9,10 @@
 - Focus: a P2D solver in the OpenFOAM ecosystem (performance/engineering oriented)
 
 ## Extensions (if any)
-- Thermal/degradation not verified in this Zoo
+- Thermal/degradation not verified in this Atlas
 
 ## Reproducibility
-- Not reproduced in this Zoo (summary below is based on upstream repository structure).
+- Not reproduced in this Atlas (summary below is based on upstream repository structure).
 
 ### Quickstart
 - Install OpenFOAM (version not specified upstream)
