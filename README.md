@@ -33,6 +33,9 @@ If acronym-heavy pages feel dense, start with [`GLOSSARY.md`](GLOSSARY.md).
 - Review rubric: [`rubric.md`](rubric.md)
 - References: [`REFERENCES.md`](REFERENCES.md) + [`references.bib`](references.bib) *(curated key papers for learning and deep dives)*
 
+### References for learning
+See **[`REFERENCES.md`](REFERENCES.md)** for a curated reading list of foundational and practical papers (DFN/P2D, SPM/SPMe, thermal, degradation, and estimation), and use **[`references.bib`](references.bib)** for citation-ready BibTeX entries.
+
 ---
 
 ## Quickstart
