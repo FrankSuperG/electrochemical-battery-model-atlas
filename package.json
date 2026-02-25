@@ -1,7 +1,7 @@
 {
-  "name": "electrochemical-battery-model-zoo",
+  "name": "electrochemical-battery-model-atlas",
   "version": "1.0.0",
-  "description": "<div align=\"center\">   <img src=\"assets/logo.svg\" width=\"120\" alt=\"Electrochemical Battery Model Zoo logo\" />",
+  "description": "<div align=\"center\">   <img src=\"assets/logo.svg\" width=\"120\" alt=\"Electrochemical Battery Model Atlas logo\" />",
   "main": "index.js",
   "scripts": {
     "validate": "node scripts/models.js validate",

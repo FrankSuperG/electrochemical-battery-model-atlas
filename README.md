@@ -1,7 +1,7 @@
 <div align="center">
-  <img src="assets/logo.png" width="480" alt="Electrochemical Battery Model Zoo logo" />
+  <img src="assets/logo.png" width="480" alt="Electrochemical Battery Model Atlas logo" />
 
-  # Electrochemical Battery Model Zoo
+  # Electrochemical Battery Model Atlas
 
 </div>
 
