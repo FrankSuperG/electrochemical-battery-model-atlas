@@ -5,7 +5,7 @@
 
 </div>
 
-**Abbreviation:** `E-BatMa`
+**Abbreviation:** `E-BatMA`
 
 A curated index of open-source **electrochemical battery models**, with emphasis on the **Doyle–Fuller–Newman / pseudo-two-dimensional (DFN/P2D) family** and its reduced/extended variants: **Single Particle Model (SPM)**, **Single Particle Model with electrolyte (SPMe)**, thermal coupling, and degradation.
 
