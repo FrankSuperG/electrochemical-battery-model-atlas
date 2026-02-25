@@ -1,5 +1,7 @@
 <div align="center">
-  <img src="assets/logo.png" width="480" alt="Electrochemical Battery Model Atlas logo" />
+  <p align="center">
+    <img src="assets/logo.png" alt="Electrochemical Battery Model Atlas logo" width="100%" style="max-width: 480px; height: auto;" />
+  </p>
 
   # Electrochemical Battery Model Atlas
 
