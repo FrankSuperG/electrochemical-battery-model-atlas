@@ -11,6 +11,8 @@
 
 **Electrochemical Battery Model Atlas (E-BatMA)** is a curated index of open-source **electrochemical battery models**, with emphasis on the **Doyle–Fuller–Newman / pseudo-two-dimensional (DFN/P2D) family** and its reduced/extended variants: **Single Particle Model (SPM)**, **Single Particle Model with electrolyte (SPMe)**, thermal coupling, and degradation.
 
+This Atlas is built for both beginners and electrochemical battery model researchers to learn, compare, and apply electrochemical battery models.
+
 This repo is structured so a beginner can pick a model, run a first example, and know where to start reading code.
 
 If acronym-heavy pages feel dense, start with [`GLOSSARY.md`](GLOSSARY.md).
