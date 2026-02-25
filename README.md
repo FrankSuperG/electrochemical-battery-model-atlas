@@ -131,9 +131,10 @@ If you know “must-cite” papers (foundational formulation, key validation, nu
 See: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 
 ## Contributors
-- Feng Guo — [Google Scholar](https://scholar.google.com/citations?user=z2SHUxkAAAAJ&hl=en), [ORCID](https://orcid.org/0000-0002-5141-8672)
-- Luis D. Couto — [Google Scholar](https://scholar.google.com/citations?user=_qgWXF4AAAAJ&hl=en)
-- ？- ?
+- Feng Guo (VITO; Hasselt University / UHasselt) — [Google Scholar](https://scholar.google.com/citations?user=z2SHUxkAAAAJ&hl=en), [ORCID](https://orcid.org/0000-0002-5141-8672)
+- Luis D. Couto (VITO) — [Google Scholar](https://scholar.google.com/citations?user=_qgWXF4AAAAJ&hl=en)
+- Nicola Courtier (University of Oxford) — [Google Scholar](https://scholar.google.com/citations?user=TXaON-EAAAAJ&hl=en)
+- Ross Drummond (The University of Sheffield) — [Google Scholar](https://scholar.google.com/citations?hl=en&user=_fqk_tkAAAAJ)
 
 ## Disclaimer
 Reviews are subjective and based on public information and (when available) reproduction attempts.
