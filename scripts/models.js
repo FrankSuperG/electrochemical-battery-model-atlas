@@ -170,6 +170,12 @@ function isStringArray(x) {
   return Array.isArray(x) && x.every((v) => typeof v === "string");
 }
 
+function condaEnvNameFromFile(filePath) {
+  const text = fs.readFileSync(filePath, "utf8");
+  const match = text.match(/^name:\s*([^#\s]+)\s*$/m);
+  return match ? match[1].replace(/^["']|["']$/g, "") : null;
+}
+
 function validateModels() {
   const entries = readYamlList(MODELS_YAML);
   const errors = [];
@@ -292,6 +298,7 @@ function validateReproductions(modelEntries) {
     }
 
     if ("slug" in e && !isNonEmptyString(e.slug)) errors.push(`${where}: slug must be a non-empty string`);
+    let pageText = "";
     if (isNonEmptyString(e.slug)) {
       if (slugs.has(e.slug)) errors.push(`${where}: duplicate slug '${e.slug}'`);
       slugs.add(e.slug);
@@ -301,7 +308,7 @@ function validateReproductions(modelEntries) {
       if (!fs.existsSync(page)) {
         errors.push(`${where}: reproduction page not found: REPRODUCTIONS/${e.slug}.md`);
       } else {
-        const pageText = fs.readFileSync(page, "utf8");
+        pageText = fs.readFileSync(page, "utf8");
         const statusMatch = pageText.match(/- Status: `([^`]+)`/);
         if (!statusMatch) {
           errors.push(`${where}: reproduction page missing '- Status: ` + "`...`' line");
@@ -315,6 +322,12 @@ function validateReproductions(modelEntries) {
       const environmentPath = path.join(ROOT, e.environment_file);
       if (!fs.existsSync(environmentPath)) {
         errors.push(`${where}: environment file not found: ${e.environment_file}`);
+      } else if (/\.(yaml|yml)$/.test(environmentPath) && pageText) {
+        const envName = condaEnvNameFromFile(environmentPath);
+        const activates = Array.from(pageText.matchAll(/^\s*conda activate\s+([^\s#]+)/gm)).map((match) => match[1]);
+        if (envName && activates.length && !activates.includes(envName)) {
+          errors.push(`${where}: reproduction page activates ${activates.map((name) => `'${name}'`).join(", ")} but ${e.environment_file} declares conda env '${envName}'`);
+        }
       }
     }
 

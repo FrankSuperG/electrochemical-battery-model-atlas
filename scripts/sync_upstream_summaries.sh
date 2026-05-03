@@ -5,20 +5,16 @@ BASE="$(cd "$(dirname "$0")/.." && pwd)"
 UP="$BASE/.upstream"
 mkdir -p "$UP"
 
-repos=(
-  "FrankSuperG/CPG-SPMT"
-  "pybamm-team/PyBaMM"
-  "BattMoTeam/BattMo"
-  "decaluwe/p2d_li_ion_battery"
-  "hanrach/p2d_solver"
-  "dkong8s93/p2d-model"
-  "liuyang12/Pseudo_sim"
-  "weilongai/JuBat"
-  "redyxg/batP2dFoam"
-  "matthewpklein/battsimpy"
-  "davidhowey/Spectral_li-ion_SPM"
-  "tcoonsUM/SPMe_OED"
-  "Battery-Intelligence-Lab/SLIDE"
+repos=()
+while IFS= read -r repo; do
+  repos+=("$repo")
+done < <(
+  awk '/^  url: https:\/\/github.com\// {
+    repo=$2
+    sub(/^https:\/\/github.com\//, "", repo)
+    sub(/\.git$/, "", repo)
+    print repo
+  }' "$BASE/data/models.yaml"
 )
 
 for r in "${repos[@]}"; do

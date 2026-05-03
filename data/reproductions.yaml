@@ -121,7 +121,7 @@
   primary_blocker: none
   likely_next_step: none
   runtime: Python 3.11.15 environment from recipe
-  dependencies: `pybamm` 26.4.1; `numpy` 2.4.4; `scipy` 1.17.1; `matplotlib` 3.10.9; `pandas` 3.0.2; `casadi` 3.7.2
+  dependencies: `pybamm` 26.4.1; `numpy` 2.4.4; `scipy` 1.17.1; `matplotlib` 3.10.9; `pandas` 3.0.2; `casadi` 3.7.2; `bayesian-optimization` 3.2.1; `scikit-learn` 1.8.0
   notes: Reuses the PyBaMM environment.
 
 - slug: slide

@@ -26,49 +26,49 @@ If you are new to electrochemical battery models, read in this order instead of 
 ## Representative papers by topic
 
 ### Overview and model taxonomy
-- **Santhanagopalan, Guo, Ramadass, White (2006)** — early review of lithium-ion cycling-performance models.
-- **Ramadesigan, Northrop, De, Santhanagopalan, Braatz, Subramanian (2012)** — systems-engineering review connecting model forms, simulation, design, and control.
+- **[Santhanagopalan, Guo, Ramadass, White (2006)](#ref-santhanagopalan2006cyclingreview)** — early review of lithium-ion cycling-performance models.
+- **[Ramadesigan, Northrop, De, Santhanagopalan, Braatz, Subramanian (2012)](#ref-ramadesigan2012systems)** — systems-engineering review connecting model forms, simulation, design, and control.
 
 ### DFN / P2D foundations
-- **Newman, Thomas-Alyea (book)** — *Electrochemical Systems*.
+- **[Newman, Thomas-Alyea (book)](#ref-newman2004electrochemical)** — *Electrochemical Systems*.
   - Why it matters: the transport/kinetics backbone behind most porous-electrode battery models.
-- **Doyle, Fuller, Newman (1993)** — original DFN-style porous-electrode Li-ion formulation.
-- **Fuller, Doyle, Newman (1994)** — canonical full-cell simulation and optimization follow-up.
+- **[Doyle, Fuller, Newman (1993)](#ref-doyle1993modeling)** — original DFN-style porous-electrode Li-ion formulation.
+- **[Fuller, Doyle, Newman (1994)](#ref-fuller1994simulation)** — canonical full-cell simulation and optimization follow-up.
 
 ### Reduced-order models: SPM / SPMe
-- **Subramanian, Boovaragavan, Diwakar (2007)** — real-time simulation motivation for physics-based reduced models.
-- **Bizeray, Zhao, Duncan, Howey (2015)** — spectral/orthogonal-collocation SPM lineage with estimation use.
-- **Marquis, Sulzer, Timms, Please, Chapman (2019)** — asymptotic derivation of SPM/SPMe from DFN.
-- **Moura, Bribiesca Argomedo, Klein, Mirtabatabaei, Krstic (2017)** — SPMe for state estimation.
+- **[Subramanian, Boovaragavan, Diwakar (2007)](#ref-subramanian2007realtime)** — real-time simulation motivation for physics-based reduced models.
+- **[Bizeray, Zhao, Duncan, Howey (2015)](#ref-bizeray2015spectral)** — spectral/orthogonal-collocation SPM lineage with estimation use.
+- **[Marquis, Sulzer, Timms, Please, Chapman (2019)](#ref-marquis2019spme)** — asymptotic derivation of SPM/SPMe from DFN.
+- **[Moura, Bribiesca Argomedo, Klein, Mirtabatabaei, Krstic (2017)](#ref-moura2017spme)** — SPMe for state estimation.
 
 ### Numerical methods and computational speed
-- **Northrop, Suthar, Ramadesigan, Santhanagopalan, Braatz, Subramanian (2014)** — efficient simulation/reformulation for embedded and electric-transportation use.
-- **Guo, Couto (2025)** — comparative discretization study for electrochemical models.
-- **Ai, Liu (2023, 2024)** — finite-element and simplified P2D directions connected to JuBat/sP2D.
+- **[Northrop, Suthar, Ramadesigan, Santhanagopalan, Braatz, Subramanian (2014)](#ref-northrop2014efficient)** — efficient simulation/reformulation for embedded and electric-transportation use.
+- **[Guo, Couto (2025)](#ref-guo2025comparative)** — comparative discretization study for electrochemical models.
+- **[Ai, Liu (2023)](#ref-ai2023convergence), [Ai, Liu (2024)](#ref-ai2024sp2d)** — finite-element and simplified P2D directions connected to JuBat/sP2D.
 
 ### Software frameworks and public implementations
-- **Sulzer, Marquis, Timms, Robinson, Chapman (2021)** — PyBaMM software paper.
-- **Torchio, Magni, Gopaluni, Braatz, Raimondo (2016)** — LIONSIMBA finite-volume MATLAB framework.
-- **Berliner, Cogswell, Bazant, Braatz (2021)** — PETLION.jl millisecond-scale porous-electrode simulation.
-- **Smith, Bazant (2017)** — MPET multiphase porous-electrode theory.
+- **[Sulzer, Marquis, Timms, Robinson, Chapman (2021)](#ref-sulzer2021pybamm)** — PyBaMM software paper.
+- **[Torchio, Magni, Gopaluni, Braatz, Raimondo (2016)](#ref-torchio2016lionsimba)** — LIONSIMBA finite-volume MATLAB framework.
+- **[Berliner, Cogswell, Bazant, Braatz (2021)](#ref-petlion2021methods)** — PETLION.jl millisecond-scale porous-electrode simulation.
+- **[Smith, Bazant (2017)](#ref-smith2017mpet)** — MPET multiphase porous-electrode theory.
 
 ### Thermal coupling
-- **Bernardi, Pawlikowski, Newman (1985)** — general battery energy balance and heat generation.
-- **Gu, Wang (2000)** — electrochemical-thermal coupled modelling framework.
+- **[Bernardi, Pawlikowski, Newman (1985)](#ref-bernardi1985energy)** — general battery energy balance and heat generation.
+- **[Gu, Wang (2000)](#ref-gu2000thermal)** — electrochemical-thermal coupled modelling framework.
 
 ### Degradation and aging
-- **Vetter et al. (2005)** — classic degradation-mechanism review.
-- **Christensen, Newman (2004)** — mechanistic SEI growth model.
-- **Pinson, Bazant (2013)** — SEI theory, capacity fade, and lifetime scaling.
-- **Yang, Leng, Zhang, Ge, Wang (2017)** — lithium-plating induced aging and transition from linear to nonlinear aging.
-- **Reniers, Mulder, Howey (2019)** — mechanical-chemical degradation model comparison.
-- **Edge et al. (2021)** — practical mechanism/mode map for lithium-ion degradation.
-- **O'Kane et al. (2022)** — coupled PyBaMM degradation model linking SEI, plating, cracking, and loss of active material.
+- **[Vetter et al. (2005)](#ref-vetter2005ageing)** — classic degradation-mechanism review.
+- **[Christensen, Newman (2004)](#ref-christensen2004sei)** — mechanistic SEI growth model.
+- **[Pinson, Bazant (2013)](#ref-pinson2012sei)** — SEI theory, capacity fade, and lifetime scaling.
+- **[Yang, Leng, Zhang, Ge, Wang (2017)](#ref-yang2017plating)** — lithium-plating induced aging and transition from linear to nonlinear aging.
+- **[Reniers, Mulder, Howey (2019)](#ref-reniers2019review)** — mechanical-chemical degradation model comparison.
+- **[Edge et al. (2021)](#ref-edge2021degradation)** — practical mechanism/mode map for lithium-ion degradation.
+- **[O'Kane et al. (2022)](#ref-okane2022degradationmodel)** — coupled PyBaMM degradation model linking SEI, plating, cracking, and loss of active material.
 
 ### Parameter estimation, control, and BMS use
-- **Plett (book)** — practical battery modeling and BMS entry point.
-- **Miguel, Plett, Trimboli, Oca, Iraola, Bekaert (2021)** — computational parameter estimation review for electrochemical models.
-- **Guo et al. (2024)** — systematic review of electrochemical model-based state estimation in BMS.
+- **[Plett (book)](#ref-plett2015bms)** — practical battery modeling and BMS entry point.
+- **[Miguel, Plett, Trimboli, Oca, Iraola, Bekaert (2021)](#ref-miguel2021review)** — computational parameter estimation review for electrochemical models.
+- **[Guo et al. (2024)](#ref-guo2024systematic)** — systematic review of electrochemical model-based state estimation in BMS.
 
 ## Model-specific references
 

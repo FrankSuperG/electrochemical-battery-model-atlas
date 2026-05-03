@@ -6,4 +6,8 @@ dependencies:
   - pip
   - pip:
       - pybamm==26.4.1
-      - matplotlib
+      - numpy==2.4.4
+      - scipy==1.17.1
+      - matplotlib==3.10.9
+      - pandas==3.0.2
+      - casadi==3.7.2

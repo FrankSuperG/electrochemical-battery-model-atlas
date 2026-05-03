@@ -14,7 +14,7 @@
 ## Run
 ```bash
 conda env create -f <atlas-root>/REPRODUCTIONS/environments/spme-oed/environment.yml
-conda activate ebatma-pybamm-311
+conda activate ebatma-spme-oed-311
 PYTHONPATH=<atlas-root>/.upstream/tcoonsUM__SPMe_OED python - <<'PY'
 import numpy as np
 from pybamm_small_d import pybamm_SPMe_Sim

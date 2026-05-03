@@ -11,11 +11,11 @@ They are intentionally kept separate from the upstream source code:
 
 | Entry | Recipe | Notes |
 | --- | --- | --- |
-| `pybamm` | [`pybamm/environment.yml`](pybamm/environment.yml) | Python 3.11 + `pybamm==26.4.1`. |
-| `spme-oed` | [`spme-oed/environment.yml`](spme-oed/environment.yml) | Reuses PyBaMM stack plus OED-related Python packages. |
+| `pybamm` | [`pybamm/environment.yml`](pybamm/environment.yml) | Python 3.11 + pinned PyBaMM runtime stack. |
+| `spme-oed` | [`spme-oed/environment.yml`](spme-oed/environment.yml) | Reuses pinned PyBaMM stack plus OED-related Python packages. |
 | `mpet` | [`mpet/Dockerfile`](mpet/Dockerfile) | Python 3.12 bookworm image with DAETools and GUI/native runtime libraries. |
 | `battsimpy` | [`battsimpy/Dockerfile`](battsimpy/Dockerfile) | Legacy Python 2.7 + Assimulo route. |
-| `petlion-jl` | [`petlion-jl/Project.toml`](petlion-jl/Project.toml) | Julia project compatible with the reproduced PETLION.jl run. |
+| `petlion-jl` | [`petlion-jl/Project.toml`](petlion-jl/Project.toml) | Julia project pinned to `PETLION==1.0.6` for the reproduced smoke run. |
 | `slide` | [`slide/environment.yml`](slide/environment.yml) | CMake/Ninja build tooling; uses system C++ compiler. |
 | Octave examples | [`octave/Dockerfile`](octave/Dockerfile) | Base Octave runtime for Scott Moura MATLAB/Octave examples. |
 

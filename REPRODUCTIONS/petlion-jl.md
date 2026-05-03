@@ -12,7 +12,7 @@
 
 ## Run
 ```bash
-julia --project=<atlas-root>/.upstream/MarcBerliner__PETLION.jl -e 'using Pkg; Pkg.instantiate(); using PETLION; p = petlion(LCO); sol = simulate(p, 10, I=1, SOC=0.5); println(length(sol.t)); println(sol.V[end])'
+julia --project=<atlas-root>/REPRODUCTIONS/environments/petlion-jl -e 'using Pkg; Pkg.develop(path="<atlas-root>/.upstream/MarcBerliner__PETLION.jl"); Pkg.instantiate(); include("<atlas-root>/REPRODUCTIONS/environments/petlion-jl/smoke.jl")'
 ```
 
 ## Outcome
