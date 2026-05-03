@@ -14,7 +14,7 @@
 - Degradation: not primary in base repository positioning
 
 ## Reproducibility
-- Reproduced in this Atlas using local Octave 11.1.0 after building the `lininterp1f.c` MEX helper.
+- Reproduced in this Atlas using Octave 11.1.0 after building the `lininterp1f.c` MEX helper.
 
 ### Quickstart
 - Clone: `git clone https://github.com/scott-moura/SPMeT.git`

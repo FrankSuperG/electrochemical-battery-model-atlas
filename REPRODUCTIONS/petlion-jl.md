@@ -4,7 +4,7 @@
 - Date: 2026-05-01
 - Upstream repo: <https://github.com/MarcBerliner/PETLION.jl>
 - Upstream commit: `f7a8f76184a60ad1e9e5fd6f7829e55600bae710`
-- Local checkout: `<atlas-root>/.upstream/MarcBerliner__PETLION.jl`
+- Upstream checkout: `<atlas-root>/.upstream/MarcBerliner__PETLION.jl`
 
 ## Environment
 - OS: macOS

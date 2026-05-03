@@ -1,24 +1,24 @@
-# Independent local reproduction metadata.
+# Independent reproduction metadata.
 # Keep values single-line so scripts/models.js can parse this file without a full YAML dependency.
 
 - slug: cpg-spmt
   status: success
   language: Python
-  environment: `conda` env `battery`
+  environment: Python environment with required scientific stack
   primary_blocker: none
   likely_next_step: none
-  runtime: Conda env `battery`, Python 3.9.23
+  runtime: Python 3.9.23-compatible environment
   dependencies: `numpy` 1.26.4; `scipy` 1.11.4; `matplotlib` 3.9.4; `pandas` 1.5.3; `scikit-learn` 1.6.1; `torch` 2.2.2
-  notes: Ran in the shared battery Python environment.
+  notes: Use any environment that provides the listed scientific Python dependencies.
 
 - slug: pybamm
   status: success
   language: Python
-  environment: local `conda` Python 3.11 env
+  environment: Python 3.11 environment from recipe
   environment_file: REPRODUCTIONS/environments/pybamm/environment.yml
   primary_blocker: none
   likely_next_step: none
-  runtime: `.envs/pybamm-311`, Python 3.11.15
+  runtime: Python 3.11.15 environment from recipe
   dependencies: `pybamm` 26.4.1; `numpy` 2.4.4; `scipy` 1.17.1; `matplotlib` 3.10.9; `pandas` 3.0.2; `casadi` 3.7.2
   notes: Recommended Python baseline for SPM/SPMe/DFN.
 
@@ -49,7 +49,7 @@
   primary_blocker: final original-grid README `run_main.py` attempt exits 137 after slow JAX compile/Jacobian
   likely_next_step: Add a documented reduced-grid smoke test or refactor JAX compilation/memory usage before full-size reproduction.
   runtime: Docker `python:3.11-slim`, Python 3.11.15, `linux/arm64`
-  dependencies: `jax[cpu]`; `scipy`; `matplotlib`; local compatibility shims for newer JAX APIs
+  dependencies: `jax[cpu]`; `scipy`; `matplotlib`; compatibility shims for newer JAX APIs
   notes: Full original-grid run exits 137 after heavy JAX compile/Jacobian work.
 
 - slug: p2d-model-dkong8s93
@@ -65,22 +65,22 @@
 - slug: pseudo-sim-liuyang12
   status: success
   language: MATLAB
-  environment: MATLAB R2021b plus local TOMLAB/fmincon shim
-  primary_blocker: upstream requires TOMLAB/KNITRO; local `fmincon` shim runs `T1master` to completion
+  environment: MATLAB R2021b plus TOMLAB/fmincon compatibility shim
+  primary_blocker: upstream requires TOMLAB/KNITRO; `fmincon` compatibility shim runs `T1master` to completion
   likely_next_step: document that the shim is a workaround rather than KNITRO-equivalent validation
   runtime: MATLAB R2021b
-  dependencies: MATLAB Optimization Toolbox; local TOMLAB/KNITRO-to-`fmincon` compatibility shim
+  dependencies: MATLAB Optimization Toolbox; TOMLAB/KNITRO-to-`fmincon` compatibility shim
   notes: Upstream expects TOMLAB/KNITRO-style APIs.
 
 - slug: jubat
   status: success
   language: Julia
-  environment: local Julia 1.12.6
-  primary_blocker: local `ChooseCell` include-path/world-age patch required
-  likely_next_step: upstream the include-path patch or document it as a local reproduction patch
+  environment: Julia 1.12.6
+  primary_blocker: `ChooseCell` include-path/world-age patch required
+  likely_next_step: upstream the include-path patch or document it as a reproduction patch
   runtime: Julia 1.12.6
-  dependencies: No external Julia packages declared in the local manifest; uses project source files and Julia stdlib
-  notes: Required local `ChooseCell` include-path/world-age patch.
+  dependencies: No external Julia packages declared in the checked manifest; uses project source files and Julia stdlib
+  notes: Required `ChooseCell` include-path/world-age patch.
 
 - slug: batp2dfoam
   status: unreproduced
@@ -106,33 +106,33 @@
 - slug: spectral-li-ion-spm
   status: success
   language: MATLAB
-  environment: MATLAB R2021b plus local `chebdif` shim
+  environment: MATLAB R2021b plus `chebdif` compatibility shim
   primary_blocker: none
   likely_next_step: none
   runtime: MATLAB R2021b
-  dependencies: Local `chebdif.m` shim
+  dependencies: `chebdif.m` compatibility shim
   notes: Small educational MATLAB example.
 
 - slug: spme-oed
   status: success
   language: Python
-  environment: local `conda` Python 3.11 env
+  environment: Python 3.11 environment from recipe
   environment_file: REPRODUCTIONS/environments/spme-oed/environment.yml
   primary_blocker: none
   likely_next_step: none
-  runtime: `.envs/pybamm-311`, Python 3.11.15
+  runtime: Python 3.11.15 environment from recipe
   dependencies: `pybamm` 26.4.1; `numpy` 2.4.4; `scipy` 1.17.1; `matplotlib` 3.10.9; `pandas` 3.0.2; `casadi` 3.7.2
   notes: Reuses the PyBaMM environment.
 
 - slug: slide
   status: success
   language: C++ + MATLAB
-  environment: local CMake/Ninja build on macOS with AppleClang
+  environment: CMake/Ninja build on macOS with AppleClang
   environment_file: REPRODUCTIONS/environments/slide/environment.yml
   primary_blocker: none
   likely_next_step: none
-  runtime: macOS Darwin 25.1.0, AppleClang 17.0.0, CMake 4.3.2, Ninja 1.13.2
-  dependencies: System C++20 compiler; local conda build env with `cmake` and `ninja`; MATLAB not required for C++ unit-test smoke reproduction
+  runtime: macOS, AppleClang 17.0.0, CMake 4.3.2, Ninja 1.13.2
+  dependencies: System C++20 compiler; conda build environment with `cmake` and `ninja`; MATLAB not required for C++ unit-test smoke reproduction
   notes: Built upstream commit `847fec7aaeaefb916c51e5264aa8aa0dcfe72b20`; CTest passed 8/8 unit tests in 64.62 s; default `slide` binary launched successfully.
 
 - slug: lionsimba
@@ -154,12 +154,12 @@
   likely_next_step: none
   runtime: Docker `python:3.12-bookworm`, Python 3.12.13, `linux/amd64`
   dependencies: `daetools` 2.3.0; `PyQt5` 5.15.11; `numpy` 2.4.4; `scipy` 1.17.1; `matplotlib` 3.10.9; `pandas` 3.0.2; `h5py` 3.16.0; `schema` 0.7.8; `pytest` 9.0.3; Debian `libgfortran5`; `libgl1-mesa-glx`
-  notes: Docker is the cleanest path; local macOS install is less predictable.
+  notes: Docker is the cleanest path; native macOS install is less predictable.
 
 - slug: petlion-jl
   status: success
   language: Julia
-  environment: local Julia 1.12.6
+  environment: Julia 1.12.6
   environment_file: REPRODUCTIONS/environments/petlion-jl/Project.toml
   primary_blocker: none
   likely_next_step: none
@@ -170,7 +170,7 @@
 - slug: dfn-scott-moura
   status: success
   language: MATLAB
-  environment: local Octave 11.1.0
+  environment: Octave 11.1.0
   environment_file: REPRODUCTIONS/environments/octave/Dockerfile
   primary_blocker: `dfn_federico` completes; `dfn_rg` is not the working Octave entry in this snapshot
   likely_next_step: document `dfn_federico` as the preferred Octave smoke entry
@@ -181,7 +181,7 @@
 - slug: fastdfn
   status: success
   language: MATLAB
-  environment: local Octave 11.1.0
+  environment: Octave 11.1.0
   environment_file: REPRODUCTIONS/environments/octave/Dockerfile
   primary_blocker: none
   likely_next_step: none
@@ -192,9 +192,9 @@
 - slug: spmet
   status: success
   language: MATLAB
-  environment: local Octave 11.1.0
+  environment: Octave 11.1.0
   environment_file: REPRODUCTIONS/environments/octave/Dockerfile
-  primary_blocker: required local `mkoctfile --mex lininterp1f.c` first
+  primary_blocker: required `mkoctfile --mex lininterp1f.c` first
   likely_next_step: document the MEX helper build before the first run
   runtime: Octave 11.1.0
   dependencies: `mkoctfile` for `lininterp1f.c` MEX build

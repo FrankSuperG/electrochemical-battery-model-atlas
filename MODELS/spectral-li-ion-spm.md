@@ -13,7 +13,7 @@
 - Thermal/degradation not verified here
 
 ## Reproducibility
-- Reproduced in this Atlas using MATLAB R2021b plus a local `chebdif.m` shim.
+- Reproduced in this Atlas using MATLAB R2021b plus a `chebdif.m` compatibility shim.
 
 ### Quickstart
 - Requires MATLAB (upstream notes it was developed/tested on MATLAB R2015b)

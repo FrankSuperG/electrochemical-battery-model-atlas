@@ -4,7 +4,7 @@
 - Date: 2026-05-02
 - Upstream repo: <https://github.com/redyxg/batP2dFoam>
 - Upstream commit: `8f93f89169d32225e9c74e8e4e3654d9d38dec5d`
-- Local checkout: `<atlas-root>/.upstream/redyxg__batP2dFoam`
+- Upstream checkout: `<atlas-root>/.upstream/redyxg__batP2dFoam`
 
 ## Environment
 - OS: Docker on macOS

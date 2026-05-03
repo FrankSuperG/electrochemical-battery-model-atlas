@@ -14,7 +14,7 @@
 - Degradation: not primary in base repository positioning
 
 ## Reproducibility
-- Reproduced in this Atlas using local Octave 11.1.0.
+- Reproduced in this Atlas using Octave 11.1.0.
 
 ### Quickstart
 - Clone: `git clone https://github.com/scott-moura/fastDFN.git`

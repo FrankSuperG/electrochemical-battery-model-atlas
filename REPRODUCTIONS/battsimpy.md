@@ -4,7 +4,7 @@
 - Date: 2026-05-02
 - Upstream repo: <https://github.com/matthewpklein/battsimpy>
 - Upstream commit: `1c786cdb499000ffe66a65a877bceef301d14a9b`
-- Local checkout: `<atlas-root>/.upstream/matthewpklein__battsimpy`
+- Upstream checkout: `<atlas-root>/.upstream/matthewpklein__battsimpy`
 
 ## Environment
 - OS: Docker on macOS

@@ -4,7 +4,7 @@
 - Date: 2026-05-01
 - Upstream repo: <https://github.com/liuyang12/Pseudo_sim>
 - Upstream commit: `0eca60fadbfeb59d5a8374d87d20a6d96574fea5`
-- Local checkout: `<atlas-root>/.upstream/liuyang12__Pseudo_sim`
+- Upstream checkout: `<atlas-root>/.upstream/liuyang12__Pseudo_sim`
 
 ## Environment
 - OS: macOS
@@ -19,14 +19,14 @@ matlab -batch "set(0,'DefaultFigureVisible','off'); addpath('<atlas-root>/REPROD
 ```
 
 ## Outcome
-- Result: success with local TOMLAB compatibility shim backed by MATLAB `fmincon`
+- Result: success with TOMLAB compatibility shim backed by MATLAB `fmincon`
 - Actual output:
   - raw Octave run fails first at `dctmtx`
-  - after adding local `dctmtx`, `dct`, and `idct` shims, the script advances to the first optimization setup
+  - after adding `dctmtx`, `dct`, and `idct` compatibility shims, the script advances to the first optimization setup
   - MATLAB R2021b provides `dctmtx` and `dct`, but `conAssign=0` and `knitro=0`
-  - after adding local `conAssign`, `tomRun`, and `WarmDefSOL` shims, `T1master` runs through the full progress loop and prints `PSEUDO_SIM_FMINCON_SHIM_OK`
+  - after adding `conAssign`, `tomRun`, and `WarmDefSOL` compatibility shims, `T1master` runs through the full progress loop and prints `PSEUDO_SIM_FMINCON_SHIM_OK`
 
 ## Notes
 - Octave Forge `image` 2.20.0 installed successfully from a manually downloaded tarball, but it still does not provide `dctmtx`.
-- Octave `fprintf(s)` fails when `s` contains `%`; the local upstream clone needed `fprintf('%s', s)` at the progress-print lines.
+- Octave `fprintf(s)` fails when `s` contains `%`; the upstream checkout needed `fprintf('%s', s)` at the progress-print lines.
 - Upstream still has a hard TOMLAB/KNITRO dependency. The `fmincon` shim is a reproduction workaround, not a guarantee of numerical equivalence to KNITRO.

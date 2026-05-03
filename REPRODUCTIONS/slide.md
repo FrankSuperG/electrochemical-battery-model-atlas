@@ -5,39 +5,37 @@
 - Evidence level: `independent-local`
 - Upstream repo: <https://github.com/Battery-Intelligence-Lab/SLIDE>
 - Upstream commit: `847fec7aaeaefb916c51e5264aa8aa0dcfe72b20`
-- Local checkout: `<atlas-root>/.upstream/Battery-Intelligence-Lab__SLIDE`
+- Upstream checkout: `<atlas-root>/.upstream/Battery-Intelligence-Lab__SLIDE`
 
 ## Environment
-- OS: macOS, Darwin 25.1.0
+- OS: macOS
 - Compiler: AppleClang 17.0.0
-- Build tools: CMake 4.3.2 and Ninja 1.13.2 from local conda environment `.envs/slide-build`
+- Build tools: CMake 4.3.2 and Ninja 1.13.2 from the conda environment recipe
 - Environment recipe: [`environments/slide/environment.yml`](environments/slide/environment.yml)
 
 ## Install
 ```bash
-conda create -y \
-  -p <atlas-root>/.envs/slide-build \
-  -c conda-forge cmake ninja
+conda env create -f <atlas-root>/REPRODUCTIONS/environments/slide/environment.yml
+conda activate ebatma-slide-build
 ```
 
 ## Build
 ```bash
-<atlas-root>/.envs/slide-build/bin/cmake \
+cmake \
   -S <atlas-root>/.upstream/Battery-Intelligence-Lab__SLIDE \
   -B <atlas-root>/.upstream/Battery-Intelligence-Lab__SLIDE/build-codex \
   -G Ninja \
-  -DCMAKE_MAKE_PROGRAM=<atlas-root>/.envs/slide-build/bin/ninja \
   -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
   -DCMAKE_BUILD_TYPE=Release
 
-<atlas-root>/.envs/slide-build/bin/cmake \
+cmake \
   --build <atlas-root>/.upstream/Battery-Intelligence-Lab__SLIDE/build-codex \
   --parallel 6
 ```
 
 ## Run
 ```bash
-<atlas-root>/.envs/slide-build/bin/ctest \
+ctest \
   --test-dir <atlas-root>/.upstream/Battery-Intelligence-Lab__SLIDE/build-codex \
   --output-on-failure
 

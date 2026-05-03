@@ -42,7 +42,7 @@
   - hardware acceleration (CPU/GPU/TPU), depending on implementation
 
 ## Known limitations
-- Reproducibility hinges on JAX API compatibility and resource use. The repository lacks a pinned environment file, and modern JAX requires local compatibility shims.
+- Reproducibility hinges on JAX API compatibility and resource use. The repository lacks a pinned environment file, and modern JAX requires compatibility shims.
 
 ## Who is it for?
 - Users interested in DFN/P2D solvers with a path toward AD/acceleration

@@ -14,7 +14,7 @@
 - Degradation: not primary in this repository
 
 ## Reproducibility
-- Reproduced in this Atlas using local Octave 11.1.0; `dfn_federico` is the working smoke entry in this snapshot.
+- Reproduced in this Atlas using Octave 11.1.0; `dfn_federico` is the working smoke entry in this snapshot.
 
 ### Quickstart
 - Clone: `git clone https://github.com/scott-moura/dfn.git`

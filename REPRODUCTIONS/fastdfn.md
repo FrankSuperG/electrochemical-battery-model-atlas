@@ -4,7 +4,7 @@
 - Date: 2026-05-01
 - Upstream repo: <https://github.com/scott-moura/fastDFN>
 - Upstream commit: `140fdfc335cbae99efe8f5b609851fed672ec0e4`
-- Local checkout: `<atlas-root>/.upstream/scott-moura__fastDFN`
+- Upstream checkout: `<atlas-root>/.upstream/scott-moura__fastDFN`
 
 ## Environment
 - OS: macOS

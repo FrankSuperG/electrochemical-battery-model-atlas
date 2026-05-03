@@ -13,7 +13,7 @@
 - Focus is not multiphysics extensions but parameter inference + Bayesian optimal experimental design (OED)
 
 ## Reproducibility
-- Reproduced in this Atlas using the local PyBaMM Python 3.11 environment.
+- Reproduced in this Atlas using a PyBaMM Python 3.11 environment from the recipe.
 
 ### Quickstart
 - Install Python deps (not pinned upstream): `pybamm`, `numpy`, `matplotlib`, and `bayes_opt`

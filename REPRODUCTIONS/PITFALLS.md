@@ -1,6 +1,6 @@
 # Reproduction Pitfalls
 
-This file summarizes cross-project issues found during local reproduction attempts.
+This file summarizes cross-project issues found during reproduction attempts.
 See `CODE_ISSUES.md` for cases where the blocker appears to be source-code or packaging quality rather than only an environment problem.
 
 ## Environment selection
@@ -12,13 +12,13 @@ See `CODE_ISSUES.md` for cases where the blocker appears to be source-code or pa
 ## MATLAB versus Octave
 - Octave can run several Scott Moura projects, but old MATLAB plotting code can fail before the numerical model runs. `dkong8s93/p2d-model` currently stops in `initializePlotting`.
 - MATLAB class syntax is not fully portable. BattMo's `properties (SetAccess = immutable)` blocks the basic P2D example in Octave, but MATLAB R2021b runs it.
-- MATLAB utility functions are inconsistent across Octave packages. `Pseudo_sim` needed local shims for `dctmtx`, `dct`, and `idct`.
+- MATLAB utility functions are inconsistent across Octave packages. `Pseudo_sim` needed compatibility shims for `dctmtx`, `dct`, and `idct`.
 - `fprintf(s)` is unsafe in Octave if `s` contains `%`; use `fprintf('%s', s)`.
 - MATLAB batch mode on this machine prints font warnings and a shutdown-time `Settings` warning, but successful scripts still return code 0.
 
 ## External proprietary or login-gated pieces
-- `Pseudo_sim` reaches TOMLAB/KNITRO symbols (`conAssign`, `Prob.KNITRO`), so base MATLAB is not enough for the upstream code. A local `fmincon` shim can run `T1master`, but that is a reproduction workaround rather than a KNITRO-equivalent result.
-- `Spectral_li-ion_SPM` requires `chebdif.m` from DMSUITE. The official MathWorks File Exchange page requires login for download; a local reproduction shim is enough for the tested example.
+- `Pseudo_sim` reaches TOMLAB/KNITRO symbols (`conAssign`, `Prob.KNITRO`), so base MATLAB is not enough for the upstream code. A `fmincon` compatibility shim can run `T1master`, but that is a reproduction workaround rather than a KNITRO-equivalent result.
+- `Spectral_li-ion_SPM` requires `chebdif.m` from DMSUITE. The official MathWorks File Exchange page requires login for download; a reproduction shim is enough for the tested example.
 - `LIONSIMBA` requires the SUNDIALS MATLAB interface even when running under MATLAB.
 
 ## Submodules and large stacks

@@ -4,7 +4,7 @@
 - Date: 2026-05-01
 - Upstream repo: <https://github.com/lionsimbatoolbox/LIONSIMBA>
 - Upstream commit: `4eb6435ac9ad4050b6e8cb6d06f729ae6b62b76e`
-- Local checkout: `<atlas-root>/.upstream/lionsimbatoolbox__LIONSIMBA`
+- Upstream checkout: `<atlas-root>/.upstream/lionsimbatoolbox__LIONSIMBA`
 
 ## Environment
 - OS: macOS

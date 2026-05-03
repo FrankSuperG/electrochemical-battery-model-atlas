@@ -14,7 +14,7 @@
 - Degradation: not the primary focus in base repository description
 
 ## Reproducibility
-- Reproduced in this Atlas using local Julia 1.12.6.
+- Reproduced in this Atlas using Julia 1.12.6.
 
 ### Quickstart
 - Clone: `git clone https://github.com/MarcBerliner/PETLION.jl.git`

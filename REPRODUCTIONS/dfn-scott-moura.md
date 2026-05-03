@@ -4,7 +4,7 @@
 - Date: 2026-05-01
 - Upstream repo: <https://github.com/scott-moura/dfn>
 - Upstream commit: `702d7f38be4cd29b00d6791f7892de5e73952006`
-- Local checkout: `<atlas-root>/.upstream/scott-moura__dfn`
+- Upstream checkout: `<atlas-root>/.upstream/scott-moura__dfn`
 
 ## Environment
 - OS: macOS

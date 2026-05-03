@@ -42,7 +42,7 @@
 ## Known limitations
 - Octave can fail first in plotting. MATLAB gets farther, but `reduced_temperature_model/script.m` hits a nearly singular initial Jacobian (`rcond` around `2e-21`).
 - `reduced_big_Phi_model/script.m` also fails at the initial solve with `RCOND` around `5e-23`.
-- A local typo fix in `assemble_vDv.m` corrected bad Jacobian indexing, but it did not resolve the rank deficiency.
+- A typo fix in `assemble_vDv.m` corrected bad Jacobian indexing, but it did not resolve the rank deficiency.
 
 ## Who is it for?
 - Users who want to study a finite-difference DFN/P2D implementation in MATLAB

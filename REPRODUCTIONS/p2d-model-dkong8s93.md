@@ -4,7 +4,7 @@
 - Date: 2026-05-02
 - Upstream repo: <https://github.com/dkong8s93/p2d-model>
 - Upstream commit: `85d867773b623d89e45c5a2a32a4ca1a46e813e9`
-- Local checkout: `<atlas-root>/.upstream/dkong8s93__p2d-model`
+- Upstream checkout: `<atlas-root>/.upstream/dkong8s93__p2d-model`
 
 ## Environment
 - OS: macOS

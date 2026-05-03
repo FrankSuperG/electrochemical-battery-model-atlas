@@ -3,7 +3,7 @@
 - Status: `success`
 - Date: 2026-05-01
 - Upstream repo: <https://github.com/davidhowey/Spectral_li-ion_SPM>
-- Local checkout: `<atlas-root>/.upstream/davidhowey__Spectral_li-ion_SPM`
+- Upstream checkout: `<atlas-root>/.upstream/davidhowey__Spectral_li-ion_SPM`
 
 ## Environment
 - OS: macOS
@@ -20,5 +20,5 @@ matlab -batch "set(0,'DefaultFigureVisible','off'); addpath('<atlas-root>/REPROD
 
 ## Notes
 - The repository requires `chebdif.m` from DMSUITE; it was not present in MATLAB's path.
-- The official MathWorks File Exchange download page requires login, so this reproduction used a local `chebdif` shim in `REPRODUCTIONS/shims/spectral-li-ion-spm`.
+- The official MathWorks File Exchange download page requires login, so this reproduction used a `chebdif` compatibility shim in `REPRODUCTIONS/shims/spectral-li-ion-spm`.
 - MATLAB batch mode printed harmless font warnings on this machine.

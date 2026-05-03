@@ -2,7 +2,7 @@
 
 Date: 2026-05-02
 
-Scope: 19 Atlas entries. This summary is generated from `data/reproductions.yaml` and records local reproduction attempts, including Docker, MATLAB, Octave, Julia, Python, and C++/CMake environments. Successful entries are marked `independent-local` when this Atlas pass built or ran them locally.
+Scope: 19 Atlas entries. This summary is generated from `data/reproductions.yaml` and records reproduction attempts, including Docker, MATLAB, Octave, Julia, Python, and C++/CMake environments. Successful entries are marked `independent-local` when this Atlas pass built or ran them in an independent reproduction environment.
 
 ## Result
 
@@ -17,13 +17,13 @@ Scope: 19 Atlas entries. This summary is generated from `data/reproductions.yaml
 
 | Need                                      | Recommended entry                     | Why                                                                                                   |
 |-------------------------------------------|---------------------------------------|-------------------------------------------------------------------------------------------------------|
-| Robust baseline for SPM/SPMe/DFN studies  | `pybamm`                              | Modern dependency stack, active ecosystem, strong documentation, successful local run.                |
+| Robust baseline for SPM/SPMe/DFN studies  | `pybamm`                              | Modern dependency stack, active ecosystem, strong documentation, successful command-level run.        |
 | MATLAB DFN framework                      | `battmo`                              | Runs in MATLAB R2021b after submodules are available; more suitable than older MATLAB-only snapshots. |
 | Lightweight DFN/SPMe educational examples | `dfn-scott-moura`, `fastdfn`, `spmet` | Reproduced in Octave 11.1.0 with small or no setup overhead.                                          |
-| Julia-based DFN/P2D work                  | `petlion-jl`, `jubat`                 | `petlion-jl` is cleaner; `jubat` required a local include-path patch.                                 |
+| Julia-based DFN/P2D work                  | `petlion-jl`, `jubat`                 | `petlion-jl` is cleaner; `jubat` required an include-path patch.                                      |
 | Python legacy model comparison            | `battsimpy`                           | Reproduced in a legacy Python 2.7 Docker environment.                                                 |
 | Advanced research P2D framework           | `mpet`                                | Reproduced in Docker with Python 3.12 after installing runtime system libraries.                      |
-| Fast degradation simulator                | `slide`                               | Independently built and tested locally; CTest passed 8/8 unit tests.                                  |
+| Fast degradation simulator                | `slide`                               | Independently built and tested in this pass; CTest passed 8/8 unit tests.                             |
 
 ## Unreproduced Entries
 
@@ -41,4 +41,4 @@ Scope: 19 Atlas entries. This summary is generated from `data/reproductions.yaml
 - [`DEPENDENCIES.md`](DEPENDENCIES.md): software and dependency versions used during reproduction.
 - [`PITFALLS.md`](PITFALLS.md): cross-project reproduction pitfalls.
 - [`CODE_ISSUES.md`](CODE_ISSUES.md): likely upstream code issues versus environment-only blockers.
-- [`LOCAL_PATCHES.md`](LOCAL_PATCHES.md): local patches and shims used during reproduction.
+- [`LOCAL_PATCHES.md`](LOCAL_PATCHES.md): reproduction patches and shims used during reproduction.

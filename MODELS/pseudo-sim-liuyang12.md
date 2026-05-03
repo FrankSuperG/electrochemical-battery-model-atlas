@@ -12,7 +12,7 @@
 - Thermal/degradation not verified in this Atlas
 
 ## Reproducibility
-- Reproduced in this Atlas using MATLAB R2021b plus local TOMLAB/KNITRO compatibility shims backed by `fmincon`.
+- Reproduced in this Atlas using MATLAB R2021b plus TOMLAB/KNITRO compatibility shims backed by `fmincon`.
 
 ### Quickstart
 - Requires MATLAB
@@ -38,7 +38,7 @@
 - MATLAB implementation may be easier to read for some learners (depends on code organization)
 
 ## Known limitations
-- Older repositories often lack clear environment/run instructions; this one required local TOMLAB/KNITRO compatibility shims for the reproduced path.
+- Older repositories often lack clear environment/run instructions; this one required TOMLAB/KNITRO compatibility shims for the reproduced path.
 
 ## Who is it for?
 - Users who want a MATLAB P2D example for learning or cross-checking

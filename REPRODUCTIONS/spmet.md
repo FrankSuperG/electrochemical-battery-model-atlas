@@ -4,7 +4,7 @@
 - Date: 2026-05-01
 - Upstream repo: <https://github.com/scott-moura/SPMeT>
 - Upstream commit: `bc4f8300d1262bfdef3d8b2949544c589b302c66`
-- Local checkout: `<atlas-root>/.upstream/scott-moura__SPMeT`
+- Upstream checkout: `<atlas-root>/.upstream/scott-moura__SPMeT`
 
 ## Environment
 - OS: macOS

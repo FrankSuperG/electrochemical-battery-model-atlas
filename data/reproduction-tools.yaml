@@ -1,9 +1,9 @@
 # Global tool versions observed during the 2026-05-02 reproduction pass.
 
-- tool: Conda environment `battery`
+- tool: CPG-SPMT Python reproduction environment
   version: Python 3.9.23
 
-- tool: Local PyBaMM environment `.envs/pybamm-311`
+- tool: PyBaMM Python reproduction environment
   version: Python 3.11.15
 
 - tool: Docker `python:3.11-slim` runtime

@@ -20,7 +20,7 @@ Evidence level:
 | `p2d-li-ion-battery-decaluwe` | Control-volume style shell balances for particles and through-thickness volumes | Assimulo/SUNDIALS IDA DAE solve | code-inferred |
 | `p2d-solver-hanrach` | Finite difference method | Newton iterations with JAX automatic differentiation for Jacobians | explicit |
 | `p2d-model-dkong8s93` | Finite difference method; variants include full Fickian particle diffusion and reduced/two-term approximations | MATLAB sparse matrix assembly and Newton iterations | explicit, code-inferred |
-| `pseudo-sim-liuyang12` | Finite difference method with method-of-lines conversion | MATLAB `ode15s`/ODE functions and local TOMLAB-style optimization shim | explicit |
+| `pseudo-sim-liuyang12` | Finite difference method with method-of-lines conversion | MATLAB `ode15s`/ODE functions and TOMLAB-style optimization compatibility shim | explicit |
 | `jubat` | Second-order finite element method | Julia implementation with assembled mass/stiffness matrices | explicit |
 | `batp2dfoam` | Finite volume method through OpenFOAM | OpenFOAM solver with PIMPLE-style coupled iteration | framework-default |
 | `battsimpy` | Finite volume method following the LIONSIMBA formulation | Assimulo/SUNDIALS IDA DAE solve | explicit |
@@ -36,14 +36,14 @@ Evidence level:
 
 ## PyBaMM Numerical Methods
 
-Verified against local reproduction environment `pybamm==26.4.1`, the local upstream source snapshot in `.upstream/pybamm-team__PyBaMM`, and the official PyBaMM stable documentation checked on 2026-05-02.
+Verified against the reproduced `pybamm==26.4.1` environment, the checked upstream source snapshot in `.upstream/pybamm-team__PyBaMM`, and the official PyBaMM stable documentation checked on 2026-05-02.
 
 PyBaMM separates two concepts that are easy to mix up:
 
 - `spatial_methods`: spatial discretization of PDE operators, for example finite volume, spectral volume, finite element, or 0D lumping.
 - `solver`: time integration / algebraic or DAE solving after the PDE model has been discretized.
 
-The official PyBaMM API documentation does not list a public `pybamm.FiniteDifference` spatial method in the current stable API, and the local `pybamm==26.4.1` environment also has no `FiniteDifference` attribute. PyBaMM's `FiniteVolume` implementation does use finite-difference-like matrix stencils internally for gradients and divergences, and the docs cite control-volume finite-difference literature, but the selectable public method should be described as finite volume rather than standalone FDM.
+The official PyBaMM API documentation does not list a public `pybamm.FiniteDifference` spatial method in the current stable API, and the reproduced `pybamm==26.4.1` environment also has no `FiniteDifference` attribute. PyBaMM's `FiniteVolume` implementation does use finite-difference-like matrix stencils internally for gradients and divergences, and the docs cite control-volume finite-difference literature, but the selectable public method should be described as finite volume rather than standalone FDM.
 
 ### PyBaMM Spatial Methods
 

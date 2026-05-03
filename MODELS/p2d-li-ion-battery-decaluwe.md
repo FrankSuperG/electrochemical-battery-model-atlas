@@ -13,7 +13,7 @@
 
 ## Reproducibility
 - Unreproduced in this Atlas after a final targeted attempt with Docker Python 3.8, `cantera=2.6.0`, `assimulo`, and `numpy<1.24`.
-- Even after local constructor/index/event fixes and setting `Battery_equil.algvar = algvar`, IDA fails convergence at `t=0`.
+- Even after constructor/index/event compatibility fixes and setting `Battery_equil.algvar = algvar`, IDA fails convergence at `t=0`.
 
 ### Quickstart
 - Install deps: requires Cantera, Assimulo, and a compatible NumPy/SciPy stack. The tested path used `cantera=2.6.0` and `numpy<1.24`.

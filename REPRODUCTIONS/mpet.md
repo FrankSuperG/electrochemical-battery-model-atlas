@@ -4,7 +4,7 @@
 - Date: 2026-05-02
 - Upstream repo: <https://github.com/TRI-AMDD/mpet>
 - Upstream commit: `ff49b292fc6a54d289a3b1ba079e5eb858fe14bd`
-- Local checkout: `<atlas-root>/.upstream/TRI-AMDD__mpet`
+- Upstream checkout: `<atlas-root>/.upstream/TRI-AMDD__mpet`
 
 ## Environment
 - OS: Docker on macOS

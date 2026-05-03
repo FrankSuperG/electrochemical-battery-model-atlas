@@ -4,7 +4,7 @@
 - Date: YYYY-MM-DD
 - Upstream repo: <https://...>
 - Upstream commit: `<sha>`
-- Local checkout: `<path>`
+- Upstream checkout: `<path>`
 
 ## Environment
 - OS:

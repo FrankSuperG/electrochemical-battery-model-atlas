@@ -4,7 +4,7 @@
 - Date: 2026-05-02
 - Upstream repo: <https://github.com/decaluwe/p2d_li_ion_battery>
 - Upstream commit: `7ea1a2332eb885bea65e47e82ea231f80d28ca18`
-- Local checkout: `<atlas-root>/.upstream/decaluwe__p2d_li_ion_battery`
+- Upstream checkout: `<atlas-root>/.upstream/decaluwe__p2d_li_ion_battery`
 
 ## Environment
 - OS: Docker on macOS
@@ -31,10 +31,10 @@ docker run --rm --platform linux/amd64 \
   - `cantera 2.6.0` imports successfully
   - `assimulo` imports successfully
   - the script reaches `Equilibrating...`
-  - after local constructor and indexing fixes, `IDA(Battery_equil)` starts initialization
+  - after constructor and indexing fixes, `IDA(Battery_equil)` starts initialization
   - disabling the broken event interface and defining missing tolerances/stage residuals lets IDA begin integration
   - current blocker is now `IDAError: Convergence test failures occurred too many times during one internal time step or minimum step size was reached. At time 0.000000.`
-  - an additional local source fix corrected the residual's anode node indexing from `sep.offsets` to `an.offsets`
+  - an additional source fix corrected the residual's anode node indexing from `sep.offsets` to `an.offsets`
   - an anode-only IDA smoke attempt still fails at `t=0` convergence after that indexing fix
   - final attempt set `Battery_equil.algvar = algvar`; the full script still fails with the same IDA convergence error at `t=0`
 

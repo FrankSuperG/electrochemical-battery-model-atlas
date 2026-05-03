@@ -4,7 +4,7 @@
 - Date: 2026-05-02
 - Upstream repo: <https://github.com/hanrach/p2d_solver>
 - Upstream commit: `8e633376c9c36943e08796a8048448cd0aed5664`
-- Local checkout: `<atlas-root>/.upstream/hanrach__p2d_solver`
+- Upstream checkout: `<atlas-root>/.upstream/hanrach__p2d_solver`
 
 ## Environment
 - OS: Docker on macOS

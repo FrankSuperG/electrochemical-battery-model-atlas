@@ -12,8 +12,8 @@
 - Thermal/degradation not verified in this Atlas
 
 ## Reproducibility
-- Reproduced in this Atlas using local Julia 1.12.6.
-- Required a local `ChooseCell` include-path/world-age patch during the reproduction pass.
+- Reproduced in this Atlas using Julia 1.12.6.
+- Required a `ChooseCell` include-path/world-age patch during the reproduction pass.
 
 ### Quickstart
 - Install Julia

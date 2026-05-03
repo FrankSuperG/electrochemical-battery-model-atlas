@@ -4,23 +4,23 @@
 - Date: 2026-05-01
 - Upstream repo: <https://github.com/FrankSuperG/CPG-SPMT>
 - Upstream commit: `8b1fe7ff75b4c69be55fb543de361a009c5a11a8`
-- Local checkout: `<atlas-root>/.upstream/FrankSuperG__CPG-SPMT`
+- Upstream checkout: `<atlas-root>/.upstream/FrankSuperG__CPG-SPMT`
 
 ## Environment
 - OS: macOS
 - Runtime: Python
-- Environment manager: `conda` existing env `battery`
+- Environment manager: any compatible Python environment with the listed dependencies
 
 ## Install
 ```bash
-conda run -n battery python --version
-conda run -n battery python -c "import numpy, scipy, matplotlib, pandas, openpyxl"
+python --version
+python -c "import numpy, scipy, matplotlib, pandas, openpyxl"
 ```
 
 ## Run
 ```bash
 cd <atlas-root>/.upstream/FrankSuperG__CPG-SPMT
-MPLBACKEND=Agg conda run -n battery python model_validation.py
+MPLBACKEND=Agg python model_validation.py
 ```
 
 ## Outcome
@@ -29,6 +29,6 @@ MPLBACKEND=Agg conda run -n battery python model_validation.py
 - Actual output: the validation suite produced 24 benchmark rows in `validation_results/cpg_spmt_validation_results.csv`, generated per-temperature/per-cycle PNG figures, and wrote summary comparison plots.
 
 ## Notes
-- Deviations from upstream: forced `MPLBACKEND=Agg` to avoid GUI dependence on local macOS.
+- Deviations from upstream: forced `MPLBACKEND=Agg` to avoid GUI dependence.
 - Blockers: none
 - Aggregate metrics from the generated CSV: mean RMSE `0.0331 V`, best RMSE `0.0146 V`, worst RMSE `0.0665 V`, mean R² `0.9683`.

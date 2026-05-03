@@ -40,7 +40,7 @@ The project is built for three audiences:
 | Metric | Current state |
 | --- | --- |
 | Model entries | 19 public model repositories or workflows. |
-| Successful local reproductions | 14 entries with command-level evidence. |
+| Successful reproductions | 14 entries with command-level evidence. |
 | Unreproduced after targeted attempts | 5 entries with documented blockers. |
 | Curated reference set | 35 BibTeX entries with a staged reading roadmap. |
 | Validation | `node scripts/models.js check` regenerates docs, validates metadata, checks links, validates BibTeX anchors, and checks README snapshot counts. |
@@ -69,7 +69,7 @@ If acronym-heavy pages feel dense, start with [`GLOSSARY.md`](GLOSSARY.md).
 ## Reproduction Status
 
 <!-- REPRODUCTION_STATUS_START -->
-Local reproduction records are maintained in [REPRODUCTIONS/](REPRODUCTIONS/). As of 2026-05-02, the Atlas has 14 successful reproductions, 5 unreproduced entries, 0 partial entries, and 0 blocked entries.
+Reproduction records are maintained in [REPRODUCTIONS/](REPRODUCTIONS/). As of 2026-05-02, the Atlas has 14 successful reproductions, 5 unreproduced entries, 0 partial entries, and 0 blocked entries.
 
 Start with the [reproduction dashboard](REPRODUCTIONS/SUMMARY.md) for a high-level view, then use the [dependency matrix](REPRODUCTIONS/DEPENDENCIES.md) and [coverage matrix](REPRODUCTIONS/COVERAGE.md) for exact environments and blockers.
 <!-- REPRODUCTION_STATUS_END -->

@@ -4,18 +4,19 @@
 - Date: 2026-05-01
 - Upstream repo: <https://github.com/tcoonsUM/SPMe_OED>
 - Upstream commit: `ba054d1d10cfd8f82b8adaffbe181f654dea8394`
-- Local checkout: `<atlas-root>/.upstream/tcoonsUM__SPMe_OED`
+- Upstream checkout: `<atlas-root>/.upstream/tcoonsUM__SPMe_OED`
 
 ## Environment
 - OS: macOS
 - Runtime: Python 3.11
-- Environment manager: local `conda` env at `<atlas-root>/.envs/pybamm-311`
+- Environment recipe: [`environments/spme-oed/environment.yml`](environments/spme-oed/environment.yml)
 
 ## Run
 ```bash
-<atlas-root>/.envs/pybamm-311/bin/python - <<'PY'
-import numpy as np, sys
-sys.path.insert(0, '<atlas-root>/.upstream/tcoonsUM__SPMe_OED')
+conda env create -f <atlas-root>/REPRODUCTIONS/environments/spme-oed/environment.yml
+conda activate ebatma-pybamm-311
+PYTHONPATH=<atlas-root>/.upstream/tcoonsUM__SPMe_OED python - <<'PY'
+import numpy as np
 from pybamm_small_d import pybamm_SPMe_Sim
 batCap = 4.9872
 inp = np.array([[-batCap/2, batCap/3, -batCap/4, batCap/5,

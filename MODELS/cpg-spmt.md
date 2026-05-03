@@ -14,8 +14,8 @@
 - Degradation: not included
 
 ## Reproducibility
-- Independently reproduced in this Atlas on 2026-05-01 using the upstream validation script on macOS with a local conda Python environment.
-- Command used: `MPLBACKEND=Agg conda run -n battery python model_validation.py`
+- Independently reproduced in this Atlas on 2026-05-01 using the upstream validation script on macOS with a compatible Python environment.
+- Command used: `MPLBACKEND=Agg python model_validation.py`
 - Evidence: 24 validation cases were generated in `validation_results/cpg_spmt_validation_results.csv` together with the expected PNG outputs. Aggregate results from the generated CSV: mean RMSE `0.0331 V`, mean R² `0.9683`.
 
 ### Quickstart

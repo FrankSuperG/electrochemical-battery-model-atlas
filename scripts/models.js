@@ -363,7 +363,7 @@ function evidenceLevel(entry) {
 
 function reproductionStatusText(entries) {
   const { groups } = groupReproductions(entries);
-  return `Local reproduction records are maintained in [` +
+  return `Reproduction records are maintained in [` +
     `REPRODUCTIONS/](REPRODUCTIONS/). As of ${REPRODUCTION_DATE}, the Atlas has ` +
     `${groups.success.length} successful reproductions, ${groups.unreproduced.length} unreproduced entries, ` +
     `${groups.partial.length} partial entries, and ${groups.blocked.length} blocked entries.`;
@@ -522,7 +522,7 @@ function renderReproductions() {
     [
       "Robust baseline for SPM/SPMe/DFN studies",
       "`pybamm`",
-      "Modern dependency stack, active ecosystem, strong documentation, successful local run.",
+      "Modern dependency stack, active ecosystem, strong documentation, successful command-level run.",
     ],
     [
       "MATLAB DFN framework",
@@ -537,7 +537,7 @@ function renderReproductions() {
     [
       "Julia-based DFN/P2D work",
       "`petlion-jl`, `jubat`",
-      "`petlion-jl` is cleaner; `jubat` required a local include-path patch.",
+      "`petlion-jl` is cleaner; `jubat` required an include-path patch.",
     ],
     [
       "Python legacy model comparison",
@@ -552,7 +552,7 @@ function renderReproductions() {
     [
       "Fast degradation simulator",
       "`slide`",
-      "Independently built and tested locally; CTest passed 8/8 unit tests.",
+      "Independently built and tested in this pass; CTest passed 8/8 unit tests.",
     ],
   ];
 
@@ -565,7 +565,7 @@ function renderReproductions() {
     "",
     `Date: ${REPRODUCTION_DATE}`,
     "",
-    `Scope: ${entries.length} Atlas entries. This summary is generated from \`data/reproductions.yaml\` and records local reproduction attempts, including Docker, MATLAB, Octave, Julia, Python, and C++/CMake environments. Successful entries are marked \`independent-local\` when this Atlas pass built or ran them locally.`,
+    `Scope: ${entries.length} Atlas entries. This summary is generated from \`data/reproductions.yaml\` and records reproduction attempts, including Docker, MATLAB, Octave, Julia, Python, and C++/CMake environments. Successful entries are marked \`independent-local\` when this Atlas pass built or ran them in an independent reproduction environment.`,
     "",
     "## Result",
     "",
@@ -587,7 +587,7 @@ function renderReproductions() {
     "- [`DEPENDENCIES.md`](DEPENDENCIES.md): software and dependency versions used during reproduction.",
     "- [`PITFALLS.md`](PITFALLS.md): cross-project reproduction pitfalls.",
     "- [`CODE_ISSUES.md`](CODE_ISSUES.md): likely upstream code issues versus environment-only blockers.",
-    "- [`LOCAL_PATCHES.md`](LOCAL_PATCHES.md): local patches and shims used during reproduction.",
+    "- [`LOCAL_PATCHES.md`](LOCAL_PATCHES.md): reproduction patches and shims used during reproduction.",
     "",
   ].join("\n");
 
@@ -622,7 +622,7 @@ function renderReproductions() {
     "",
     `Date: ${REPRODUCTION_DATE}`,
     "",
-    "This file records the software stack used for the local reproduction pass. Versions are observed local or container versions, not necessarily the upstream authors' original development versions. It is generated from `data/reproductions.yaml` and `data/reproduction-tools.yaml`.",
+    "This file records the software stack used for the reproduction pass. Versions are observed host or container versions, not necessarily the upstream authors' original development versions. It is generated from `data/reproductions.yaml` and `data/reproduction-tools.yaml`.",
     "",
     "## Global Tool Versions",
     "",
@@ -776,7 +776,7 @@ function checkReadmeSnapshot() {
     `Successful reproductions: ${successCount}`,
     `reproduced-${successCount}%2F${modelEntries.length}`,
     `Model entries | ${modelEntries.length} public model repositories or workflows.`,
-    `Successful local reproductions | ${successCount} entries with command-level evidence.`,
+    `Successful reproductions | ${successCount} entries with command-level evidence.`,
     `Unreproduced after targeted attempts | ${unreproducedCount} entries with documented blockers.`,
   ];
 
