@@ -13,7 +13,7 @@
 - Thermal/degradation not verified here
 
 ## Reproducibility
-- Not reproduced in this Atlas (summary below is based on upstream docs/structure).
+- Reproduced in this Atlas using MATLAB R2021b plus a local `chebdif.m` shim.
 
 ### Quickstart
 - Requires MATLAB (upstream notes it was developed/tested on MATLAB R2015b)
@@ -28,6 +28,13 @@
 
 ### Environment lock
 - MATLAB version not pinned; upstream suggests R2015b+ and external DMSUITE dependency.
+
+### Beginner notes
+- Run `EXAMPLE_constant_current_discharge.m` first; it is the most direct path from parameters to output.
+- If the differentiation matrix helper is missing, solve that dependency before changing model code.
+
+### Numerics note
+- This model is a compact spectral/Chebyshev collocation reference for SPM solid diffusion; see [`../NUMERICS.md`](../NUMERICS.md) for the Atlas method summary.
 
 ## Strengths
 - Spectral methods for SPM are a useful reference for accuracy vs speed trade-offs

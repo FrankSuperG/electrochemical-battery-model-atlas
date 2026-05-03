@@ -1,3 +1,5 @@
 .DS_Store
 .upstream/
+.envs/
 node_modules/
+saved_models/

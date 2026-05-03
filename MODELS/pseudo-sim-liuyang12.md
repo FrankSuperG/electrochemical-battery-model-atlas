@@ -11,7 +11,7 @@
 - Thermal/degradation not verified in this Atlas
 
 ## Reproducibility
-- Not reproduced in this Atlas (summary below is based on upstream repository structure).
+- Reproduced in this Atlas using MATLAB R2021b plus local TOMLAB/KNITRO compatibility shims backed by `fmincon`.
 
 ### Quickstart
 - Requires MATLAB
@@ -30,11 +30,14 @@
 - If you want to adjust operating conditions, do it in the parameter script (not by editing inside the time loop).
 - MATLAB scripts often rely on globals; search for `global` to understand hidden dependencies before refactoring.
 
+### Numerics note
+- Pseudo_sim uses finite difference method-of-lines style discretization with MATLAB ODE solving; see [`../NUMERICS.md`](../NUMERICS.md) for the Atlas method summary.
+
 ## Strengths
 - MATLAB implementation may be easier to read for some learners (depends on code organization)
 
 ## Known limitations
-- Older repositories often lack clear environment/run instructions (needs verification)
+- Older repositories often lack clear environment/run instructions; this one required local TOMLAB/KNITRO compatibility shims for the reproduced path.
 
 ## Who is it for?
 - Users who want a MATLAB P2D example for learning or cross-checking

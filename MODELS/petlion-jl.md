@@ -13,7 +13,7 @@
 - Degradation: not the primary focus in base repository description
 
 ## Reproducibility
-- Not reproduced in this Atlas yet (summary based on upstream README/repository metadata).
+- Reproduced in this Atlas using local Julia 1.12.6.
 
 ### Quickstart
 - Clone: `git clone https://github.com/MarcBerliner/PETLION.jl.git`
@@ -27,6 +27,9 @@
 - If you are new to Julia, validate one stock example end-to-end before editing model equations.
 - For fair comparisons with PyBaMM/BattMo/LIONSIMBA, align protocol and initial conditions carefully.
 
+### Numerics note
+- PETLION.jl uses finite volume electrolyte stencils and high-order particle discretization details; see [`../NUMERICS.md`](../NUMERICS.md) for the Atlas method summary.
+
 ## Strengths
 - Julia-based high-performance porous-electrode modelling
 - Good candidate for users balancing physical detail and speed
@@ -39,7 +42,7 @@
 - Users wanting P2D/DFN-class simulation in Julia with performance-oriented workflows
 
 ## References
-- Berliner, Marc D., Canty, Richard B., others. “Methods---PETLION: Open-Source Software for Millisecond-Scale Porous Electrode Theory-Based Lithium-Ion Battery Simulations.” Journal of The Electrochemical Society vol. 168(9) pp. 090546 2021. DOI: 10.1149/1945-7111/ac201c
+- Berliner, Marc D., Cogswell, Daniel A., Bazant, Martin Z., Braatz, Richard D.. “Methods---PETLION: Open-Source Software for Millisecond-Scale Porous Electrode Theory-Based Lithium-Ion Battery Simulations.” Journal of The Electrochemical Society vol. 168(9) pp. 090504 2021. DOI: 10.1149/1945-7111/ac201c
 
 ## Optional grades
 - Reproducibility: B

@@ -1,13 +1,32 @@
 {
   "name": "electrochemical-battery-model-atlas",
   "version": "1.0.0",
-  "description": "<div align=\"center\">   <img src=\"assets/logo.svg\" width=\"120\" alt=\"Electrochemical Battery Model Atlas logo\" />",
-  "main": "index.js",
+  "description": "Curated atlas of electrochemical battery model repositories, numerical methods, and reproduction notes.",
+  "private": true,
   "scripts": {
     "validate": "node scripts/models.js validate",
-    "render-readme": "node scripts/models.js render-readme"
+    "render-readme": "node scripts/models.js render-readme",
+    "render-reproductions": "node scripts/models.js render-reproductions",
+    "render": "node scripts/models.js render-reproductions && node scripts/models.js render-readme",
+    "check-links": "node scripts/models.js check-links",
+    "check-bib": "node scripts/models.js check-bib",
+    "check-readme": "node scripts/models.js check-readme",
+    "check": "node scripts/models.js check"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "battery-modeling",
+    "electrochemical-models",
+    "dfn",
+    "p2d",
+    "spm",
+    "spme",
+    "reproducibility"
+  ],
+  "author": "Electrochemical Battery Model Atlas contributors",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FrankSuperG/electrochemical-battery-model-atlas.git"
+  },
+  "homepage": "https://github.com/FrankSuperG/electrochemical-battery-model-atlas#readme",
+  "license": "CC-BY-4.0"
 }

@@ -1,0 +1,11 @@
+name = "EbatmaPETLIONReproduction"
+uuid = "bb4eb2c9-c1e1-4a0f-9b44-8e5c72f6876a"
+authors = ["Electrochemical Battery Model Atlas"]
+version = "0.1.0"
+
+[deps]
+PETLION = "5e0a28e4-193c-47fa-bbb8-9c901cc1ac2c"
+
+[compat]
+PETLION = "1.0.6"
+julia = "1.12"

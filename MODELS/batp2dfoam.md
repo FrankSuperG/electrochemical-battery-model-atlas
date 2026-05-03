@@ -12,7 +12,7 @@
 - Thermal/degradation not verified in this Atlas
 
 ## Reproducibility
-- Not reproduced in this Atlas (summary below is based on upstream repository structure).
+- Unreproduced in this Atlas after a final OpenFOAM Docker attempt.
 
 ### Quickstart
 - Install OpenFOAM (version not specified upstream)
@@ -30,6 +30,13 @@
 ### Environment lock
 - No explicit lock; reproducibility depends heavily on OpenFOAM version/toolchain and the case dictionaries.
 
+### Beginner notes
+- Start by confirming a simple OpenFOAM tutorial runs before building this solver.
+- Treat the bundled case as both a numerical model and an OpenFOAM dictionary/debugging problem.
+
+### Numerics note
+- OpenFOAM uses finite volume discretization; see [`../NUMERICS.md`](../NUMERICS.md) for the Atlas method summary.
+
 ## Strengths
 - Fits well for users already in the OpenFOAM/CFD ecosystem
 - Potential for parallelism and performance tuning
@@ -37,6 +44,7 @@
 ## Known limitations
 - Higher build/dependency barrier vs Python/MATLAB
 - GPL license may be restrictive for some commercial use cases
+- OpenFOAM 10 Docker can compile the solver and start the tutorial case, but `setFields` reports a `zoneToCell` dictionary error and the solver remains in repeated PIMPLE iterations without completing locally.
 
 ## Who is it for?
 - Users who want to run DFN/P2D-style battery simulations within OpenFOAM
@@ -47,8 +55,8 @@
 - Fuller, Thomas F., Doyle, Marc, Newman, John. “Simulation and optimization of the dual lithium ion insertion cell.” Journal of The Electrochemical Society vol. 141(1) pp. 1--10 1994. DOI: 10.1149/1.2054684
 
 ## Optional grades
-- Reproducibility: B
+- Reproducibility: C
 - Clarity: B
 - Extensibility: B
 
-Rationale: Repo is structured like a solver project and fits OpenFOAM workflows; reproducibility depends on OpenFOAM version/build steps and runnable cases.
+Rationale: The solver builds under OpenFOAM 10 Docker, but the provided test case did not complete locally.

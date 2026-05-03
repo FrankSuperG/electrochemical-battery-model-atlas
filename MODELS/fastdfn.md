@@ -13,7 +13,7 @@
 - Degradation: not primary in base repository positioning
 
 ## Reproducibility
-- Not reproduced in this Atlas yet (summary based on upstream repository structure).
+- Reproduced in this Atlas using local Octave 11.1.0.
 
 ### Quickstart
 - Clone: `git clone https://github.com/scott-moura/fastDFN.git`
@@ -26,6 +26,9 @@
 ### Beginner notes
 - Validate a stock run first; only then change mesh/order/solver settings.
 - For fair comparisons against standard DFN, keep protocol and thermal assumptions aligned.
+
+### Numerics note
+- fastDFN uses finite difference through-thickness discretization with Pade-style solid diffusion reduction; see [`../NUMERICS.md`](../NUMERICS.md) for the Atlas method summary.
 
 ## Strengths
 - Emphasis on speed while retaining DFN-class electrochemical-thermal structure

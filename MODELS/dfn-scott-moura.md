@@ -13,7 +13,7 @@
 - Degradation: not primary in this repository
 
 ## Reproducibility
-- Not reproduced in this Atlas yet (metadata and summary based on upstream repository/docstrings).
+- Reproduced in this Atlas using local Octave 11.1.0; `dfn_federico` is the working smoke entry in this snapshot.
 
 ### Quickstart
 - Clone: `git clone https://github.com/scott-moura/dfn.git`
@@ -26,6 +26,9 @@
 ### Beginner notes
 - Start from the simplest provided script first, then map where parameters and initial conditions are defined.
 - Keep current sign convention and units consistent for cross-framework comparisons.
+
+### Numerics note
+- This model uses finite difference through-thickness discretization with Pade-style solid diffusion reduction; see [`../NUMERICS.md`](../NUMERICS.md) for the Atlas method summary.
 
 ## Strengths
 - Direct DFN/P2D-oriented MATLAB codebase from a well-known battery modeling group

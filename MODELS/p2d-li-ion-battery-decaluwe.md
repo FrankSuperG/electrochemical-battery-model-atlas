@@ -11,10 +11,11 @@
 - Thermal/degradation not verified in this Atlas
 
 ## Reproducibility
-- Not reproduced in this Atlas (summary below is based on upstream repository structure).
+- Unreproduced in this Atlas after a final targeted attempt with Docker Python 3.8, `cantera=2.6.0`, `assimulo`, and `numpy<1.24`.
+- Even after local constructor/index/event fixes and setting `Battery_equil.algvar = algvar`, IDA fails convergence at `t=0`.
 
 ### Quickstart
-- Install deps: requires `assimulo` + typical scientific Python stack (NumPy/Matplotlib).
+- Install deps: requires Cantera, Assimulo, and a compatible NumPy/SciPy stack. The tested path used `cantera=2.6.0` and `numpy<1.24`.
 - Run main script: `python li_ion_battery_p2d_model.py`
 
 ### Entry point(s)
@@ -28,12 +29,20 @@
 ### Environment lock
 - No dependency lockfile detected at repo root.
 
+### Beginner notes
+- Treat this as an equation/residual audit project, not a quick first-run baseline.
+- If you continue reproduction, inspect differential versus algebraic variable classification before changing more dependencies.
+
+### Numerics note
+- This code uses control-volume-style shell balances with IDA/Assimulo time integration; see [`../NUMERICS.md`](../NUMERICS.md) for the Atlas method summary.
+
 ## Strengths
 - A relatively self-contained DFN/P2D implementation that can be useful for learning and cross-checking
 - Permissive license (BSD-3-Clause)
 
 ## Known limitations
-- Engineering maturity (tests/CI/modularity) not assessed here
+- The tested snapshot has several code-level blockers: incorrect `Extended_Problem` construction, broken event callbacks, undefined tolerance/stage names, an anode offset typo in the residual function, and incomplete separator/cathode residual coverage.
+- No dependency lockfile is provided.
 
 ## Who is it for?
 - Users who want to read a direct DFN/P2D codebase and use it as a reference/contrast
@@ -42,8 +51,8 @@
 - No primary reference was identified in upstream docs for this entry.
 
 ## Optional grades
-- Reproducibility: C
+- Reproducibility: D
 - Clarity: B
 - Extensibility: B
 
-Rationale: Self-contained reference-style DFN implementation; reproducibility and onboarding depend on documenting exact run commands and required dependencies/files.
+Rationale: Dependencies can be installed with careful pinning, but the full-cell DAE does not run cleanly even after several source-level repairs.

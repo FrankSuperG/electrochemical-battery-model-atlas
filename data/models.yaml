@@ -5,12 +5,12 @@
   name: CPG-SPMT
   url: https://github.com/FrankSuperG/CPG-SPMT
   authors_or_org: FrankSuperG
-  license: Apache-2.0
+  license: PolyForm-Noncommercial-1.0.0
   language: [python]
   family: [spm]
   extensions: [thermal]
   focus: [fast-simulation, control, estimation]
-  last_reviewed: 2026-01-25
+  last_reviewed: 2026-05-02
   entry: MODELS/cpg-spmt.md
 
 - slug: pybamm
@@ -22,6 +22,8 @@
   family: [dfn, spm, spme]
   extensions: [thermal, degradation]
   focus: [framework, research, reproducibility]
+  implementation_role: primary-framework
+  implementation_note: Primary PyBaMM framework entry; solves SPM, SPMe, DFN, and extensions directly.
   last_reviewed: 2026-01-25
   entry: MODELS/pybamm.md
 
@@ -34,6 +36,8 @@
   family: [dfn]
   extensions: [thermal, degradation]
   focus: [framework, continuum, research]
+  implementation_role: independent-core-with-pybamm-comparison
+  implementation_note: Core BattMo battery models are MATLAB/MRST-based; PyBaMM appears in comparison/loading utilities only.
   last_reviewed: 2026-01-25
   entry: MODELS/battmo.md
 
@@ -142,6 +146,8 @@
   family: [spme]
   extensions: []
   focus: [parameter-inference, optimal-experimental-design]
+  implementation_role: pybamm-backed-workflow
+  implementation_note: Delegates the SPMe battery solve to PyBaMM via `pybamm.lithium_ion.SPMe()` and `pybamm.Simulation`.
   last_reviewed: 2026-01-25
   entry: MODELS/spme-oed.md
 
@@ -154,6 +160,8 @@
   family: [spm]
   extensions: [thermal, degradation]
   focus: [fast-simulation, degradation]
+  implementation_role: independent-core-with-pybamm-comparison
+  implementation_note: Core SLIDE simulator is C++; PyBaMM appears in Python benchmark scripts only.
   last_reviewed: 2026-01-25
   entry: MODELS/slide.md
 

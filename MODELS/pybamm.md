@@ -3,6 +3,7 @@
 - Repo: <https://github.com/pybamm-team/PyBaMM>
 - License: BSD-3-Clause (LICENSE.txt in the repository)
 - Language/Framework: Python
+- Implementation base: primary framework entry
 
 ## Model lineage
 - Family: DFN/P2D, SPM, SPMe (and many variants)
@@ -12,8 +13,17 @@
 - Thermal: supported (multiple thermal models/coupling options)
 - Degradation: supported (e.g., SEI, lithium plating, depending on version)
 
+## Numerics
+- Default lithium-ion spatial discretization: finite volume for macroscale and particle domains.
+- Verified PyBaMM 26.4.1 spatial methods: `FiniteVolume`, `FiniteVolume2D`, `SpectralVolume`, `ScikitFiniteElement`, `ScikitFiniteElement3D`, and `ZeroDimensionalSpatialMethod`.
+- Verified PyBaMM 26.4.1 solver classes: `IDAKLUSolver`, `CasadiSolver`, `ScipySolver`, `JaxSolver`, `AlgebraicSolver`, `CasadiAlgebraicSolver`, `CompositeSolver`, and `DummySolver`.
+- Official docs do not expose a public `pybamm.FiniteDifference` spatial method. PyBaMM's `FiniteVolume` uses finite-difference-like matrix stencils for gradient/divergence, so in this Atlas it is recorded as finite volume / control-volume finite-difference, not standalone FDM.
+- See [`../NUMERICS.md`](../NUMERICS.md) for the full method matrix and PyBaMM solver notes.
+
 ## Reproducibility
-- Not reproduced in this Atlas (steps below are extracted from upstream docs or inferred from repository structure).
+- Reproduced in this Atlas on 2026-05-01 using `pybamm==26.4.1` in a clean Python 3.11 environment.
+- Minimal reproduced run: `model = pybamm.lithium_ion.DFN(); sim = pybamm.Simulation(model); sol = sim.solve([0, 600])`
+- Observed output: `56` solution points, terminal voltage from `3.7717 V` to `3.6934 V` over `600 s`.
 
 ### Quickstart
 - Install: `pip install pybamm` (or `conda install -c conda-forge pybamm`)
@@ -50,7 +60,7 @@ sim.plot()
 - Users who want a flexible research-grade framework for P2D-family modelling and extensions
 
 ## References
-- Sulzer, Valentin, Marquis, Scott G., Timms, Robert, Robinson, Mathew, Chapman, S. Jon. “Python Battery Mathematical Modelling (PyBaMM).” Journal of Open Research Software vol. 9(1) pp. 14 2021. DOI: 10.5334/jors.309
+- Sulzer, Valentin, Marquis, Scott G., Timms, Robert, Robinson, Martin, Chapman, S. Jon. “Python Battery Mathematical Modelling (PyBaMM).” Journal of Open Research Software vol. 9(1) pp. 14 2021. DOI: 10.5334/jors.309
 - Doyle, Marc, Fuller, Thomas F., Newman, John. “Modeling of galvanostatic charge and discharge of the lithium/polymer/insertion cell.” Journal of The Electrochemical Society vol. 140(6) pp. 1526--1533 1993. DOI: 10.1149/1.2221597
 - Fuller, Thomas F., Doyle, Marc, Newman, John. “Simulation and optimization of the dual lithium ion insertion cell.” Journal of The Electrochemical Society vol. 141(1) pp. 1--10 1994. DOI: 10.1149/1.2054684
 
@@ -59,4 +69,4 @@ sim.plot()
 - Clarity: A
 - Extensibility: A
 
-Rationale: Well-documented, widely used framework with strong CI/test coverage; clear entry points and extensible submodel architecture.
+Rationale: Widely used framework with strong CI/test coverage, and the minimal DFN solve was independently reproduced in this Atlas.

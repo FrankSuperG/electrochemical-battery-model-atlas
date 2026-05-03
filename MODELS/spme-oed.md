@@ -3,6 +3,7 @@
 - Repo: <https://github.com/tcoonsUM/SPMe_OED>
 - License: License not detected via the GitHub license API (may not include a standard LICENSE file)
 - Language/Framework: Python
+- Implementation base: PyBaMM-backed workflow; the battery solve is delegated to `pybamm.lithium_ion.SPMe()` and `pybamm.Simulation`.
 
 ## Model lineage
 - Family: SPMe (Single-Particle Model with electrolyte)
@@ -11,7 +12,7 @@
 - Focus is not multiphysics extensions but parameter inference + Bayesian optimal experimental design (OED)
 
 ## Reproducibility
-- Not reproduced in this Atlas (summary below is based on upstream repository structure).
+- Reproduced in this Atlas using the local PyBaMM Python 3.11 environment.
 
 ### Quickstart
 - Install Python deps (not pinned upstream): `pybamm`, `numpy`, `matplotlib`, and `bayes_opt`
@@ -28,12 +29,19 @@
 ### Environment lock
 - No `requirements.txt`/`environment.yml`/`pyproject.toml` detected at repo root.
 
+### Beginner notes
+- Understand the PyBaMM model path before changing the optimal experimental design loop.
+- Start with `pybamm_small_d.py`; use the parallel script only after the serial path is clear.
+
+### Numerics note
+- SPMe_OED delegates the battery model solve to PyBaMM, whose default SPMe discretization is finite volume; see [`../NUMERICS.md`](../NUMERICS.md) for the Atlas method summary.
+
 ## Strengths
 - Very useful for the SPMe ecosystem: connects the model with inference and experimental design workflows
 - Useful for research on parameter identification and experiment design
 
 ## Known limitations
-- Reproducibility may depend on environment pinning and runnable examples (needs verification)
+- Reproducibility depends on a compatible PyBaMM stack and the OED-side Python dependencies.
 
 ## Who is it for?
 - Users doing SPMe-based parameter inference and experimental design

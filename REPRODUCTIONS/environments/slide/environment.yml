@@ -1,0 +1,6 @@
+name: ebatma-slide-build
+channels:
+  - conda-forge
+dependencies:
+  - cmake=4.3.2
+  - ninja=1.13.2

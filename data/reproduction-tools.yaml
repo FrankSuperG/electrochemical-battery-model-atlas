@@ -1,0 +1,31 @@
+# Global tool versions observed during the 2026-05-02 reproduction pass.
+
+- tool: Conda environment `battery`
+  version: Python 3.9.23
+
+- tool: Local PyBaMM environment `.envs/pybamm-311`
+  version: Python 3.11.15
+
+- tool: Docker `python:3.11-slim` runtime
+  version: Python 3.11.15
+
+- tool: Docker `python:3.12-bookworm` runtime
+  version: Python 3.12.13
+
+- tool: Julia
+  version: 1.12.6
+
+- tool: GNU Octave
+  version: 11.1.0
+
+- tool: MATLAB
+  version: 9.11.0.1769968 (R2021b)
+
+- tool: MATLAB Optimization Toolbox
+  version: available
+
+- tool: OpenFOAM container
+  version: OpenFOAM 10, `openfoam/openfoam10-paraview56`
+
+- tool: OpenFOAM compiler
+  version: g++ 9.4.0

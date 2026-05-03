@@ -86,6 +86,9 @@ This repository provides an onboarding path to help beginners and researchers un
 ---
 
 ## Suggested reading (high level)
-- Foundational DFN/P2D papers are listed in [`REFERENCES.md`](REFERENCES.md).
-- Numerical discretization impacts are highlighted in `@article{guo2025comparative,...}` (see [`references.bib`](references.bib)).
-- State-estimation overview: `@article{guo2024systematic,...}`.
+- Start with the staged reading roadmap in [`REFERENCES.md`](REFERENCES.md#beginner-reading-roadmap).
+- If you only have time for one overview, read `ramadesigan2012systems`.
+- For equations, read `doyle1993modeling` and `fuller1994simulation` after the Newman book chapters on porous electrodes.
+- For reduced models, read `subramanian2007realtime` first, then `marquis2019spme`.
+- For numerics and implementation, read `northrop2014efficient`, `guo2025comparative`, and then one software paper such as `sulzer2021pybamm`.
+- For degradation, read `edge2021degradation` before diving into mechanism-specific papers such as `christensen2004sei`, `pinson2012sei`, `yang2017plating`, and `okane2022degradationmodel`.

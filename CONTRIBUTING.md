@@ -9,9 +9,20 @@ Contributions are welcome! You can add new model entries, fix metadata, improve 
 3. Append an entry to `data/models.yaml` (keep fields consistent)
 4. Open a PR
 
+If the entry is based on a larger framework, add `implementation_role` and `implementation_note` in `data/models.yaml`. For example, PyBaMM-backed workflows should be marked separately from independent PDE implementations so the Atlas does not double-count framework wrappers as new solvers.
+
 ### 2) Fix or enrich existing entries
 - Open an Issue (please include links / citations)
 - Or submit a PR editing the relevant `MODELS/*.md` page and `data/models.yaml`
+
+### 3) Update reproduction records
+- Edit `data/reproductions.yaml` for per-model reproduction status, blockers, runtime, dependencies, and notes.
+- Edit `data/reproduction-tools.yaml` for global tool/runtime versions observed during a reproduction pass.
+Regenerate generated files with:
+```bash
+node scripts/models.js check
+```
+- Do not edit `REPRODUCTIONS/SUMMARY.md`, `REPRODUCTIONS/COVERAGE.md`, or `REPRODUCTIONS/DEPENDENCIES.md` by hand unless you are also updating the generator.
 
 ## Model page template
 Copy: [`MODELS/_TEMPLATE.md`](MODELS/_TEMPLATE.md)
@@ -24,6 +35,8 @@ Copy: [`MODELS/_TEMPLATE.md`](MODELS/_TEMPLATE.md)
 - If upstream README/docs does **not** provide a citation, keep the section and write:
   - `No primary reference was identified in upstream docs for this entry.`
 - If a needed paper is missing from [`references.bib`](references.bib), add it in the same PR.
+- Run `node scripts/models.js check-bib` or the full `node scripts/models.js check` after editing citation keys.
+- Run `node scripts/models.js check-readme` or the full check after changing model/reproduction counts shown in the README snapshot.
 
 ## Review principles (short)
 - Prefer describing **model assumptions and physics** over vague opinions

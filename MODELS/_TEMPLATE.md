@@ -4,6 +4,7 @@
 - Authors/org: <...>
 - License: <...>
 - Language/Framework: <Python/MATLAB/Julia/C++/...>
+- Implementation base: standalone / primary framework / framework-backed workflow
 
 ## At a glance
 - Family: DFN/P2D | SPM | SPMe | …

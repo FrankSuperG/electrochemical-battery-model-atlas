@@ -66,3 +66,10 @@ Usually decomposed into:
   2) how diffusion is treated
   3) whether electrolyte dynamics are modeled
   4) what extensions are included
+
+## Framework reuse vs independent implementations
+- PyBaMM is a primary framework entry, not just one model script.
+- `spme-oed` is a PyBaMM-backed workflow: it uses PyBaMM's SPMe solve and adds optimal-experimental-design logic around it.
+- `battmo` and `slide` have PyBaMM-related comparison/benchmark utilities, but their core battery simulators are independent implementations.
+
+See [`FRAMEWORK_DEPENDENCIES.md`](FRAMEWORK_DEPENDENCIES.md) before counting how many independent PDE discretisations the Atlas contains.

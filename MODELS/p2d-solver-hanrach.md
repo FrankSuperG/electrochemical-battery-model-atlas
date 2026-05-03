@@ -13,11 +13,12 @@
 - Thermal/degradation not verified in this Atlas
 
 ## Reproducibility
-- Not reproduced in this Atlas (summary below is based on upstream repository structure and README).
+- Unreproduced in this Atlas for the documented README entry point.
 
 ### Quickstart
 - Install deps (not pinned upstream): `jax` + standard scientific Python stack
-- Run: `python run_main.py`
+- `run_ex.py` completes the original 50x standalone Newton case after modern JAX compatibility patches
+- `run_main.py` completes on a reduced grid, but the original 50x README entry exits 137 after slow XLA/Jacobian compilation in the current container
 
 ### Entry point(s)
 - `run_main.py` — main runnable entry script (as stated in upstream README)
@@ -28,13 +29,20 @@
 ### Environment lock
 - No `requirements.txt`/`environment.yml`/`pyproject.toml` detected at repo root.
 
+### Beginner notes
+- Use reduced-grid experiments for learning; the documented full-grid path is expensive and currently unreproduced.
+- The main learning value is residual/Jacobian construction, so start at `residual.py` after one small run.
+
+### Numerics note
+- The solver uses finite difference discretization with JAX-based automatic differentiation for Jacobian-related work; see [`../NUMERICS.md`](../NUMERICS.md) for the Atlas method summary.
+
 ## Strengths
 - JAX direction is interesting for:
   - automatic differentiation (gradients/sensitivities/parameter estimation)
   - hardware acceleration (CPU/GPU/TPU), depending on implementation
 
 ## Known limitations
-- Reproducibility may hinge on environment pinning and a clear runnable entry point (needs verification)
+- Reproducibility hinges on JAX API compatibility and resource use. The repository lacks a pinned environment file, and modern JAX requires local compatibility shims.
 
 ## Who is it for?
 - Users interested in DFN/P2D solvers with a path toward AD/acceleration
@@ -43,8 +51,8 @@
 - Torchio, Marcello, Magni, Lalo, Gopaluni, R. Bhushan, Braatz, Richard D., Raimondo, Davide M.. “LIONSIMBA: A Matlab Framework Based on a Finite Volume Model Suitable for Li-Ion Battery Design, Simulation, and Control.” Journal of The Electrochemical Society vol. 163(7) pp. A1192--A1205 2016. DOI: 10.1149/2.0291607jes
 
 ## Optional grades
-- Reproducibility: B
+- Reproducibility: C
 - Clarity: B
 - Extensibility: B
 
-Rationale: README points to a runnable entry (run_main.py) and modern solver stack (JAX); reproducibility hinges on dependency pinning and environment details.
+Rationale: The standalone Newton path can be recovered, but the documented `run_main.py` entry is not yet fully reproduced at the original grid size.
