@@ -6,6 +6,7 @@
 
 ## Model lineage
 - Family: DFN/P2D-style lithium-ion model (finite-volume formulation)
+- Discretization: finite volume through-thickness formulation; solid diffusion options include parabolic, higher-order polynomial, 9th-order FDM, and spectral methods.
 - Positioning: design, simulation, and control-oriented Li-ion electrochemical modelling
 
 ## Extensions (if any)

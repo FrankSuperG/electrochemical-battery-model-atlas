@@ -6,6 +6,7 @@
 
 ## Model lineage
 - Family: DFN/P2D (Newman-type pseudo-2D Li-ion battery model)
+- Discretization: control-volume style shell balances for particles and through-thickness cell volumes.
 
 ## Extensions (if any)
 - Thermal/degradation not verified in this Atlas

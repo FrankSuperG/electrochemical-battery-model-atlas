@@ -6,6 +6,7 @@
 
 ## Model lineage
 - Family: SPMe (Single Particle Model with electrolyte)
+- Discretization: central finite difference method for solid and electrolyte PDE terms.
 - Positioning: SPMe with temperature coupling for electrochemical-thermal battery modeling
 
 ## Extensions (if any)

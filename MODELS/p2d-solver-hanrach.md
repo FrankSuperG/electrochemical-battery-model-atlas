@@ -6,7 +6,7 @@
 
 ## Model lineage
 - Family: DFN/P2D
-- Numerics: finite difference
+- Discretization: finite difference method.
 - Solver: repository description mentions JAX for the nonlinear solver (potential for AD/acceleration)
 
 ## Extensions (if any)

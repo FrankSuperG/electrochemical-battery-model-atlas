@@ -4,7 +4,7 @@
 - Date: 2026-05-01
 - Upstream repo: <https://github.com/liuyang12/Pseudo_sim>
 - Upstream commit: `0eca60fadbfeb59d5a8374d87d20a6d96574fea5`
-- Local path: `/Users/frank/Documents/New project/.upstream/liuyang12__Pseudo_sim`
+- Local checkout: `<atlas-root>/.upstream/liuyang12__Pseudo_sim`
 
 ## Environment
 - OS: macOS
@@ -13,9 +13,9 @@
 ## Run
 ```bash
 octave --no-gui --quiet --eval "pkg install /tmp/image-2.20.0.tar.gz"
-octave --no-gui --quiet --eval "addpath('/Users/frank/Documents/New project/REPRODUCTIONS/shims/pseudo-sim-liuyang12'); cd('/Users/frank/Documents/New project/.upstream/liuyang12__Pseudo_sim'); T1master; disp('PSEUDO_SIM_OK');"
-/Applications/MATLAB_R2021b.app/bin/matlab -batch "disp(['dctmtx=',num2str(exist('dctmtx','file'))]); disp(['dct=',num2str(exist('dct','file'))]); disp(['conAssign=',num2str(exist('conAssign','file'))]); disp(['knitro=',num2str(exist('knitro','file'))]); cd('/Users/frank/Documents/New project/.upstream/liuyang12__Pseudo_sim'); set(0,'DefaultFigureVisible','off'); T1master; disp('PSEUDO_SIM_MATLAB_OK')"
-/Applications/MATLAB_R2021b.app/bin/matlab -batch "set(0,'DefaultFigureVisible','off'); addpath('/Users/frank/Documents/New project/REPRODUCTIONS/shims/pseudo-sim-liuyang12'); cd('/Users/frank/Documents/New project/.upstream/liuyang12__Pseudo_sim'); T1master; disp('PSEUDO_SIM_FMINCON_SHIM_OK')"
+octave --no-gui --quiet --eval "addpath('<atlas-root>/REPRODUCTIONS/shims/pseudo-sim-liuyang12'); cd('<atlas-root>/.upstream/liuyang12__Pseudo_sim'); T1master; disp('PSEUDO_SIM_OK');"
+matlab -batch "disp(['dctmtx=',num2str(exist('dctmtx','file'))]); disp(['dct=',num2str(exist('dct','file'))]); disp(['conAssign=',num2str(exist('conAssign','file'))]); disp(['knitro=',num2str(exist('knitro','file'))]); cd('<atlas-root>/.upstream/liuyang12__Pseudo_sim'); set(0,'DefaultFigureVisible','off'); T1master; disp('PSEUDO_SIM_MATLAB_OK')"
+matlab -batch "set(0,'DefaultFigureVisible','off'); addpath('<atlas-root>/REPRODUCTIONS/shims/pseudo-sim-liuyang12'); cd('<atlas-root>/.upstream/liuyang12__Pseudo_sim'); T1master; disp('PSEUDO_SIM_FMINCON_SHIM_OK')"
 ```
 
 ## Outcome

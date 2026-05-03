@@ -8,6 +8,7 @@
 
 ## At a glance
 - Family: DFN/P2D | SPM | SPMe | …
+- Discretization: finite volume / finite difference / finite element / spectral / reduced approximation / framework default
 - Extensions: thermal / degradation / mechanics / …
 - “Best for”: <one-liner>
 

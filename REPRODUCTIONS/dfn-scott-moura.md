@@ -4,7 +4,7 @@
 - Date: 2026-05-01
 - Upstream repo: <https://github.com/scott-moura/dfn>
 - Upstream commit: `702d7f38be4cd29b00d6791f7892de5e73952006`
-- Local path: `/Users/frank/Documents/New project/.upstream/scott-moura__dfn`
+- Local checkout: `<atlas-root>/.upstream/scott-moura__dfn`
 
 ## Environment
 - OS: macOS
@@ -12,7 +12,7 @@
 
 ## Run
 ```bash
-octave --no-gui --quiet --eval "cd('/Users/frank/Documents/New project/.upstream/scott-moura__dfn'); addpath(genpath(pwd)); dfn_federico; disp('DFN_FEDERICO_OK');"
+octave --no-gui --quiet --eval "cd('<atlas-root>/.upstream/scott-moura__dfn'); addpath(genpath(pwd)); dfn_federico; disp('DFN_FEDERICO_OK');"
 ```
 
 ## Outcome

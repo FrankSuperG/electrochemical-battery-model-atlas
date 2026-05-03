@@ -6,7 +6,7 @@
 
 ## Model lineage
 - Family: DFN/P2D
-- Numerics: finite difference
+- Discretization: finite difference method; variants include full Fickian particle diffusion and reduced/two-term approximations.
 
 ## Extensions (if any)
 - Thermal/degradation not verified in this Atlas

@@ -18,6 +18,11 @@ This directory records independent reproduction attempts for Atlas entries.
 - Output summary
 - Blockers or deviations
 
+## Path placeholders
+- `<atlas-root>` means the local checkout of this Atlas repository.
+- `<atlas-root>/.upstream/<repo>` means an ignored local clone of the upstream model repository used during reproduction.
+- Commands are written as portable templates; replace placeholders with your own local paths before running them.
+
 ## Index
 - `SUMMARY.md`: high-level reproduction dashboard and recommended starting points.
 - `COVERAGE.md`: full reproduction status matrix.

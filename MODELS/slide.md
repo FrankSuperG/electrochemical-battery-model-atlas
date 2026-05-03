@@ -7,6 +7,7 @@
 
 ## Model lineage
 - Family: SPM (Single Particle Model)
+- Discretization: spectral/Chebyshev collocation for solid diffusion matrices.
 - Core assumptions:
   - Reduced electrochemistry vs DFN/P2D; designed for fast simulation
   - Coupled bulk thermal model (temperature as an explicit state)

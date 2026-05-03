@@ -4,7 +4,7 @@
 - Date: 2026-05-02
 - Upstream repo: <https://github.com/TRI-AMDD/mpet>
 - Upstream commit: `ff49b292fc6a54d289a3b1ba079e5eb858fe14bd`
-- Local path: `/Users/frank/Documents/New project/.upstream/TRI-AMDD__mpet`
+- Local checkout: `<atlas-root>/.upstream/TRI-AMDD__mpet`
 
 ## Environment
 - OS: Docker on macOS
@@ -13,7 +13,7 @@
 ## Run
 ```bash
 docker run --rm --platform linux/amd64 \
-  -v '/Users/frank/Documents/New project/.upstream/TRI-AMDD__mpet':/work \
+  -v '<atlas-root>/.upstream/TRI-AMDD__mpet':/work \
   -w /work python:3.12-bookworm \
   bash -lc "apt-get update >/tmp/apt.log && apt-get install -y libgl1-mesa-glx libgfortran5 >/tmp/apt-install.log && timeout 900 bash -lc 'pip install --progress-bar off https://sourceforge.net/projects/daetools/files/daetools/2.3.0/daetools-2.3.0-gnu_linux-x86_64.zip PyQt5 >/tmp/mpet-daetools.log && pip install --progress-bar off .[test] >/tmp/mpet-install.log && PYTHONPATH=. python bin/run_tests.py --test_dir tests --output_dir /tmp/mpet-test-out test001'"
 ```

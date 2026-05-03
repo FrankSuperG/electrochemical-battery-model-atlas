@@ -6,7 +6,7 @@
 
 ## Model lineage
 - Family: SPM
-- Numerics: spectral methods (e.g., for solid diffusion and related subproblems)
+- Discretization: spectral/Chebyshev collocation for SPM solid diffusion and related subproblems.
 
 ## Extensions (if any)
 - Electrolyte dynamics not verified here (classic SPM typically neglects electrolyte dynamics)

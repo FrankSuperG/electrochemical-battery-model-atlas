@@ -6,6 +6,7 @@
 
 ## Model lineage
 - Family: DFN/P2D (Doyle–Fuller–Newman)
+- Discretization: finite difference in the through-thickness direction with Pade approximation for solid diffusion.
 - Positioning: MATLAB implementation of a DFN electrochemical battery model
 
 ## Extensions (if any)

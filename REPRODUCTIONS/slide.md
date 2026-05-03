@@ -5,7 +5,7 @@
 - Evidence level: `independent-local`
 - Upstream repo: <https://github.com/Battery-Intelligence-Lab/SLIDE>
 - Upstream commit: `847fec7aaeaefb916c51e5264aa8aa0dcfe72b20`
-- Local path: `/Users/frank/Documents/New project/.upstream/Battery-Intelligence-Lab__SLIDE`
+- Local checkout: `<atlas-root>/.upstream/Battery-Intelligence-Lab__SLIDE`
 
 ## Environment
 - OS: macOS, Darwin 25.1.0
@@ -15,33 +15,33 @@
 
 ## Install
 ```bash
-/Users/frank/opt/anaconda3/bin/conda create -y \
-  -p /Users/frank/Documents/New\ project/.envs/slide-build \
+conda create -y \
+  -p <atlas-root>/.envs/slide-build \
   -c conda-forge cmake ninja
 ```
 
 ## Build
 ```bash
-/Users/frank/Documents/New\ project/.envs/slide-build/bin/cmake \
-  -S /Users/frank/Documents/New\ project/.upstream/Battery-Intelligence-Lab__SLIDE \
-  -B /Users/frank/Documents/New\ project/.upstream/Battery-Intelligence-Lab__SLIDE/build-codex \
+<atlas-root>/.envs/slide-build/bin/cmake \
+  -S <atlas-root>/.upstream/Battery-Intelligence-Lab__SLIDE \
+  -B <atlas-root>/.upstream/Battery-Intelligence-Lab__SLIDE/build-codex \
   -G Ninja \
-  -DCMAKE_MAKE_PROGRAM=/Users/frank/Documents/New\ project/.envs/slide-build/bin/ninja \
+  -DCMAKE_MAKE_PROGRAM=<atlas-root>/.envs/slide-build/bin/ninja \
   -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
   -DCMAKE_BUILD_TYPE=Release
 
-/Users/frank/Documents/New\ project/.envs/slide-build/bin/cmake \
-  --build /Users/frank/Documents/New\ project/.upstream/Battery-Intelligence-Lab__SLIDE/build-codex \
+<atlas-root>/.envs/slide-build/bin/cmake \
+  --build <atlas-root>/.upstream/Battery-Intelligence-Lab__SLIDE/build-codex \
   --parallel 6
 ```
 
 ## Run
 ```bash
-/Users/frank/Documents/New\ project/.envs/slide-build/bin/ctest \
-  --test-dir /Users/frank/Documents/New\ project/.upstream/Battery-Intelligence-Lab__SLIDE/build-codex \
+<atlas-root>/.envs/slide-build/bin/ctest \
+  --test-dir <atlas-root>/.upstream/Battery-Intelligence-Lab__SLIDE/build-codex \
   --output-on-failure
 
-cd /Users/frank/Documents/New\ project/.upstream/Battery-Intelligence-Lab__SLIDE
+cd <atlas-root>/.upstream/Battery-Intelligence-Lab__SLIDE
 ./bin/Release/slide
 ```
 

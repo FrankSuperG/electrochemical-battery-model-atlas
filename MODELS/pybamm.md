@@ -7,6 +7,7 @@
 
 ## Model lineage
 - Family: DFN/P2D, SPM, SPMe (and many variants)
+- Discretization: default lithium-ion models use finite volume for macroscale and particle domains; PyBaMM also exposes spectral volume, finite element, and 0D spatial methods.
 - Typical features: modular submodels (kinetics, transport, thermal, degradation, etc.) and swappable discretizations
 
 ## Extensions (if any)

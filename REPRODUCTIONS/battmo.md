@@ -4,7 +4,7 @@
 - Date: 2026-05-01
 - Upstream repo: <https://github.com/BattMoTeam/BattMo>
 - Upstream commit: `4eb6435ac9ad4050b6e8cb6d06f729ae6b62b76e`
-- Local path: `/Users/frank/Documents/New project/.upstream/BattMoTeam__BattMo`
+- Local checkout: `<atlas-root>/.upstream/BattMoTeam__BattMo`
 
 ## Environment
 - OS: macOS
@@ -12,8 +12,8 @@
 
 ## Run
 ```bash
-git -C /Users/frank/Documents/New\ project/.upstream/BattMoTeam__BattMo submodule update --init --recursive
-/Applications/MATLAB_R2021b.app/bin/matlab -batch "set(0,'DefaultFigureVisible','off'); cd('/Users/frank/Documents/New project/.upstream/BattMoTeam__BattMo'); startupBattMo; run('Examples/Basic/runBatteryP2D.m'); disp('BATTMO_P2D_OK')"
+git -C <atlas-root>/.upstream/BattMoTeam__BattMo submodule update --init --recursive
+matlab -batch "set(0,'DefaultFigureVisible','off'); cd('<atlas-root>/.upstream/BattMoTeam__BattMo'); startupBattMo; run('Examples/Basic/runBatteryP2D.m'); disp('BATTMO_P2D_OK')"
 ```
 
 ## Outcome

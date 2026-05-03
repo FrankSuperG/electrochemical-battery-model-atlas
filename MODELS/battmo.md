@@ -7,6 +7,7 @@
 
 ## Model lineage
 - Family: continuum modelling for electrochemical devices
+- Discretization: finite volume method via MRST grids.
 - Note: This is a broader framework; battery DFN/P2D-style models are typically provided via specific modules/examples
 
 ## Extensions (if any)

@@ -6,6 +6,7 @@
 
 ## Model lineage
 - Family: DFN/P2D
+- Discretization: finite volume method through OpenFOAM.
 - Focus: a P2D solver in the OpenFOAM ecosystem (performance/engineering oriented)
 
 ## Extensions (if any)

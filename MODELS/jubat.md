@@ -6,6 +6,7 @@
 
 ## Model lineage
 - Family: based on the description/topics, it appears to cover SPM / P2D / SPMe (verify against the implementation)
+- Discretization: second-order finite element method.
 
 ## Extensions (if any)
 - Thermal/degradation not verified in this Atlas

@@ -4,7 +4,7 @@
 - Date: 2026-05-02
 - Upstream repo: <https://github.com/dkong8s93/p2d-model>
 - Upstream commit: `85d867773b623d89e45c5a2a32a4ca1a46e813e9`
-- Local path: `/Users/frank/Documents/New project/.upstream/dkong8s93__p2d-model`
+- Local checkout: `<atlas-root>/.upstream/dkong8s93__p2d-model`
 
 ## Environment
 - OS: macOS
@@ -12,8 +12,8 @@
 
 ## Run
 ```bash
-octave --no-gui --quiet --eval "cd('/Users/frank/Documents/New project/.upstream/dkong8s93__p2d-model/reduced_temperature_model'); script; disp('DKONG_REDUCED_TEMP_OK');"
-/Applications/MATLAB_R2021b.app/bin/matlab -batch "set(0,'DefaultFigureVisible','off'); cd('/Users/frank/Documents/New project/.upstream/dkong8s93__p2d-model/reduced_temperature_model'); script; disp('DKONG_REDUCED_TEMP_OK')"
+octave --no-gui --quiet --eval "cd('<atlas-root>/.upstream/dkong8s93__p2d-model/reduced_temperature_model'); script; disp('DKONG_REDUCED_TEMP_OK');"
+matlab -batch "set(0,'DefaultFigureVisible','off'); cd('<atlas-root>/.upstream/dkong8s93__p2d-model/reduced_temperature_model'); script; disp('DKONG_REDUCED_TEMP_OK')"
 ```
 
 ## Outcome

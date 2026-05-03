@@ -4,7 +4,7 @@
 - Date: 2026-05-01
 - Upstream repo: <https://github.com/FrankSuperG/CPG-SPMT>
 - Upstream commit: `8b1fe7ff75b4c69be55fb543de361a009c5a11a8`
-- Local path: `/Users/frank/Documents/New project/.upstream/FrankSuperG__CPG-SPMT`
+- Local checkout: `<atlas-root>/.upstream/FrankSuperG__CPG-SPMT`
 
 ## Environment
 - OS: macOS
@@ -13,14 +13,14 @@
 
 ## Install
 ```bash
-/Users/frank/opt/anaconda3/envs/battery/bin/python --version
-/Users/frank/opt/anaconda3/envs/battery/bin/python -c "import numpy, scipy, matplotlib, pandas, openpyxl"
+conda run -n battery python --version
+conda run -n battery python -c "import numpy, scipy, matplotlib, pandas, openpyxl"
 ```
 
 ## Run
 ```bash
-cd /Users/frank/Documents/New\ project/.upstream/FrankSuperG__CPG-SPMT
-MPLBACKEND=Agg /Users/frank/opt/anaconda3/envs/battery/bin/python model_validation.py
+cd <atlas-root>/.upstream/FrankSuperG__CPG-SPMT
+MPLBACKEND=Agg conda run -n battery python model_validation.py
 ```
 
 ## Outcome

@@ -4,7 +4,7 @@
 - Date: 2026-05-01
 - Upstream repo: <https://github.com/MarcBerliner/PETLION.jl>
 - Upstream commit: `f7a8f76184a60ad1e9e5fd6f7829e55600bae710`
-- Local path: `/Users/frank/Documents/New project/.upstream/MarcBerliner__PETLION.jl`
+- Local checkout: `<atlas-root>/.upstream/MarcBerliner__PETLION.jl`
 
 ## Environment
 - OS: macOS
@@ -12,7 +12,7 @@
 
 ## Run
 ```bash
-julia --project=/Users/frank/Documents/New\ project/.upstream/MarcBerliner__PETLION.jl -e 'using Pkg; Pkg.instantiate(); using PETLION; p = petlion(LCO); sol = simulate(p, 10, I=1, SOC=0.5); println(length(sol.t)); println(sol.V[end])'
+julia --project=<atlas-root>/.upstream/MarcBerliner__PETLION.jl -e 'using Pkg; Pkg.instantiate(); using PETLION; p = petlion(LCO); sol = simulate(p, 10, I=1, SOC=0.5); println(length(sol.t)); println(sol.V[end])'
 ```
 
 ## Outcome

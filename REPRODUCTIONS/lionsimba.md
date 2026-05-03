@@ -4,7 +4,7 @@
 - Date: 2026-05-01
 - Upstream repo: <https://github.com/lionsimbatoolbox/LIONSIMBA>
 - Upstream commit: `4eb6435ac9ad4050b6e8cb6d06f729ae6b62b76e`
-- Local path: `/Users/frank/Documents/New project/.upstream/lionsimbatoolbox__LIONSIMBA`
+- Local checkout: `<atlas-root>/.upstream/lionsimbatoolbox__LIONSIMBA`
 
 ## Environment
 - OS: macOS
@@ -12,8 +12,8 @@
 
 ## Run
 ```bash
-octave --no-gui --quiet --eval "cd('/Users/frank/Documents/New project/.upstream/lionsimbatoolbox__LIONSIMBA'); addpath(genpath(pwd)); run('example_scripts/isothermal_simulations.m');"
-/Applications/MATLAB_R2021b.app/bin/matlab -batch "set(0,'DefaultFigureVisible','off'); cd('/Users/frank/Documents/New project/.upstream/lionsimbatoolbox__LIONSIMBA'); addpath(genpath(pwd)); run('example_scripts/isothermal_simulations.m'); disp('LIONSIMBA_ISOTHERMAL_OK')"
+octave --no-gui --quiet --eval "cd('<atlas-root>/.upstream/lionsimbatoolbox__LIONSIMBA'); addpath(genpath(pwd)); run('example_scripts/isothermal_simulations.m');"
+matlab -batch "set(0,'DefaultFigureVisible','off'); cd('<atlas-root>/.upstream/lionsimbatoolbox__LIONSIMBA'); addpath(genpath(pwd)); run('example_scripts/isothermal_simulations.m'); disp('LIONSIMBA_ISOTHERMAL_OK')"
 ```
 
 ## Outcome

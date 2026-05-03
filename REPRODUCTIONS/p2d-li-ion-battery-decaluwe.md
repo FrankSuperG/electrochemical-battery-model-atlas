@@ -4,7 +4,7 @@
 - Date: 2026-05-02
 - Upstream repo: <https://github.com/decaluwe/p2d_li_ion_battery>
 - Upstream commit: `7ea1a2332eb885bea65e47e82ea231f80d28ca18`
-- Local path: `/Users/frank/Documents/New project/.upstream/decaluwe__p2d_li_ion_battery`
+- Local checkout: `<atlas-root>/.upstream/decaluwe__p2d_li_ion_battery`
 
 ## Environment
 - OS: Docker on macOS
@@ -19,7 +19,7 @@ micromamba create -y -n repro -c conda-forge python=3.8 'numpy<1.24' scipy panda
 ## Run
 ```bash
 docker run --rm --platform linux/amd64 \
-  -v '/Users/frank/Documents/New project':/workspace \
+  -v '<atlas-root>':/workspace \
   -w /workspace/.upstream/decaluwe__p2d_li_ion_battery \
   mambaorg/micromamba:1.5.10 \
   bash -lc "micromamba create -y -n repro -c conda-forge python=3.8 'numpy<1.24' scipy pandas matplotlib cantera=2.6 assimulo && micromamba run -n repro python li_ion_battery_p2d_model.py"

@@ -6,6 +6,7 @@
 
 ## Model lineage
 - Family: SPM + DFN/P2D (the repository description explicitly mentions Single-Particle and full Pseudo-2D)
+- Discretization: finite volume method following the LIONSIMBA-style DFN formulation.
 - Note: this repository also includes equivalent-circuit models (ECM). This Atlas focuses on the SPM/DFN parts.
 
 ## Extensions (if any)

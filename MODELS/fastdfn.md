@@ -6,6 +6,7 @@
 
 ## Model lineage
 - Family: DFN/P2D
+- Discretization: finite difference in the through-thickness direction with Pade approximation for solid diffusion.
 - Positioning: fast electrochemical-thermal DFN simulator
 
 ## Extensions (if any)

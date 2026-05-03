@@ -3,7 +3,7 @@
 - Status: `success`
 - Date: 2026-05-01
 - Upstream repo: <https://github.com/davidhowey/Spectral_li-ion_SPM>
-- Local path: `/Users/frank/Documents/New project/.upstream/davidhowey__Spectral_li-ion_SPM`
+- Local checkout: `<atlas-root>/.upstream/davidhowey__Spectral_li-ion_SPM`
 
 ## Environment
 - OS: macOS
@@ -11,7 +11,7 @@
 
 ## Run
 ```bash
-/Applications/MATLAB_R2021b.app/bin/matlab -batch "set(0,'DefaultFigureVisible','off'); addpath('/Users/frank/Documents/New project/REPRODUCTIONS/shims/spectral-li-ion-spm'); cd('/Users/frank/Documents/New project/.upstream/davidhowey__Spectral_li-ion_SPM'); addpath(genpath(pwd)); EXAMPLE_constant_current_discharge; disp('SPECTRAL_SPM_OK')"
+matlab -batch "set(0,'DefaultFigureVisible','off'); addpath('<atlas-root>/REPRODUCTIONS/shims/spectral-li-ion-spm'); cd('<atlas-root>/.upstream/davidhowey__Spectral_li-ion_SPM'); addpath(genpath(pwd)); EXAMPLE_constant_current_discharge; disp('SPECTRAL_SPM_OK')"
 ```
 
 ## Outcome

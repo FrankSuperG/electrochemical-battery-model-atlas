@@ -49,7 +49,7 @@ These patches were made in ignored `.upstream/` working copies or under `REPRODU
   - `.upstream/matthewpklein__battsimpy/config_files/model_lfp_fvmP2D.conf`
   - `.upstream/matthewpklein__battsimpy/config_files/sim_CC.conf`
 - Changes:
-  - Replaced the author's absolute `/Users/mk/...` data/output paths with container-local `/work/...` paths.
+  - Replaced the author's absolute data/output paths with container-local `/work/...` paths.
   - Disabled plotting with `PLOT_VOLT_ON=0`.
 - Result: Docker Python 2.7 + `assimulo=2.9` + `libx11-6` runs the official LFP CC discharge example to completion.
 

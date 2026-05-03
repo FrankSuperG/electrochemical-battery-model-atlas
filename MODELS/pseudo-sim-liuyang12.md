@@ -6,6 +6,7 @@
 
 ## Model lineage
 - Family: DFN/P2D (pseudo two-dimensional model)
+- Discretization: finite difference method with method-of-lines conversion.
 
 ## Extensions (if any)
 - Thermal/degradation not verified in this Atlas

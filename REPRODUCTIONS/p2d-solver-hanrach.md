@@ -4,7 +4,7 @@
 - Date: 2026-05-02
 - Upstream repo: <https://github.com/hanrach/p2d_solver>
 - Upstream commit: `8e633376c9c36943e08796a8048448cd0aed5664`
-- Local path: `/Users/frank/Documents/New project/.upstream/hanrach__p2d_solver`
+- Local checkout: `<atlas-root>/.upstream/hanrach__p2d_solver`
 
 ## Environment
 - OS: Docker on macOS
@@ -26,7 +26,7 @@
 ## Run
 ```bash
 docker run --rm --platform linux/arm64 \
-  -v '/Users/frank/Documents/New project/.upstream/hanrach__p2d_solver':/work \
+  -v '<atlas-root>/.upstream/hanrach__p2d_solver':/work \
   -w /work python:3.11-slim \
   bash -lc "pip install --quiet 'jax[cpu]' scipy matplotlib && HANRACH_NP=50 HANRACH_MS=10 MPLBACKEND=Agg python run_ex.py"
 ```
@@ -35,7 +35,7 @@ Reduced `run_main.py` verification:
 
 ```bash
 docker run --rm --platform linux/arm64 \
-  -v '/Users/frank/Documents/New project/.upstream/hanrach__p2d_solver':/work \
+  -v '<atlas-root>/.upstream/hanrach__p2d_solver':/work \
   -w /work python:3.11-slim \
   bash -lc "pip install --quiet 'jax[cpu]' scipy matplotlib && HANRACH_NP=10 HANRACH_MS=5 PYTHONUNBUFFERED=1 MPLBACKEND=Agg python run_main.py"
 ```

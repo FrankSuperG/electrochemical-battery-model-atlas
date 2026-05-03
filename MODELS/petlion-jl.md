@@ -6,6 +6,7 @@
 
 ## Model lineage
 - Family: porous-electrode-theory (P2D/DFN-class) Li-ion simulation
+- Discretization: finite volume electrolyte stencil with high-order particle diffusion residuals.
 - Positioning: high-performance implementation focused on fast porous-electrode simulations
 
 ## Extensions (if any)

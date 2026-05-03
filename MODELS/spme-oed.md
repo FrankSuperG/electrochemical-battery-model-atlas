@@ -7,6 +7,7 @@
 
 ## Model lineage
 - Family: SPMe (Single-Particle Model with electrolyte)
+- Discretization: PyBaMM default finite volume discretization for the SPMe battery solve.
 
 ## Extensions (if any)
 - Focus is not multiphysics extensions but parameter inference + Bayesian optimal experimental design (OED)

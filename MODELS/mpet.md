@@ -6,6 +6,7 @@
 
 ## Model lineage
 - Family: porous-electrode-theory (P2D/DFN-class) lithium-ion simulator
+- Discretization: finite volume over electrolyte/electrode control volumes and particle discretization domains.
 - Positioning: multiphase porous-electrode theory; can represent phase-separating active materials
 
 ## Extensions (if any)

@@ -81,7 +81,7 @@ Evidence:
 
 - The codebase targets Python 2 and depends on `assimulo`.
 - The initial blocker in Docker was a missing native X11 library. Adding Debian `libx11-6` allowed `from assimulo.solvers.sundials import IDA` to import successfully.
-- The example config files contain hard-coded author-local paths under `/Users/mk/...`; these must be changed to the current checkout or container path before running.
+- The example config files contain hard-coded author-local absolute paths; these must be changed to the current checkout or container path before running.
 - With those environment and config fixes, the official LFP CC discharge example runs to completion. This is no longer a model-code blocker in the tested path.
 
 ### `lionsimba`

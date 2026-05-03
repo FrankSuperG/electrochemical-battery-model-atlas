@@ -4,7 +4,7 @@
 - Date: 2026-05-01
 - Upstream repo: <https://github.com/scott-moura/fastDFN>
 - Upstream commit: `140fdfc335cbae99efe8f5b609851fed672ec0e4`
-- Local path: `/Users/frank/Documents/New project/.upstream/scott-moura__fastDFN`
+- Local checkout: `<atlas-root>/.upstream/scott-moura__fastDFN`
 
 ## Environment
 - OS: macOS
@@ -12,7 +12,7 @@
 
 ## Run
 ```bash
-octave --no-gui --quiet --eval "cd('/Users/frank/Documents/New project/.upstream/scott-moura__fastDFN'); dfn_rg_new; disp('FASTDFN_OK');"
+octave --no-gui --quiet --eval "cd('<atlas-root>/.upstream/scott-moura__fastDFN'); dfn_rg_new; disp('FASTDFN_OK');"
 ```
 
 ## Outcome
