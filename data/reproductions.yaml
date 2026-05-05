@@ -36,31 +36,31 @@
   status: unreproduced
   language: Python
   environment: Docker `micromamba` Python 3.8 on `linux/amd64`
-  primary_blocker: final attempt with `algvar` still fails IDA convergence at `t=0`; full-cell residual appears incomplete
-  likely_next_step: Audit residual equations and algebraic/differential variable classification before trying more dependency changes.
+  primary_blocker: no runnable full or anode-only basic case found; separator/cathode residual coverage is missing and IDA fails at `t=0`
+  likely_next_step: Complete the residual equations and audit differential/algebraic classification before tuning initial conditions.
   runtime: Docker `mambaorg/micromamba:1.5.10`, Python 3.8, `linux/amd64`
   dependencies: `cantera` 2.6.0; `assimulo`; `numpy<1.24`; `scipy`; `pandas`; `matplotlib`
-  notes: Environment can be built, but IDA fails at `t=0`.
+  notes: Residual diagnostic found 10/10 separator and 55/55 cathode residual entries equal to zero in a 120-state vector.
 
 - slug: p2d-solver-hanrach
   status: unreproduced
   language: Python
   environment: Docker `python:3.11-slim` on `linux/arm64`
-  primary_blocker: final original-grid README `run_main.py` attempt exits 137 after slow JAX compile/Jacobian
-  likely_next_step: Add a documented reduced-grid smoke test or refactor JAX compilation/memory usage before full-size reproduction.
+  primary_blocker: basic cases run with compatibility shims, but original-grid README `run_main.py` exits 137 after slow JAX compile/Jacobian
+  likely_next_step: Preserve the reduced-grid smoke test, then refactor or chunk JAX compilation/memory use before full-size reproduction.
   runtime: Docker `python:3.11-slim`, Python 3.11.15, `linux/arm64`
   dependencies: `jax[cpu]`; `scipy`; `matplotlib`; compatibility shims for newer JAX APIs
-  notes: Full original-grid run exits 137 after heavy JAX compile/Jacobian work.
+  notes: `run_ex.py` original 50x Newton case and reduced 10x/5x `run_main.py` both converge; blocker is scale/JAX resource use, not initial conditions.
 
 - slug: p2d-model-dkong8s93
   status: unreproduced
   language: MATLAB
   environment: MATLAB R2021b
-  primary_blocker: final alternate variant also fails at initial nearly singular matrix solve
-  likely_next_step: Check initial conditions, boundary equations, and matrix assembly before treating it as an environment problem.
+  primary_blocker: all four official `script.m` variants fail at the first Newton linear solve with near-singular matrices
+  likely_next_step: Check initial guesses, boundary equations, and Jacobian/matrix assembly; add Newton iteration guards and conditioning diagnostics.
   runtime: MATLAB R2021b; Octave 11.1.0 also checked
   dependencies: No pinned dependency set found upstream
-  notes: Fails during initial nearly singular matrix solve, so this appears code/model related.
+  notes: Retest RCOND values ranged from `2.24e-21` to `3.58e-24`; no clean basic full-script case was found.
 
 - slug: pseudo-sim-liuyang12
   status: success
@@ -83,14 +83,14 @@
   notes: Required `ChooseCell` include-path/world-age patch.
 
 - slug: batp2dfoam
-  status: unreproduced
+  status: success
   language: C++ / OpenFOAM
-  environment: Docker OpenFOAM 10 on `linux/amd64`
-  primary_blocker: compiles and starts the test case, but remains in repeated PIMPLE iterations without completing or writing time directories
-  likely_next_step: Reduce or repair the test case first; verify `setFields` dictionaries and solver stopping criteria.
-  runtime: Docker `openfoam/openfoam10-paraview56`, OpenFOAM 10, `linux/amd64`
-  dependencies: OpenFOAM 10 toolchain; g++ 9.4.0
-  notes: Build succeeds and solver starts, but test case does not finish.
+  environment: Docker OpenFOAM 9 on `linux/amd64`
+  primary_blocker: none
+  likely_next_step: Use OpenFOAM 9 for the clean upstream path; document OpenFOAM 10 as a compatibility variant requiring `setFieldsDict` keyword changes.
+  runtime: Docker `openfoam/openfoam9-paraview56`, OpenFOAM 9, `linux/amd64`
+  dependencies: OpenFOAM 9 toolchain; g++ 9.3.0
+  notes: Upstream `Allrun` succeeds without source or case edits, reaches `End`, and writes time directories 300 through 1500.
 
 - slug: battsimpy
   status: success
@@ -136,14 +136,14 @@
   notes: Built upstream commit `847fec7aaeaefb916c51e5264aa8aa0dcfe72b20`; CTest passed 8/8 unit tests in 64.62 s; default `slide` binary launched successfully.
 
 - slug: lionsimba
-  status: unreproduced
+  status: success
   language: MATLAB / Octave
-  environment: MATLAB R2021b and Octave 11.1.0
-  primary_blocker: final MATLAB check shows `IDAInit=0`, `IDASolve=0`, `IDAFree=0`, `casadi=0`
-  likely_next_step: Provide pinned SUNDIALS/CasADi MATLAB install instructions or a container with those bindings prebuilt.
-  runtime: MATLAB R2021b; Octave 11.1.0
-  dependencies: SUNDIALS MATLAB interface expected; CasADi expected for some paths
-  notes: Final check shows `IDAInit=0`, `IDASolve=0`, `IDAFree=0`, `casadi=0`.
+  environment: Docker Debian bookworm with Octave 7.3.0 on `linux/amd64`
+  primary_blocker: none
+  likely_next_step: Package the Octave/SUNDIALS/CasADi setup into a reusable recipe if this path will be rerun often.
+  runtime: Docker `debian:bookworm`, Octave 7.3.0, `linux/amd64`
+  dependencies: SUNDIALS 2.6.2 `sundialsTB` IDAS MEX; CasADi 3.7.2 `linux64-octave7.3.0`; Debian `fonts-freefont-otf`; `gnuplot-nox`
+  notes: Official `example_scripts/isothermal_simulations.m` runs to `LIONSIMBA_ISOTHERMAL_OK`; native MATLAB R2021b still lacks a working MEX compiler for building `sundialsTB`.
 
 - slug: mpet
   status: success

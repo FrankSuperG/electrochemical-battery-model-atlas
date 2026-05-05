@@ -1,4 +1,4 @@
-# Global tool versions observed during the 2026-05-02 reproduction pass.
+# Global tool versions observed during the 2026-05-05 reproduction pass.
 
 - tool: CPG-SPMT Python reproduction environment
   version: Python 3.9.23
@@ -21,11 +21,26 @@
 - tool: MATLAB
   version: 9.11.0.1769968 (R2021b)
 
+- tool: CasADi MATLAB binary
+  version: 3.7.2, `casadi-3.7.2-osx64-matlab2018b`
+
+- tool: CasADi Octave binary
+  version: 3.7.2, `casadi-3.7.2-linux64-octave7.3.0`
+
+- tool: SUNDIALS MATLAB/Octave interface
+  version: SUNDIALS 2.6.2 `sundialsTB` IDAS MEX
+
 - tool: MATLAB Optimization Toolbox
   version: available
 
-- tool: OpenFOAM container
+- tool: OpenFOAM 9 container
+  version: OpenFOAM 9, `openfoam/openfoam9-paraview56`
+
+- tool: OpenFOAM 9 compiler
+  version: g++ 9.3.0
+
+- tool: OpenFOAM 10 container
   version: OpenFOAM 10, `openfoam/openfoam10-paraview56`
 
-- tool: OpenFOAM compiler
+- tool: OpenFOAM 10 compiler
   version: g++ 9.4.0

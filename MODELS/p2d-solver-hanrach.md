@@ -19,6 +19,7 @@
 - Install deps (not pinned upstream): `jax` + standard scientific Python stack
 - `run_ex.py` completes the original 50x standalone Newton case after modern JAX compatibility patches
 - `run_main.py` completes on a reduced grid, but the original 50x README entry exits 137 after slow XLA/Jacobian compilation in the current container
+- Basic-case verdict: runnable with compatibility shims. The unreproduced status applies to the full original-grid README entry, not to every script in the repository.
 
 ### Entry point(s)
 - `run_main.py` — main runnable entry script (as stated in upstream README)
@@ -43,6 +44,7 @@
 
 ## Known limitations
 - Reproducibility hinges on JAX API compatibility and resource use. The repository lacks a pinned environment file, and modern JAX requires compatibility shims.
+- The full-grid failure is more consistent with JAX compilation/Jacobian memory pressure than with bad initial conditions, because smaller grids converge.
 
 ## Who is it for?
 - Users interested in DFN/P2D solvers with a path toward AD/acceleration

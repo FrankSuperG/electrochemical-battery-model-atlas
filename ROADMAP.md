@@ -28,7 +28,7 @@ This roadmap focuses on making the Atlas more useful as a reproducible, communit
 ## Current Audit Notes (2026-05-02)
 
 - License visibility improved: the README model index now includes license and reuse-risk columns generated from `data/models.yaml`.
-- `cpg-spmt` upstream changed from Apache-2.0 to PolyForm Noncommercial 1.0.0 at upstream commit `8b1fe7f`; commercial reuse should be treated as restricted unless separately licensed.
+- `cpg-spmt` uses PolyForm Noncommercial 1.0.0; commercial reuse should be treated as restricted unless separately licensed.
 - `package.json` should remain metadata-only for local validation scripts; its license must match the repository license (`CC-BY-4.0`) rather than an npm default.
 - Generated solver artifacts such as `saved_models/` should not be committed accidentally unless they are intentionally curated as reproduction evidence.
 - Model pages now include per-entry beginner notes and links to the numerical-method summary.

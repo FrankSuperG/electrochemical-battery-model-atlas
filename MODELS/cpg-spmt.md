@@ -1,7 +1,7 @@
 # CPG-SPMT
 
 - Repo: <https://github.com/FrankSuperG/CPG-SPMT>
-- License: **PolyForm-Noncommercial-1.0.0** (see upstream `LICENSE`; changed from Apache-2.0 in upstream commit `8b1fe7f`)
+- License: **PolyForm-Noncommercial-1.0.0** (see upstream `LICENSE`)
 - Language/Framework: Python
 
 ## Model lineage

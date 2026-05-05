@@ -11,7 +11,7 @@
   <a href="https://github.com/FrankSuperG/electrochemical-battery-model-atlas/actions/workflows/validate.yml"><img alt="Validate Atlas" src="https://github.com/FrankSuperG/electrochemical-battery-model-atlas/actions/workflows/validate.yml/badge.svg" /></a>
   <a href="LICENSE"><img alt="License: CC BY 4.0" src="https://img.shields.io/badge/license-CC--BY--4.0-blue" /></a>
   <img alt="Models indexed: 19" src="https://img.shields.io/badge/models-19-2f855a" />
-  <img alt="Successful reproductions: 14" src="https://img.shields.io/badge/reproduced-14%2F19-2b6cb0" />
+  <img alt="Successful reproductions: 16" src="https://img.shields.io/badge/reproduced-16%2F19-2b6cb0" />
 </p>
 
 **Electrochemical Battery Model Atlas (E-BatMA)** is a curated, reproducibility-focused guide to publicly available electrochemical battery model repositories and workflows. It emphasizes the **Doyle-Fuller-Newman / pseudo-two-dimensional (DFN/P2D)** family and reduced or extended variants: **Single Particle Model (SPM)**, **Single Particle Model with electrolyte (SPMe)**, thermal coupling, and degradation/aging.
@@ -40,8 +40,9 @@ The project is built for three audiences:
 | Metric | Current state |
 | --- | --- |
 | Model entries | 19 public model repositories or workflows. |
-| Successful reproductions | 14 entries with command-level evidence. |
-| Unreproduced after targeted attempts | 5 entries with documented blockers. |
+| Successful reproductions | 16 entries with command-level evidence. |
+| Partial reproductions | 0 entries requiring a documented compatibility edit. |
+| Unreproduced after targeted attempts | 3 entries with documented blockers. |
 | Curated reference set | 35 BibTeX entries with a staged reading roadmap. |
 | Validation | `node scripts/models.js check` regenerates docs, validates metadata, checks links, validates BibTeX anchors, and checks README snapshot counts. |
 
@@ -69,7 +70,7 @@ If acronym-heavy pages feel dense, start with [`GLOSSARY.md`](GLOSSARY.md).
 ## Reproduction Status
 
 <!-- REPRODUCTION_STATUS_START -->
-Reproduction records are maintained in [REPRODUCTIONS/](REPRODUCTIONS/). As of 2026-05-02, the Atlas has 14 successful reproductions, 5 unreproduced entries, 0 partial entries, and 0 blocked entries.
+Reproduction records are maintained in [REPRODUCTIONS/](REPRODUCTIONS/). As of 2026-05-05, the Atlas has 16 successful reproductions, 3 unreproduced entries, 0 partial entries, and 0 blocked entries.
 
 Start with the [reproduction dashboard](REPRODUCTIONS/SUMMARY.md) for a high-level view, then use the [dependency matrix](REPRODUCTIONS/DEPENDENCIES.md) and [coverage matrix](REPRODUCTIONS/COVERAGE.md) for exact environments and blockers.
 <!-- REPRODUCTION_STATUS_END -->
@@ -83,7 +84,7 @@ Start with the [reproduction dashboard](REPRODUCTIONS/SUMMARY.md) for a high-lev
 | MATLAB-based DFN framework | **BattMo** | Broader MATLAB/MRST continuum framework; reproduced with MATLAB R2021b. |
 | Lightweight educational DFN/SPMe examples | **dfn-scott-moura**, **fastDFN**, **SPMeT** | Small MATLAB/Octave-oriented examples that are useful for reading equations. |
 | Control-oriented SPM with thermal effects | **CPG-SPMT** | Focused Python implementation with validation workflow. |
-| Solver internals and harder reproducibility cases | **p2d_solver**, **batP2dFoam** | Useful for studying implementation issues, but currently unreproduced or blocked. |
+| Solver internals and harder reproducibility cases | **p2d_solver**, **batP2dFoam** | Useful for studying implementation issues; batP2dFoam now runs cleanly with OpenFOAM 9. |
 
 Rule of thumb: use SPM/SPMe for speed and control, DFN/P2D for physics baseline, thermal models when temperature matters, and degradation models when lifetime or aging is the target.
 

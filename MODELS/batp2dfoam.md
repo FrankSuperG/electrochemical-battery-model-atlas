@@ -13,7 +13,7 @@
 - Thermal/degradation not verified in this Atlas
 
 ## Reproducibility
-- Unreproduced in this Atlas after a final OpenFOAM Docker attempt.
+- Reproduced in this Atlas with Docker OpenFOAM 9 and the upstream `Allrun` script, without source or case edits.
 
 ### Quickstart
 - Install OpenFOAM (version not specified upstream)
@@ -45,7 +45,8 @@
 ## Known limitations
 - Higher build/dependency barrier vs Python/MATLAB
 - GPL license may be restrictive for some commercial use cases
-- OpenFOAM 10 Docker can compile the solver and start the tutorial case, but `setFields` reports a `zoneToCell` dictionary error and the solver remains in repeated PIMPLE iterations without completing locally.
+- Reproducibility is OpenFOAM-version sensitive. OpenFOAM 9 runs the upstream case directly, while OpenFOAM 10 expects `zone` instead of `name` inside `zoneToCell` regions in `setFieldsDict`.
+- With OpenFOAM 9, the provided test case reaches `End` and writes time directories through `1500`.
 
 ## Who is it for?
 - Users who want to run DFN/P2D-style battery simulations within OpenFOAM
@@ -56,8 +57,8 @@
 - Fuller, Thomas F., Doyle, Marc, Newman, John. “Simulation and optimization of the dual lithium ion insertion cell.” Journal of The Electrochemical Society vol. 141(1) pp. 1--10 1994. DOI: 10.1149/1.2054684
 
 ## Optional grades
-- Reproducibility: C
+- Reproducibility: B+
 - Clarity: B
 - Extensibility: B
 
-Rationale: The solver builds under OpenFOAM 10 Docker, but the provided test case did not complete locally.
+Rationale: The solver builds and the provided case completes under OpenFOAM 9 Docker without local edits; OpenFOAM 10 remains a documented compatibility pitfall.

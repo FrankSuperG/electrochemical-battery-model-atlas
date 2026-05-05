@@ -1,32 +1,37 @@
 # batp2dfoam
 
-- Status: `unreproduced`
-- Date: 2026-05-02
+- Status: `success`
+- Date: 2026-05-05
 - Upstream repo: <https://github.com/redyxg/batP2dFoam>
 - Upstream commit: `8f93f89169d32225e9c74e8e4e3654d9d38dec5d`
 - Upstream checkout: `<atlas-root>/.upstream/redyxg__batP2dFoam`
 
 ## Environment
 - OS: Docker on macOS
-- Runtime: `openfoam/openfoam10-paraview56` on `linux/amd64`
+- Runtime: `openfoam/openfoam9-paraview56` on `linux/amd64`
 
 ## Run
 ```bash
+tmpdir="$(mktemp -d)"
+git -C '<atlas-root>/.upstream/redyxg__batP2dFoam' archive 8f93f89169d32225e9c74e8e4e3654d9d38dec5d | tar -x -C "$tmpdir"
+
 docker run --rm --platform linux/amd64 \
-  -v '<atlas-root>/.upstream/redyxg__batP2dFoam':/work \
-  -w /work --entrypoint /bin/bash openfoam/openfoam10-paraview56 \
-  -lc "source /opt/openfoam10/etc/bashrc && cd batP2dFoam && wmake && cd ../batP2dFoamTest && sh ./Allrun"
+  -v "$tmpdir":/work \
+  -w /work --entrypoint /bin/bash openfoam/openfoam9-paraview56 \
+  -lc "source /opt/openfoam9/etc/bashrc && cd batP2dFoam && wmake && cd ../batP2dFoamTest && sh ./Allrun"
 ```
 
 ## Outcome
-- Result: unreproduced
+- Result: success
 - Actual output:
-  - OpenFOAM 10 Docker image provides the toolchain
+  - OpenFOAM 9 Docker image provides the toolchain
   - `wmake` compiles `batP2dFoam`
-  - `blockMesh`, `topoSet`, and `setFields` are launched by `Allrun`
-  - `setFields` logs `FOAM FATAL IO ERROR: keyword zone is undefined in dictionary "zoneToCell"`
-  - the main `batP2dFoam` process still starts, but after about 27 minutes it remains in repeated `PIMPLE: Iteration ...` loops around iteration 150 with no completed run or written time directories; the container was stopped
+  - upstream `Allrun` launches `blockMesh`, `topoSet`, `setFields`, and `batP2dFoam`
+  - `setFields` succeeds with the upstream `name anode`, `name separator`, and `name cathode` `zoneToCell` entries
+  - `batP2dFoam` reaches `End` with `ExecutionTime = 46.72 s` and `ClockTime = 56 s` in the tested Docker run
+  - output time directories written: `300`, `600`, `900`, `1200`, `1500`
 
 ## Notes
-- The project is no longer blocked merely by missing OpenFOAM locally; Docker supplies OpenFOAM 10 and compilation succeeds.
-- The remaining issue is runtime/case compatibility or solver convergence in the provided test case.
+- The clean path is OpenFOAM 9, matching the `setFieldsDict` header and accepting `name` in `zoneToCell` regions.
+- OpenFOAM 10 can compile the solver, but the upstream case fails at `setFields` unless `name` is changed to `zone` in `zoneToCell` regions.
+- Treat OpenFOAM 10 as a compatibility variant, not the primary reproduction environment.

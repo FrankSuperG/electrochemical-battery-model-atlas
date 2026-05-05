@@ -32,7 +32,7 @@ const README = path.join(ROOT, "README.md");
 const REFERENCES = path.join(ROOT, "REFERENCES.md");
 const BIBTEX = path.join(ROOT, "references.bib");
 const REPRODUCTIONS_DIR = path.join(ROOT, "REPRODUCTIONS");
-const REPRODUCTION_DATE = "2026-05-02";
+const REPRODUCTION_DATE = "2026-05-05";
 
 const REQUIRED_FIELDS = [
   "slug",
@@ -376,10 +376,11 @@ function evidenceLevel(entry) {
 
 function reproductionStatusText(entries) {
   const { groups } = groupReproductions(entries);
+  const entryLabel = (count) => (count === 1 ? "entry" : "entries");
   return `Reproduction records are maintained in [` +
     `REPRODUCTIONS/](REPRODUCTIONS/). As of ${REPRODUCTION_DATE}, the Atlas has ` +
     `${groups.success.length} successful reproductions, ${groups.unreproduced.length} unreproduced entries, ` +
-    `${groups.partial.length} partial entries, and ${groups.blocked.length} blocked entries.`;
+    `${groups.partial.length} partial ${entryLabel(groups.partial.length)}, and ${groups.blocked.length} blocked ${entryLabel(groups.blocked.length)}.`;
 }
 
 function implementationRoleText(entries) {
@@ -588,7 +589,7 @@ function renderReproductions() {
     "",
     toMarkdownTable([["Need", "Recommended entry", "Why"], ...recommendedRows]),
     "",
-    "## Unreproduced Entries",
+    "## Incomplete Entries",
     "",
     unreproducedRows.length
       ? toMarkdownTable([["Slug", "Status", "Final blocker", "Likely next step"], ...unreproducedRows])
@@ -780,6 +781,7 @@ function checkReadmeSnapshot() {
   const modelEntries = readYamlList(MODELS_YAML);
   const reproductionEntries = readYamlList(REPRODUCTIONS_YAML);
   const successCount = reproductionEntries.filter((entry) => entry.status === "success").length;
+  const partialCount = reproductionEntries.filter((entry) => entry.status === "partial").length;
   const unreproducedCount = reproductionEntries.filter((entry) => entry.status === "unreproduced").length;
   const errors = [];
 
@@ -790,6 +792,7 @@ function checkReadmeSnapshot() {
     `reproduced-${successCount}%2F${modelEntries.length}`,
     `Model entries | ${modelEntries.length} public model repositories or workflows.`,
     `Successful reproductions | ${successCount} entries with command-level evidence.`,
+    `Partial reproductions | ${partialCount} ${partialCount === 1 ? "entry" : "entries"} requiring a documented compatibility edit.`,
     `Unreproduced after targeted attempts | ${unreproducedCount} entries with documented blockers.`,
   ];
 

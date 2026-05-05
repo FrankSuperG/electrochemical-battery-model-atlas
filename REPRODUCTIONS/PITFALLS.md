@@ -19,10 +19,15 @@ See `CODE_ISSUES.md` for cases where the blocker appears to be source-code or pa
 ## External proprietary or login-gated pieces
 - `Pseudo_sim` reaches TOMLAB/KNITRO symbols (`conAssign`, `Prob.KNITRO`), so base MATLAB is not enough for the upstream code. A `fmincon` compatibility shim can run `T1master`, but that is a reproduction workaround rather than a KNITRO-equivalent result.
 - `Spectral_li-ion_SPM` requires `chebdif.m` from DMSUITE. The official MathWorks File Exchange page requires login for download; a reproduction shim is enough for the tested example.
-- `LIONSIMBA` requires the SUNDIALS MATLAB interface even when running under MATLAB.
+- `LIONSIMBA` requires the legacy SUNDIALS MATLAB/Octave interface. The reliable path found here is Debian bookworm Octave 7.3.0 plus CasADi 3.7.2 `linux64-octave7.3.0` plus a locally compiled SUNDIALS 2.6.2 `sundialsTB` IDAS MEX interface.
 
 ## Submodules and large stacks
 - BattMo requires submodules. Run `git submodule update --init --recursive` before startup.
-- OpenFOAM projects need the OpenFOAM toolchain first. Docker OpenFOAM 10 can compile `batP2dFoam`, but the supplied test case still did not complete locally.
+- OpenFOAM projects need the OpenFOAM toolchain first. `batP2dFoam` runs cleanly with Docker OpenFOAM 9. OpenFOAM 10 can compile it too, but the supplied case needs a `setFieldsDict` compatibility edit from `name` to `zone` in `zoneToCell` regions.
 - `mpet` depends on the native `daetools` stack. Minimal Docker images need system libraries such as `libgfortran5`, `libgl1`, and `PyQt5`; the SourceForge `daetools-2.3.0` download is slow but can complete if given enough time.
 - `battsimpy` is tied to Python 2 and old Assimulo binaries. The working Docker route was `python=2.7`, `assimulo=2.9`, `libx11-6`, patched absolute config paths, and `MPLBACKEND=Agg`.
+
+## Numerical diagnostics
+- Do not classify every `t=0` DAE failure as an initial-condition problem. In `decaluwe/p2d_li_ion_battery`, a residual-coverage check showed separator and cathode state variables with no active residual equations, so tuning the initial vector is unlikely to fix the full-cell run by itself.
+- Promote MATLAB nearly-singular-matrix warnings to errors for smoke testing. This turns long, ambiguous Newton loops into precise failure points; `dkong8s93/p2d-model` fails all four official variant scripts at the first Newton linear solve under this policy.
+- Separate a runnable smoke case from a full-entry reproduction. `hanrach/p2d_solver` has convergent basic cases, but the original-grid README path is still unreproduced because JAX/XLA Jacobian work is too resource-heavy in the tested container.

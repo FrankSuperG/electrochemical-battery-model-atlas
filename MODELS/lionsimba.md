@@ -14,7 +14,7 @@
 - Degradation: not the primary focus in the base description (check specific examples)
 
 ## Reproducibility
-- Unreproduced in this Atlas. MATLAB R2021b cannot see the required SUNDIALS MATLAB interface (`IDAInit`, `IDASolve`, `IDAFree`) or `casadi`.
+- Reproduced in this Atlas with Debian bookworm Docker, Octave 7.3.0, CasADi 3.7.2 for Octave, and a locally compiled SUNDIALS 2.6.2 `sundialsTB` IDAS interface.
 
 ### Quickstart
 - Clone: `git clone https://github.com/lionsimbatoolbox/LIONSIMBA.git`
@@ -39,6 +39,7 @@
 - MATLAB-centric workflow
 - Documentation is spread across repository + wiki + paper
 - A working SUNDIALS MATLAB interface and CasADi installation are hard requirements for the tested example scripts.
+- The old SUNDIALS 2.6.2 `sundialsTB` interface requires MEX compilation. Native MATLAB R2021b on this machine still lacks a working MEX compiler setup, but the Docker Octave 7.3 path works.
 
 ## Who is it for?
 - Users who want a DFN/P2D-like MATLAB toolbox for simulation/control learning and research
@@ -47,6 +48,6 @@
 - Torchio, Marcello, Magni, Lalo, Gopaluni, R. Bhushan, Braatz, Richard D., Raimondo, Davide M.. “LIONSIMBA: A Matlab Framework Based on a Finite Volume Model Suitable for Li-Ion Battery Design, Simulation, and Control.” Journal of The Electrochemical Society vol. 163(7) pp. A1192--A1205 2016. DOI: 10.1149/2.0291607jes
 
 ## Optional grades
-- Reproducibility: C
+- Reproducibility: B
 - Clarity: B
 - Extensibility: B

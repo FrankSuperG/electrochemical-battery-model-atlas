@@ -14,6 +14,7 @@
 ## Reproducibility
 - Unreproduced in this Atlas after a final targeted attempt with Docker Python 3.8, `cantera=2.6.0`, `assimulo`, and `numpy<1.24`.
 - Even after constructor/index/event compatibility fixes and setting `Battery_equil.algvar = algvar`, IDA fails convergence at `t=0`.
+- No runnable basic case was found. A residual-coverage diagnostic showed the separator and cathode state blocks have zero residual coverage in the tested snapshot, while an anode-only IDA smoke test still fails at `t=0`.
 
 ### Quickstart
 - Install deps: requires Cantera, Assimulo, and a compatible NumPy/SciPy stack. The tested path used `cantera=2.6.0` and `numpy<1.24`.
@@ -43,6 +44,7 @@
 
 ## Known limitations
 - The tested snapshot has several code-level blockers: incorrect `Extended_Problem` construction, broken event callbacks, undefined tolerance/stage names, an anode offset typo in the residual function, and incomplete separator/cathode residual coverage.
+- The current blocker is not just choosing better initial conditions; the full-cell DAE is structurally under-specified because state variables are allocated for blocks whose residual equations are mostly commented out.
 - No dependency lockfile is provided.
 
 ## Who is it for?

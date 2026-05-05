@@ -1,7 +1,7 @@
 # p2d-li-ion-battery-decaluwe
 
 - Status: `unreproduced`
-- Date: 2026-05-02
+- Date: 2026-05-05
 - Upstream repo: <https://github.com/decaluwe/p2d_li_ion_battery>
 - Upstream commit: `7ea1a2332eb885bea65e47e82ea231f80d28ca18`
 - Upstream checkout: `<atlas-root>/.upstream/decaluwe__p2d_li_ion_battery`
@@ -37,9 +37,14 @@ docker run --rm --platform linux/amd64 \
   - an additional source fix corrected the residual's anode node indexing from `sep.offsets` to `an.offsets`
   - an anode-only IDA smoke attempt still fails at `t=0` convergence after that indexing fix
   - final attempt set `Battery_equil.algvar = algvar`; the full script still fails with the same IDA convergence error at `t=0`
+  - a later residual-coverage diagnostic, run on a temporary copy with the known anode-offset correction, showed `total_state=120`, `algvar_differential=108`, and `algvar_algebraic=12`
+  - in that diagnostic, the separator block had `10/10` zero residuals and the cathode block had `55/55` zero residuals, while the anode residual already had an infinity norm of `4.186607608513973e+59`
+  - a minimal anode-only IDA smoke test with event callbacks bypassed still failed with `IDAError: Convergence test failures occurred too many times ... At time 0.000000.`
+- Basic case status: no runnable full or anode-only baseline case was found in this snapshot.
 
 ## Notes
 - `cantera=3.0.1` from conda-forge produced a Python/shared-library commit mismatch in this container.
 - `assimulo` with modern NumPy fails on deprecated `np.float`; pinning `numpy<1.24` is required.
 - The upstream script appears incomplete: it calls `Extended_Problem.Battery_Func(...)` where Assimulo expects an `Extended_Problem(...)` instance, references undefined `atol1`/`rtol1` variables, references undefined `Charge`/`Re_equilibrate`/`Discharge` residuals, and contains a broken `state_events` method.
 - `li_ion_battery_p2d_functions.py` also leaves most separator/cathode residual sections commented while `SV_0` still includes those variables, so the full-cell DAE is not closed in this snapshot.
+- The failure is therefore not best described as only an initial-condition issue. Initial consistency is bad, but the larger blocker is that the state vector includes separator/cathode variables whose residual equations are mostly absent.

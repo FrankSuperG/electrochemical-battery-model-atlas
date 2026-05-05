@@ -13,6 +13,7 @@
 
 ## Reproducibility
 - Unreproduced in this Atlas. MATLAB reaches the Newton setup, but tested variants fail at the initial nearly singular matrix solve before a clean time loop completes.
+- No clean basic full-script case was found: `ficks_model`, `reduced_temperature_model`, `reduced_big_Phi_model`, and `two_term_approximation_model` all fail on the first Newton linear solve when `MATLAB:nearlySingularMatrix` is treated as fatal.
 
 ### Quickstart
 - Requires MATLAB
@@ -42,6 +43,7 @@
 ## Known limitations
 - Octave can fail first in plotting. MATLAB gets farther, but `reduced_temperature_model/script.m` hits a nearly singular initial Jacobian (`rcond` around `2e-21`).
 - `reduced_big_Phi_model/script.m` also fails at the initial solve with `RCOND` around `5e-23`.
+- The other official variants fail similarly: `ficks_model` around `3.6e-24` and `two_term_approximation_model` around `6.1e-23`.
 - A typo fix in `assemble_vDv.m` corrected bad Jacobian indexing, but it did not resolve the rank deficiency.
 
 ## Who is it for?

@@ -12,6 +12,9 @@ This file separates likely upstream code defects from ordinary environment or de
 - Additional local fixes found undefined solver tolerances (`atol1`/`rtol1`) and undefined phase residual names (`Charge`, `Re_equilibrate`, `Discharge`). After bypassing these, IDA reaches integration but fails DAE convergence at `t=0`.
 - The residual function used `sep.offsets` while stepping through anode nodes. This was patched locally to `an.offsets`.
 - Much of the separator and cathode residual implementation is commented out, but `SV_0` still allocates separator/cathode state variables. This leaves the full-cell DAE under-specified.
+- A 2026-05-05 residual-coverage diagnostic on a temporary copy, after only the anode-offset correction, found `total_state=120`, `algvar_differential=108`, and `algvar_algebraic=12`; the separator block had `10/10` zero residuals and the cathode block had `55/55` zero residuals.
+- The same diagnostic reported an anode residual infinity norm of `4.186607608513973e+59`, and an anode-only IDA smoke test with event callbacks bypassed still failed at `t=0`.
+- No runnable basic case was found. This is not just an initial-condition problem; the tested state vector and residual implementation are structurally inconsistent.
 - Fix direction: either add `params` dictionaries during initialization or change `state_events` to use the same direct class-attribute convention as the rest of the model; then repair the stage-function/tolerance setup, anode/separator/cathode residual coverage, and DAE-consistent initial conditions.
 
 Evidence:
@@ -27,6 +30,8 @@ Evidence:
 - Many files use `from jax import config`. This may still work in some JAX versions, but together with `jax.ops` usage it strongly indicates the project needs an old pinned JAX environment.
 - No dependency manifest was found (`requirements.txt`, `environment.yml`, `pyproject.toml`, or `setup.py`). That makes the intended JAX version unrecoverable from the repo itself.
 - The final original-grid `run_main.py` attempt reached `computed jacobian` but exited with code 137, so the documented entry remains unreproduced locally.
+- Basic cases do run after temporary modern-JAX compatibility shims: `run_ex.py` converges on the original 50x standalone Newton case, and `run_main.py` converges on a reduced 10x/5x grid.
+- This makes the full-entry blocker more likely to be XLA/Jacobian compile-time memory pressure than bad initial conditions.
 - Fix direction: add a pinned environment file for the historically working JAX version, or port all `jax.ops.index_update` calls to modern JAX and retest memory use.
 
 Evidence:
@@ -40,7 +45,8 @@ Evidence:
 - MATLAB gets past plotting and enters the Newton loop, but repeatedly warns about a nearly singular matrix.
 - There is a definite indexing typo in `reduced_temperature_model/assemble_vDv.m`: `Dv(id_cn+1:id_T+1)=...` uses MATLAB linear indexing and should be `Dv(id_cn+1,id_T+1)=...`.
 - That typo was patched locally, but the initial Jacobian remains rank deficient: `lenU=2247`, `rankFull=2077`, `condest=4.46336e+20`.
-- A final `reduced_big_Phi_model/script.m` attempt failed at the initial solve with `RCOND = 4.995168e-23`.
+- A 2026-05-05 all-variant retest promoted `MATLAB:nearlySingularMatrix` to an error. `ficks_model/script.m`, `reduced_temperature_model/script.m`, `reduced_big_Phi_model/script.m`, and `two_term_approximation_model/script.m` all failed at the first Newton linear solve with `RCOND` values between `2.240467e-21` and `3.576152e-24`.
+- No clean basic full-script case was found. The repeated first-solve singularity may involve initial guesses, but it also points to boundary equation or Jacobian/matrix assembly issues.
 - The main solve loop has no maximum iteration guard, no damping or line search, and no fallback when `J=A+Dv` is singular or badly conditioned.
 - In practice this can leave the script running indefinitely, especially with `tol=1e-8`, `Tf=720`, and 360 time steps.
 - Fix direction: add `maxNewtonIters`, log residual norms, detect `rcond(J)` or failed linear solves, and either damp the update or abort with a clear diagnostic.
@@ -86,9 +92,11 @@ Evidence:
 
 ### `lionsimba`
 
-- MATLAB and Octave both fail at the explicit environment check for the SUNDIALS MATLAB interface.
-- Final MATLAB check showed `IDAInit=0`, `IDASolve=0`, `IDAFree=0`, and `casadi=0`.
-- This is a documented external dependency blocker, not currently evidence of broken model code.
+- Native MATLAB R2021b initially fails before simulation because `IDAInit`, `IDASolve`, and `IDAFree` are unavailable, and the local SUNDIALS 2.6.2 compile attempt stops at MATLAB `mex` compiler detection.
+- A CasADi 3.7.2 MATLAB binary can be added to MATLAB R2021b successfully; `casadi.MX` exists and a symbolic Jacobian smoke test works, but this alone does not satisfy the SUNDIALS dependency.
+- Native Octave 11.1.0 can compile SUNDIALS 2.6.2 `sundialsTB`, but the tested CasADi Octave binary is not compatible with Octave 11.
+- Debian bookworm with Octave 7.3.0, CasADi 3.7.2 `linux64-octave7.3.0`, and SUNDIALS 2.6.2 `sundialsTB` runs the official isothermal example to `LIONSIMBA_ISOTHERMAL_OK`.
+- This is a legacy dependency/toolchain issue, not evidence of broken LIONSIMBA model code.
 
 ### `mpet`
 
@@ -98,9 +106,10 @@ Evidence:
 
 ### `batp2dfoam`
 
-- Docker OpenFOAM 10 provides `wmake` and `blockMesh`; the solver compiles.
-- The supplied case logs a `setFields` dictionary issue (`keyword zone is undefined in dictionary "zoneToCell"`), then the solver remains in repeated PIMPLE iterations without completing or writing time directories in the final local attempt.
-- This may be an OpenFOAM-version/case-dictionary compatibility issue or a solver convergence issue.
+- Docker OpenFOAM 9 provides a clean upstream reproduction path: `wmake` succeeds, upstream `Allrun` exits 0, and the solver writes time directories `300`, `600`, `900`, `1200`, and `1500`.
+- Docker OpenFOAM 10 also compiles the solver, but the supplied case logs a `setFields` dictionary issue: `keyword zone is undefined in dictionary "zoneToCell"`.
+- The case uses `name anode`, `name separator`, and `name cathode` inside `zoneToCell`; replacing those with `zone ...` lets OpenFOAM 10 set the fields correctly.
+- This is best classified as an OpenFOAM-version/case-dictionary compatibility issue rather than a solver convergence failure or broken model code.
 
 ### `battmo`
 

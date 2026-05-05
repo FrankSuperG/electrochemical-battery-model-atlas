@@ -24,7 +24,8 @@ These patches were made in ignored `.upstream/` working copies or under `REPRODU
   - Restored explicit current assignment after equilibration.
   - Corrected residual node offsets from `sep.offsets` to `an.offsets` in the anode residual block.
   - Set `Battery_equil.algvar = algvar` for the final equilibration attempt.
-- Current result: progresses into IDA integration, then fails with convergence errors at `t=0`.
+  - Used a temporary residual-coverage diagnostic after the anode-offset correction.
+- Current result: progresses into IDA integration, then fails with convergence errors at `t=0`; the diagnostic shows separator/cathode state variables have no active residual coverage in this snapshot.
 
 ### `hanrach__p2d_solver`
 
@@ -35,13 +36,14 @@ These patches were made in ignored `.upstream/` working copies or under `REPRODU
   - Removed the unused `p2d_main_fn` import from `run_ex.py` to avoid removed `jax.experimental.host_callback`.
   - Parameterized `run_ex.py` and `run_main.py` grid sizes with `HANRACH_*` environment variables.
 - Current result: original-grid `run_ex.py` converges; `run_main.py` succeeds on a reduced grid but the original grid is killed after Jacobian compilation.
+- Basic-case result: `run_ex.py` original 50x standalone Newton and reduced 10x/5x `run_main.py` both converge after these shims.
 
 ### `dkong8s93__p2d-model`
 
 - File: `.upstream/dkong8s93__p2d-model/reduced_temperature_model/assemble_vDv.m`
 - Change: corrected `Dv(id_cn+1:id_T+1)=...` to `Dv(id_cn+1,id_T+1)=...`.
 - Reason: the original used MATLAB linear indexing and overwrote an unrelated contiguous slice of the Jacobian.
-- Current result: the initial Jacobian remains rank deficient, so this typo is real but not the only blocker.
+- Current result: the initial Jacobian remains rank deficient, so this typo is real but not the only blocker. All four official variant scripts still fail at the first Newton linear solve when nearly singular matrices are treated as fatal.
 
 ### `matthewpklein__battsimpy`
 
@@ -52,6 +54,14 @@ These patches were made in ignored `.upstream/` working copies or under `REPRODU
   - Replaced the author's absolute data/output paths with container-local `/work/...` paths.
   - Disabled plotting with `PLOT_VOLT_ON=0`.
 - Result: Docker Python 2.7 + `assimulo=2.9` + `libx11-6` runs the official LFP CC discharge example to completion.
+
+### `redyxg__batP2dFoam`
+
+- File: `.upstream/redyxg__batP2dFoam/batP2dFoamTest/system/setFieldsDict`
+- Change: replaced `name anode`, `name separator`, and `name cathode` with `zone anode`, `zone separator`, and `zone cathode` inside `zoneToCell` regions.
+- Reason: OpenFOAM 10 expects the `zone` keyword for `zoneToCell`; the upstream dictionary logs `FOAM FATAL IO ERROR: keyword zone is undefined in dictionary "zoneToCell"`.
+- Result: Docker OpenFOAM 10 runs the test case to `End` after this compatibility edit and writes time directories `300`, `600`, `900`, `1200`, and `1500`.
+- Note: this patch is not needed for the clean Docker OpenFOAM 9 reproduction path.
 
 ### `liuyang12__Pseudo_sim`
 
