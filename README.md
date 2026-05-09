@@ -9,6 +9,7 @@
 
 <p align="center">
   <a href="https://github.com/FrankSuperG/electrochemical-battery-model-atlas/actions/workflows/validate.yml"><img alt="Validate Atlas" src="https://github.com/FrankSuperG/electrochemical-battery-model-atlas/actions/workflows/validate.yml/badge.svg" /></a>
+  <a href="https://doi.org/10.5281/zenodo.20097542"><img alt="DOI: 10.5281/zenodo.20097542" src="https://zenodo.org/badge/1159146384.svg" /></a>
   <a href="LICENSE"><img alt="License: CC BY 4.0" src="https://img.shields.io/badge/license-CC--BY--4.0-blue" /></a>
   <img alt="Models indexed: 19" src="https://img.shields.io/badge/models-19-2f855a" />
   <img alt="Successful reproductions: 16" src="https://img.shields.io/badge/reproduced-16%2F19-2b6cb0" />
