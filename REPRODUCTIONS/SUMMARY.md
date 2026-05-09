@@ -2,7 +2,7 @@
 
 Date: 2026-05-05
 
-Scope: 19 Atlas entries. This summary is generated from `data/reproductions.yaml` and records reproduction attempts, including Docker, MATLAB, Octave, Julia, Python, and C++/CMake environments. Successful entries are marked `independent-local` when this Atlas pass built or ran them in an independent reproduction environment.
+Scope: 19 Atlas entries. This summary is generated from `data/reproductions.yaml` and records reproduction attempts, including Docker, MATLAB, Octave, Julia, Python, and C++/CMake environments. See `COVERAGE.md` for per-entry evidence labels such as `independent-local` and `attempted-local`.
 
 ## Result
 

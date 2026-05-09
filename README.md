@@ -41,7 +41,7 @@ The project is built for three audiences:
 | --- | --- |
 | Model entries | 19 public model repositories or workflows. |
 | Successful reproductions | 16 entries with command-level evidence. |
-| Partial reproductions | 0 entries requiring a documented compatibility edit. |
+| Partial reproductions | 0 entries where only a reduced or incomplete run completed. |
 | Unreproduced after targeted attempts | 3 entries with documented blockers. |
 | Curated reference set | 35 BibTeX entries with a staged reading roadmap. |
 | Validation | `node scripts/models.js check` regenerates docs, validates metadata, checks links, validates BibTeX anchors, and checks README snapshot counts. |
@@ -159,6 +159,8 @@ Why: this Atlas focuses on **physics-based electrochemical models**, not equival
   Usually **PyBaMM**, because it is well-tested and widely used.
 - **Are all successful reproductions equivalent?**
   No. Some are minimal smoke tests, some are upstream examples, and some are full test-suite builds. Read each `REPRODUCTIONS/<slug>.md` file for exact scope.
+- **Does `success` always mean the upstream repository ran without deviations?**
+  No. `success` means the documented reproduction reached its expected core output. Some successful entries still require documented dependency setup, compatibility shims, or local patches; check `REPRODUCTIONS/COVERAGE.md` and `REPRODUCTIONS/LOCAL_PATCHES.md` before treating a path as a clean upstream run.
 - **Can I use the listed upstream models commercially?**
   Do not assume that. The Atlas license is CC-BY-4.0 for this curated content, but every upstream model keeps its own license. Check the `License` and `Reuse risk` columns before reuse.
 

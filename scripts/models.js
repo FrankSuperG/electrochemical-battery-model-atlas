@@ -48,7 +48,7 @@ const REQUIRED_FIELDS = [
   "entry",
 ];
 
-// Keep these conservative but inclusive. Add values as the Zoo grows.
+// Keep these conservative but inclusive. Add values as the Atlas grows.
 const ALLOWED = {
   family: new Set(["dfn", "p2d", "spm", "spme"]),
   language: new Set(["python", "matlab", "julia", "cpp", "c++"]),
@@ -579,7 +579,7 @@ function renderReproductions() {
     "",
     `Date: ${REPRODUCTION_DATE}`,
     "",
-    `Scope: ${entries.length} Atlas entries. This summary is generated from \`data/reproductions.yaml\` and records reproduction attempts, including Docker, MATLAB, Octave, Julia, Python, and C++/CMake environments. Successful entries are marked \`independent-local\` when this Atlas pass built or ran them in an independent reproduction environment.`,
+    `Scope: ${entries.length} Atlas entries. This summary is generated from \`data/reproductions.yaml\` and records reproduction attempts, including Docker, MATLAB, Octave, Julia, Python, and C++/CMake environments. See \`COVERAGE.md\` for per-entry evidence labels such as \`independent-local\` and \`attempted-local\`.`,
     "",
     "## Result",
     "",
@@ -792,7 +792,7 @@ function checkReadmeSnapshot() {
     `reproduced-${successCount}%2F${modelEntries.length}`,
     `Model entries | ${modelEntries.length} public model repositories or workflows.`,
     `Successful reproductions | ${successCount} entries with command-level evidence.`,
-    `Partial reproductions | ${partialCount} ${partialCount === 1 ? "entry" : "entries"} requiring a documented compatibility edit.`,
+    `Partial reproductions | ${partialCount} ${partialCount === 1 ? "entry" : "entries"} where only a reduced or incomplete run completed.`,
     `Unreproduced after targeted attempts | ${unreproducedCount} entries with documented blockers.`,
   ];
 

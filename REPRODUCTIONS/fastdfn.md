@@ -24,4 +24,4 @@ octave --no-gui --quiet --eval "cd('<atlas-root>/.upstream/scott-moura__fastDFN'
 
 ## Notes
 - No source edits were needed.
-- This is a stronger Octave result than the atlas entry currently suggests because the solver ran to completion, not just startup.
+- The Octave smoke run advanced through the full simulation, not just startup.

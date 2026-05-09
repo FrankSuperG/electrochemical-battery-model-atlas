@@ -3,10 +3,12 @@
 This directory records independent reproduction attempts for Atlas entries.
 
 ## Status labels
-- `success`: the model ran in the reproduced environment and produced the expected core output.
-- `partial`: the model environment was created, but the run only completed after minor compatibility fixes or with reduced scope.
+- `success`: the documented reproduction path produced the expected core output. A success can still include explicitly documented dependency setup, compatibility shims, or local patches.
+- `partial`: the environment was created, but only a reduced-scope or incomplete run completed; the expected core output was not fully reproduced.
 - `blocked`: the run did not complete because of missing runtime, incompatible dependencies, or upstream issues.
 - `unreproduced`: a final targeted attempt was made and the model still did not complete.
+
+Use `COVERAGE.md`, `DEPENDENCIES.md`, and `LOCAL_PATCHES.md` to distinguish clean upstream runs from successful runs that rely on documented local reproduction aids.
 
 ## Minimum evidence per attempt
 - Date
