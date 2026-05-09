@@ -1,0 +1,45 @@
+{
+  "title": "Electrochemical Battery Model Atlas",
+  "upload_type": "software",
+  "description": "A curated, reproducibility-focused atlas of publicly available electrochemical battery model repositories and workflows, covering DFN/P2D, SPM, SPMe, thermal coupling, degradation/aging, numerical-method notes, and independent reproduction records.",
+  "creators": [
+    {
+      "name": "Guo, Feng",
+      "orcid": "0000-0002-5141-8672",
+      "affiliation": "VITO/UHasselt"
+    },
+    {
+      "name": "Couto, Luis D.",
+      "affiliation": "VITO"
+    },
+    {
+      "name": "Courtier, Nicola",
+      "affiliation": "University of Oxford"
+    },
+    {
+      "name": "Drummond, Ross",
+      "affiliation": "University of Sheffield"
+    }
+  ],
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "language": "eng",
+  "keywords": [
+    "battery modeling",
+    "electrochemical models",
+    "Doyle-Fuller-Newman",
+    "DFN",
+    "P2D",
+    "single particle model",
+    "SPM",
+    "SPMe",
+    "reproducibility"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/FrankSuperG/electrochemical-battery-model-atlas",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    }
+  ]
+}
