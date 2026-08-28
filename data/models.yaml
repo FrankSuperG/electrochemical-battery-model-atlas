@@ -5,12 +5,12 @@
   name: CPG-SPMT
   url: https://github.com/FrankSuperG/CPG-SPMT
   authors_or_org: FrankSuperG
-  license: PolyForm-Noncommercial-1.0.0
+  license: Apache-2.0
   language: [python]
   family: [spm]
   extensions: [thermal]
   focus: [fast-simulation, control, estimation]
-  last_reviewed: 2026-05-02
+  last_reviewed: 2026-08-28
   entry: MODELS/cpg-spmt.md
 
 - slug: pybamm

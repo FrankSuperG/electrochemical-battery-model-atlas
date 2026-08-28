@@ -1,7 +1,7 @@
 # CPG-SPMT
 
 - Repo: <https://github.com/FrankSuperG/CPG-SPMT>
-- License: **PolyForm-Noncommercial-1.0.0** (see upstream `LICENSE`)
+- License: **Apache-2.0** (see upstream `LICENSE`)
 - Language/Framework: Python
 
 ## Model lineage
@@ -41,8 +41,8 @@
 ## Strengths
 - Maintainer-owned project with a clear validation workflow and direct traceability to published work
 
-## Known limitations
-- The current upstream license is noncommercial. Treat reuse in commercial workflows as restricted unless the author grants separate permission.
+## License and reuse
+- Apache-2.0 permits commercial and noncommercial use, modification, and redistribution, subject to its license, attribution, notice, and change-marking requirements.
 
 ## Who is it for?
 - Users who want a fast SPM-family model for parameter sweeps and demonstrations
