@@ -34,6 +34,7 @@ matlab -batch "set(0,'DefaultFigureVisible','off'); cd('<atlas-root>/.upstream/d
 - Basic case status: no clean full-script baseline was found. All four official variant scripts fail at the first Newton linear solve when singular-matrix warnings are treated as fatal.
 
 ## Notes
+- September 2026 retest: `python3 scripts/retest_legacy.py dkong --timeout 90` (from the Atlas root) bypassed plotting on a temporary copy and executed only the initial Newton step with Octave 11.1.0. Observed `ATLAS_RCOND 2.24047e-21 BACKWARD_ERROR 3.95413e-07 FINITE 1`, exit 0. Here BACKWARD_ERROR is the relative linear residual `norm(J*(J\residual)-residual,inf)/norm(residual,inf)`, not a proof of nonlinear convergence. No full trajectory was produced. The May status remains unreproduced; the warning-as-error policy alone does not prove an impossible solve or missing equations.
 - The same plotting compatibility issue was previously observed from `ficks_model/script.m`.
 - MATLAB is the better runtime for this repository, but the Newton loops need iteration guards, conditioning diagnostics, or damping before a clean reproduction is defensible.
 - The failure may involve inconsistent initial guesses or boundary constraints, but the repeated first-solve singularity across all variants also points to equation/matrix assembly issues. This is not an ordinary MATLAB dependency problem.

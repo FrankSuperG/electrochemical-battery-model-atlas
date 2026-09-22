@@ -29,5 +29,5 @@ See `CODE_ISSUES.md` for cases where the blocker appears to be source-code or pa
 
 ## Numerical diagnostics
 - Do not classify every `t=0` DAE failure as an initial-condition problem. In `decaluwe/p2d_li_ion_battery`, a residual-coverage check showed separator and cathode state variables with no active residual equations, so tuning the initial vector is unlikely to fix the full-cell run by itself.
-- Promote MATLAB nearly-singular-matrix warnings to errors for smoke testing. This turns long, ambiguous Newton loops into precise failure points; `dkong8s93/p2d-model` fails all four official variant scripts at the first Newton linear solve under this policy.
+- Promoting MATLAB nearly-singular-matrix warnings to errors gives a bounded diagnostic, but it is an imposed stop condition rather than proof of a mathematically singular system. The September Octave first-step probe for `dkong8s93/p2d-model` returns finite values despite `rcond=2.24e-21`. Inspect scaling, linear residuals and nonlinear progress before diagnosing missing equations.
 - Separate a runnable smoke case from a full-entry reproduction. `hanrach/p2d_solver` has convergent basic cases, but the original-grid README path is still unreproduced because JAX/XLA Jacobian work is too resource-heavy in the tested container.

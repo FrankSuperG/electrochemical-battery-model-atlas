@@ -12,7 +12,7 @@
 - Extensions: thermal / degradation / mechanics / …
 - “Best for”: <one-liner>
 
-## Reproduction status
+## Reproducibility
 - Reproduced: **yes/no**
 - Date: YYYY-MM-DD
 - Environment: OS + language/runtime + key deps (or link to lockfile)

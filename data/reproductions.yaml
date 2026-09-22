@@ -1,4 +1,37 @@
 # Independent reproduction metadata.
+
+- slug: difflib
+  status: success
+  language: Python
+  environment: Linux ARM64 Docker; separate PyBaMM parameter export
+  environment_file: REPRODUCTIONS/environments/difflib/Dockerfile
+  primary_blocker: none for tested scope; requires compatible JAX-FEM and Basix pins
+  likely_next_step: extend to multi-rate reference comparisons and full Taylor tests
+  runtime: Python 3.10.12; forward solver reports 95.153 s including JAX compilation
+  dependencies: JAX/jaxlib 0.4.38; JAX-FEM 72846d64 (0.0.11); Basix 0.9.0; PETSc 3.20.0; NumPy 1.26.4; SciPy 1.11.3; external PyBaMM 26.4.1 export
+  notes: 2026-09-22 quickstart 1C discharge to 3620 s passed; 725 samples, final 3.09630 V. Separate 10 s single-component gradient check relative error 3.27e-7; not the full paper benchmark.
+
+- slug: battmo-jl
+  status: success
+  language: Julia
+  environment: Native macOS ARM64; isolated Julia project
+  environment_file: REPRODUCTIONS/environments/battmo-jl/Project.toml
+  primary_blocker: none for default P2D discharge
+  likely_next_step: test thermal and geometry variants separately
+  runtime: Julia 1.12.6; solver reports about 3.3-3.5 s excluding dependency precompilation
+  dependencies: BattMo 0.2.9 at 95054b15e88a; Jutul 0.4.31; full Manifest supplied; no GLMakie
+  notes: 2026-09-22 Chen 2020 default 0.5C discharge passed; controller stop verified. 145 retained samples, last 7048.4375 s and 2.41708 V precedes the cutoff state. One BattMo project with separate implementation evidence.
+
+- slug: cidemod
+  status: success
+  language: Python
+  environment: Linux ARM64 Docker; official FEniCSx 0.7.0 image
+  environment_file: REPRODUCTIONS/environments/cidemod/Dockerfile
+  primary_blocker: none for tested P2D case; deleted dependency branch replaced by fixed commit
+  likely_next_step: expand to thermal, degradation and higher-dimensional tests
+  runtime: Python 3.10.12; upstream pytest passed in 82.35 s including first-run setup
+  dependencies: dolfinx 0.7.0; PETSc 3.20.0; multiphenicsx 341d6017; NumPy 1.23.2; SciPy 1.11.3
+  notes: 2026-09-22 Chen 2020 1C reference test passed; 359 samples to 3555.27 s and 2.49948 V. Simulation-reference RMSE 4.73e-6 V; extensions not tested.
 # Keep values single-line so scripts/models.js can parse this file without a full YAML dependency.
 
 - slug: cpg-spmt
@@ -45,12 +78,13 @@
 - slug: p2d-solver-hanrach
   status: unreproduced
   language: Python
-  environment: Docker `python:3.11-slim` on `linux/arm64`
-  primary_blocker: basic cases run with compatibility shims, but original-grid README `run_main.py` exits 137 after slow JAX compile/Jacobian
+  environment: Native macOS arm64 Python 3.9; September 2026 retest
+  environment_file: REPRODUCTIONS/environments/hanrach-retest/requirements.txt
+  primary_blocker: reduced grid passes residual assertion; original 50 grid receives SIGKILL before completing
   likely_next_step: Preserve the reduced-grid smoke test, then refactor or chunk JAX compilation/memory use before full-size reproduction.
-  runtime: Docker `python:3.11-slim`, Python 3.11.15, `linux/arm64`
-  dependencies: `jax[cpu]`; `scipy`; `matplotlib`; compatibility shims for newer JAX APIs
-  notes: `run_ex.py` original 50x Newton case and reduced 10x/5x `run_main.py` both converge; blocker is scale/JAX resource use, not initial conditions.
+  runtime: Native macOS arm64, Python 3.9
+  dependencies: JAX/jaxlib 0.4.30; NumPy 1.26.4; SciPy 1.13.1; Matplotlib 3.9.4; temporary JAX API compatibility replacements
+  notes: September reduced-grid final residual 5.41e-10; original grid killed with signal 9, cause unconfirmed. Driver executes one Newton solve, not a full discharge.
 
 - slug: p2d-model-dkong8s93
   status: unreproduced
@@ -60,7 +94,7 @@
   likely_next_step: Check initial guesses, boundary equations, and Jacobian/matrix assembly; add Newton iteration guards and conditioning diagnostics.
   runtime: MATLAB R2021b; Octave 11.1.0 also checked
   dependencies: No pinned dependency set found upstream
-  notes: Retest RCOND values ranged from `2.24e-21` to `3.58e-24`; no clean basic full-script case was found.
+  notes: September Octave first-step probe returns finite values with rcond 2.24e-21; no full trajectory. May warning-as-error results alone do not prove structural singularity.
 
 - slug: pseudo-sim-liuyang12
   status: success

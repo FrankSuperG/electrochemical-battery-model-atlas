@@ -43,6 +43,7 @@ docker run --rm --platform linux/amd64 \
 - Basic case status: no runnable full or anode-only baseline case was found in this snapshot.
 
 ## Notes
+- September 2026 retest: the upstream default-branch SHA remains unchanged. Docker was not running. A native Python 3.9 arm64 launch through `scripts/retest_legacy.py decaluwe --python <atlas-root>/.envs/atlas-arm/bin/python --timeout 30` failed with `ModuleNotFoundError: No module named 'cantera'` (exit 1). The earlier IDA experiment was not rerun; source inspection still finds the separator/cathode residual sections commented out. This new environment failure does not independently reconfirm the historical numerical diagnosis.
 - `cantera=3.0.1` from conda-forge produced a Python/shared-library commit mismatch in this container.
 - `assimulo` with modern NumPy fails on deprecated `np.float`; pinning `numpy<1.24` is required.
 - The upstream script appears incomplete: it calls `Extended_Problem.Battery_Func(...)` where Assimulo expects an `Extended_Problem(...)` instance, references undefined `atol1`/`rtol1` variables, references undefined `Charge`/`Re_equilibrate`/`Discharge` residuals, and contains a broken `state_events` method.

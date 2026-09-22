@@ -1,6 +1,44 @@
 # Electrochemical battery model atlas index
 # Each entry should have a corresponding MODELS/<slug>.md
 
+- slug: difflib
+  name: DiffLiB
+  url: https://github.com/CMSL-HKUST/DiffLiB
+  authors_or_org: CMSL-HKUST
+  license: GPL-3.0
+  language: [python]
+  family: [dfn]
+  extensions: []
+  focus: [framework, research, parameter-inference]
+  last_reviewed: 2026-09-22
+  entry: MODELS/difflib.md
+
+- slug: battmo-jl
+  name: BattMo.jl
+  project: battmo
+  project_name: BattMo
+  url: https://github.com/BattMoTeam/BattMo.jl
+  authors_or_org: BattMoTeam
+  license: MIT
+  language: [julia]
+  family: [dfn]
+  extensions: []
+  focus: [framework, continuum, research]
+  last_reviewed: 2026-09-22
+  entry: MODELS/battmo-jl.md
+
+- slug: cidemod
+  name: cideMOD
+  url: https://github.com/cidetec-energy-storage/cideMOD
+  authors_or_org: cidetec-energy-storage
+  license: AGPL-3.0-or-later
+  language: [python]
+  family: [dfn]
+  extensions: [thermal, degradation]
+  focus: [framework, continuum, research]
+  last_reviewed: 2026-09-22
+  entry: MODELS/cidemod.md
+
 - slug: cpg-spmt
   name: CPG-SPMT
   url: https://github.com/FrankSuperG/CPG-SPMT
@@ -29,6 +67,8 @@
 
 - slug: battmo
   name: BattMo
+  project: battmo
+  project_name: BattMo
   url: https://github.com/BattMoTeam/BattMo
   authors_or_org: BattMoTeam
   license: GPL-3.0

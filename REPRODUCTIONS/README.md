@@ -7,6 +7,9 @@ This directory records independent reproduction attempts for Atlas entries.
 - `partial`: the environment was created, but only a reduced-scope or incomplete run completed; the expected core output was not fully reproduced.
 - `blocked`: the run did not complete because of missing runtime, incompatible dependencies, or upstream issues.
 - `unreproduced`: a final targeted attempt was made and the model still did not complete.
+- `not-tested`: upstream sources were reviewed, but no local execution was attempted. This is not a failure result.
+
+Status refers to the declared target of an attempt. A reduced-grid diagnostic can pass while the full target remains `unreproduced`; record both scopes explicitly. `success` is execution evidence, not independent physical validation or reproduction of every figure in a paper.
 
 Use `COVERAGE.md`, `DEPENDENCIES.md`, and `LOCAL_PATCHES.md` to distinguish clean upstream runs from successful runs that rely on documented local reproduction aids.
 

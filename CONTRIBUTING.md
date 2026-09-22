@@ -11,11 +11,14 @@ Contributions are welcome! You can add new model entries, fix metadata, improve 
 
 If the entry is based on a larger framework, add `implementation_role` and `implementation_note` in `data/models.yaml`. For example, PyBaMM-backed workflows should be marked separately from independent PDE implementations so the Atlas does not double-count framework wrappers as new solvers.
 
+For language implementations of the same project, use a shared `project` slug and `project_name`. Keep separate implementation slugs, pages, licenses and reproduction records. Do not use this field merely because unrelated projects implement the same mathematical model.
+
 ### 2) Fix or enrich existing entries
 - Open an Issue (please include links / citations)
 - Or submit a PR editing the relevant `MODELS/*.md` page and `data/models.yaml`
 
 ### 3) Update reproduction records
+- New source-reviewed entries must start as `not-tested` until there is execution evidence. Add the matching reproduction page and metadata entry even when no run was attempted.
 - Edit `data/reproductions.yaml` for per-model reproduction status, blockers, runtime, dependencies, and notes.
 - Edit `data/reproduction-tools.yaml` for global tool/runtime versions observed during a reproduction pass.
 Regenerate generated files with:

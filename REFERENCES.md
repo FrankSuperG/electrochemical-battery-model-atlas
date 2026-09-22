@@ -72,6 +72,18 @@ If you are new to electrochemical battery models, read in this order instead of 
 
 ## Model-specific references
 
+| Entry | Name | Sources |
+| --- | --- | --- |
+| [`difflib`](MODELS/difflib.md) | DiffLiB | [Xu et al. (2026)](#ref-xu2026difflib) |
+| [`battmo-jl`](MODELS/battmo-jl.md) | BattMo.jl | [Official documentation](https://battmoteam.github.io/BattMo.jl/dev/); [software archive](https://doi.org/10.5281/zenodo.17313586); Chen et al. (2020), DOI 10.1149/1945-7111/ab9050, for example parameters only. |
+| [`cidemod`](MODELS/cidemod.md) | cideMOD | [Ciria Aylagas et al. (2022)](#ref-ciria2022cidemod) |
+
+<a id="ref-xu2026difflib"></a>
+Xu, W.; Yang, K.; Zhang, Y.; Zhang, W.; Sun, S.; Mao, S.; Xue, T. (2026). DiffLiB: high-fidelity differentiable modeling of lithium-ion batteries and efficient gradient-based parameter identification. Structural and Multidisciplinary Optimization 69, 83. [DOI](https://doi.org/10.1007/s00158-026-04286-x).
+
+<a id="ref-ciria2022cidemod"></a>
+Ciria Aylagas, R.; Ganuza, C.; Parra, R.; Yanez, M.; Ayerbe, E. (2022). cideMOD: An Open Source Tool for Battery Cell Inhomogeneous Performance Understanding. Journal of The Electrochemical Society 169, 090528. [DOI](https://doi.org/10.1149/1945-7111/ac91fb).
+
 > This section mirrors the `## References` entries in each `MODELS/*.md` page and should be kept one-to-one aligned.
 
 | Slug | Model | References |

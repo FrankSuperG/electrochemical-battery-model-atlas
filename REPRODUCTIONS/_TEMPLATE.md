@@ -1,6 +1,6 @@
 # <slug>
 
-- Status: `success|partial|blocked|unreproduced`
+- Status: `success|partial|blocked|unreproduced|not-tested`
 - Date: YYYY-MM-DD
 - Upstream repo: <https://...>
 - Upstream commit: `<sha>`

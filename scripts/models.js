@@ -32,7 +32,7 @@ const README = path.join(ROOT, "README.md");
 const REFERENCES = path.join(ROOT, "REFERENCES.md");
 const BIBTEX = path.join(ROOT, "references.bib");
 const REPRODUCTIONS_DIR = path.join(ROOT, "REPRODUCTIONS");
-const REPRODUCTION_DATE = "2026-05-05";
+const REPRODUCTION_DATE = "2026-09-22";
 
 const REQUIRED_FIELDS = [
   "slug",
@@ -77,6 +77,7 @@ const ALLOWED = {
 
 const ALLOWED_LICENSES = new Set([
   "Apache-2.0",
+  "AGPL-3.0-or-later",
   "BSD-3-Clause",
   "GPL-3.0",
   "MIT",
@@ -84,7 +85,7 @@ const ALLOWED_LICENSES = new Set([
   "PolyForm-Noncommercial-1.0.0",
 ]);
 
-const ALLOWED_REPRODUCTION_STATUSES = new Set(["success", "partial", "blocked", "unreproduced"]);
+const ALLOWED_REPRODUCTION_STATUSES = new Set(["success", "partial", "blocked", "unreproduced", "not-tested"]);
 const ALLOWED_IMPLEMENTATION_ROLES = new Set([
   "primary-framework",
   "pybamm-backed-workflow",
@@ -93,7 +94,7 @@ const ALLOWED_IMPLEMENTATION_ROLES = new Set([
 
 function licenseRisk(license) {
   if (["Apache-2.0", "BSD-3-Clause", "MIT"].includes(license)) return "permissive";
-  if (license === "GPL-3.0") return "copyleft";
+  if (["GPL-3.0", "AGPL-3.0-or-later"].includes(license)) return "copyleft";
   if (license === "PolyForm-Noncommercial-1.0.0") return "noncommercial";
   if (license === "NO-LICENSE") return "no-license";
   return "unknown";
@@ -263,13 +264,30 @@ function validateModels() {
     }
   }
 
+  for (const e of entries) {
+    if ("project" in e) {
+      if (!isNonEmptyString(e.project) || !slugs.has(e.project)) {
+        errors.push(`${e.slug}: project must reference an existing primary implementation slug`);
+      }
+      if (!isNonEmptyString(e.project_name)) {
+        errors.push(`${e.slug}: project_name is required when project is set`);
+      }
+      const primary = entries.find((candidate) => candidate.slug === e.project);
+      if (primary && (primary.project !== e.project || primary.project_name !== e.project_name)) {
+        errors.push(`${e.slug}: project identity must match its primary implementation`);
+      }
+    } else if ("project_name" in e) {
+      errors.push(`${e.slug}: project_name requires project`);
+    }
+  }
+
   if (errors.length) {
     console.error(`Validation failed (${errors.length} problem(s)):`);
     for (const err of errors) console.error(`- ${err}`);
     process.exit(1);
   }
 
-  console.log(`OK: ${entries.length} model(s) validated.`);
+  console.log(`OK: ${groupProjects(entries).length} projects (${entries.length} implementation records) validated.`);
   return entries;
 }
 
@@ -360,7 +378,7 @@ function formatSlugList(slugs) {
 }
 
 function groupReproductions(entries) {
-  const order = ["success", "partial", "blocked", "unreproduced"];
+  const order = ["success", "partial", "blocked", "unreproduced", "not-tested"];
   const groups = Object.fromEntries(order.map((status) => [status, []]));
   for (const entry of entries) {
     if (!groups[entry.status]) groups[entry.status] = [];
@@ -370,6 +388,7 @@ function groupReproductions(entries) {
 }
 
 function evidenceLevel(entry) {
+  if (entry.status === "not-tested") return "source-review-only";
   if (entry.evidence_level) return entry.evidence_level;
   return entry.status === "success" ? "independent-local" : "attempted-local";
 }
@@ -380,7 +399,7 @@ function reproductionStatusText(entries) {
   return `Reproduction records are maintained in [` +
     `REPRODUCTIONS/](REPRODUCTIONS/). As of ${REPRODUCTION_DATE}, the Atlas has ` +
     `${groups.success.length} successful reproductions, ${groups.unreproduced.length} unreproduced entries, ` +
-    `${groups.partial.length} partial ${entryLabel(groups.partial.length)}, and ${groups.blocked.length} blocked ${entryLabel(groups.blocked.length)}.`;
+    `${groups.partial.length} partial ${entryLabel(groups.partial.length)}, ${groups.blocked.length} blocked ${entryLabel(groups.blocked.length)}, and ${groups['not-tested'].length} not-tested ${entryLabel(groups['not-tested'].length)}. Dates of individual runs are recorded on the linked reproduction pages; this is the dashboard update date.`;
 }
 
 function implementationRoleText(entries) {
@@ -412,13 +431,23 @@ function implementationRoleText(entries) {
   ].join("\n");
 }
 
+function groupProjects(entries) {
+  const projects = new Map();
+  for (const entry of entries) {
+    const id = entry.project || entry.slug;
+    if (!projects.has(id)) projects.set(id, []);
+    projects.get(id).push(entry);
+  }
+  return [...projects.entries()].sort(([a], [b]) => a.localeCompare(b));
+}
+
 function renderReadme() {
   const entries = readYamlList(MODELS_YAML);
 
   // Sort by slug for stable diffs
   entries.sort((a, b) => String(a.slug).localeCompare(String(b.slug)));
 
-  const header = ["Slug", "Name", "Family", "Language", "License", "Reuse risk", "Extensions", "Best for", "Page"];
+  const header = ["Project", "Name", "Family", "Language", "License by implementation", "Reuse risk", "Extensions", "Best for", "Project page"];
   const displayFamily = (value) => (
     {
       dfn: "DFN",
@@ -436,21 +465,25 @@ function renderReadme() {
       python: "Python",
     }[String(value).toLowerCase()] || value
   );
-  const rows = entries.map((e) => {
+  const rows = groupProjects(entries).map(([project, variants]) => {
+    const e = { ...variants[0] };
+    for (const field of ["extensions", "focus", "family", "language"]) {
+      e[field] = [...new Set(variants.flatMap((v) => v[field] || []))];
+    }
     const extensions = Array.isArray(e.extensions) && e.extensions.length ? e.extensions.join(", ") : "—";
     const focus = Array.isArray(e.focus) && e.focus.length ? e.focus.join(", ") : "—";
     const family = Array.isArray(e.family) ? e.family.map(displayFamily).join("/") : "—";
     const language = Array.isArray(e.language) ? e.language.map(displayLanguage).join(" + ") : "—";
     return [
-      `\`${e.slug}\``,
-      e.name,
+      `\`${project}\``,
+      e.project_name || e.name,
       family,
       language,
-      e.license,
-      licenseRisk(e.license),
+      variants.map((v) => variants.length > 1 ? `${v.language.map(displayLanguage).join("/")}: ${v.license}` : v.license).join("<br>"),
+      [...new Set(variants.map((v) => licenseRisk(v.license)))].join(" / "),
       extensions,
       focus,
-      `[${e.entry}](${e.entry})`,
+      `[${e.project_name || e.name}](${(variants.find((v) => v.slug === project) || e).entry})`,
     ];
   });
 
@@ -589,7 +622,7 @@ function renderReproductions() {
     "",
     toMarkdownTable([["Need", "Recommended entry", "Why"], ...recommendedRows]),
     "",
-    "## Incomplete Entries",
+    "## Incomplete or Untested Entries",
     "",
     unreproducedRows.length
       ? toMarkdownTable([["Slug", "Status", "Final blocker", "Likely next step"], ...unreproducedRows])
@@ -636,7 +669,7 @@ function renderReproductions() {
     "",
     `Date: ${REPRODUCTION_DATE}`,
     "",
-    "This file records the software stack used for the reproduction pass. Versions are observed host or container versions, not necessarily the upstream authors' original development versions. It is generated from `data/reproductions.yaml` and `data/reproduction-tools.yaml`.",
+    "This file records software stacks from dated reproduction attempts. The global tool table describes the historical 2026-05-05 pass, not a fresh environment inventory. See individual records for subsequent attempts. It is generated from `data/reproductions.yaml` and `data/reproduction-tools.yaml`.",
     "",
     "## Global Tool Versions",
     "",
@@ -780,20 +813,25 @@ function checkReadmeSnapshot() {
   const readme = fs.readFileSync(README, "utf8");
   const modelEntries = readYamlList(MODELS_YAML);
   const reproductionEntries = readYamlList(REPRODUCTIONS_YAML);
+  const projectCount = groupProjects(modelEntries).length;
   const successCount = reproductionEntries.filter((entry) => entry.status === "success").length;
   const partialCount = reproductionEntries.filter((entry) => entry.status === "partial").length;
   const unreproducedCount = reproductionEntries.filter((entry) => entry.status === "unreproduced").length;
+  const notTestedCount = reproductionEntries.filter((entry) => entry.status === "not-tested").length;
+  const bibCount = (fs.readFileSync(BIBTEX, "utf8").match(/^@\w+\s*\{/gm) || []).length;
   const errors = [];
 
   const expectedSnippets = [
-    `Models indexed: ${modelEntries.length}`,
-    `models-${modelEntries.length}-`,
+    `Projects indexed: ${projectCount}`,
+    `projects-${projectCount}-`,
     `Successful reproductions: ${successCount}`,
     `reproduced-${successCount}%2F${modelEntries.length}`,
-    `Model entries | ${modelEntries.length} public model repositories or workflows.`,
+    `Model entries | ${projectCount} projects covering ${modelEntries.length} implementations or workflows.`,
     `Successful reproductions | ${successCount} entries with command-level evidence.`,
     `Partial reproductions | ${partialCount} ${partialCount === 1 ? "entry" : "entries"} where only a reduced or incomplete run completed.`,
     `Unreproduced after targeted attempts | ${unreproducedCount} entries with documented blockers.`,
+    `Not tested | ${notTestedCount} entries reviewed from upstream sources only.`,
+    `Curated reference set | ${bibCount} BibTeX entries with a staged reading roadmap.`,
   ];
 
   for (const snippet of expectedSnippets) {

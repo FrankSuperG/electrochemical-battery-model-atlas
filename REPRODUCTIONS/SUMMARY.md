@@ -1,17 +1,18 @@
 # Reproduction Summary
 
-Date: 2026-05-05
+Date: 2026-09-22
 
-Scope: 19 Atlas entries. This summary is generated from `data/reproductions.yaml` and records reproduction attempts, including Docker, MATLAB, Octave, Julia, Python, and C++/CMake environments. See `COVERAGE.md` for per-entry evidence labels such as `independent-local` and `attempted-local`.
+Scope: 22 Atlas entries. This summary is generated from `data/reproductions.yaml` and records reproduction attempts, including Docker, MATLAB, Octave, Julia, Python, and C++/CMake environments. See `COVERAGE.md` for per-entry evidence labels such as `independent-local` and `attempted-local`.
 
 ## Result
 
-| Status       | Count | Entries                                                                                                                                                                                                          |
-|--------------|-------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| success      | 16    | `cpg-spmt`, `pybamm`, `battmo`, `pseudo-sim-liuyang12`, `jubat`, `batp2dfoam`, `battsimpy`, `spectral-li-ion-spm`, `spme-oed`, `slide`, `lionsimba`, `mpet`, `petlion-jl`, `dfn-scott-moura`, `fastdfn`, `spmet` |
-| partial      | 0     | none                                                                                                                                                                                                             |
-| blocked      | 0     | none                                                                                                                                                                                                             |
-| unreproduced | 3     | `p2d-li-ion-battery-decaluwe`, `p2d-solver-hanrach`, `p2d-model-dkong8s93`                                                                                                                                       |
+| Status       | Count | Entries                                                                                                                                                                                                                                             |
+|--------------|-------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| success      | 19    | `difflib`, `battmo-jl`, `cidemod`, `cpg-spmt`, `pybamm`, `battmo`, `pseudo-sim-liuyang12`, `jubat`, `batp2dfoam`, `battsimpy`, `spectral-li-ion-spm`, `spme-oed`, `slide`, `lionsimba`, `mpet`, `petlion-jl`, `dfn-scott-moura`, `fastdfn`, `spmet` |
+| partial      | 0     | none                                                                                                                                                                                                                                                |
+| blocked      | 0     | none                                                                                                                                                                                                                                                |
+| unreproduced | 3     | `p2d-li-ion-battery-decaluwe`, `p2d-solver-hanrach`, `p2d-model-dkong8s93`                                                                                                                                                                          |
+| not-tested   | 0     | none                                                                                                                                                                                                                                                |
 
 ## Recommended Starting Points
 
@@ -25,13 +26,13 @@ Scope: 19 Atlas entries. This summary is generated from `data/reproductions.yaml
 | Advanced research P2D framework           | `mpet`                                | Reproduced in Docker with Python 3.12 after installing runtime system libraries.                      |
 | Fast degradation simulator                | `slide`                               | Independently built and tested in this pass; CTest passed 8/8 unit tests.                             |
 
-## Incomplete Entries
+## Incomplete or Untested Entries
 
-| Slug                          | Status       | Final blocker                                                                                                              | Likely next step                                                                                                                   |
-|-------------------------------|--------------|----------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| `p2d-li-ion-battery-decaluwe` | unreproduced | no runnable full or anode-only basic case found; separator/cathode residual coverage is missing and IDA fails at `t=0`     | Complete the residual equations and audit differential/algebraic classification before tuning initial conditions.                  |
-| `p2d-solver-hanrach`          | unreproduced | basic cases run with compatibility shims, but original-grid README `run_main.py` exits 137 after slow JAX compile/Jacobian | Preserve the reduced-grid smoke test, then refactor or chunk JAX compilation/memory use before full-size reproduction.             |
-| `p2d-model-dkong8s93`         | unreproduced | all four official `script.m` variants fail at the first Newton linear solve with near-singular matrices                    | Check initial guesses, boundary equations, and Jacobian/matrix assembly; add Newton iteration guards and conditioning diagnostics. |
+| Slug                          | Status       | Final blocker                                                                                                          | Likely next step                                                                                                                   |
+|-------------------------------|--------------|------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| `p2d-li-ion-battery-decaluwe` | unreproduced | no runnable full or anode-only basic case found; separator/cathode residual coverage is missing and IDA fails at `t=0` | Complete the residual equations and audit differential/algebraic classification before tuning initial conditions.                  |
+| `p2d-solver-hanrach`          | unreproduced | reduced grid passes residual assertion; original 50 grid receives SIGKILL before completing                            | Preserve the reduced-grid smoke test, then refactor or chunk JAX compilation/memory use before full-size reproduction.             |
+| `p2d-model-dkong8s93`         | unreproduced | all four official `script.m` variants fail at the first Newton linear solve with near-singular matrices                | Check initial guesses, boundary equations, and Jacobian/matrix assembly; add Newton iteration guards and conditioning diagnostics. |
 
 ## Evidence Files
 

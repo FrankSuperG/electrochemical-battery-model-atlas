@@ -1,5 +1,20 @@
 # BattMo
 
+BattMo is counted as **one project** in this Atlas. Its language implementations and user interfaces belong to the same project family, not additional models in the project count.
+
+## Project family
+
+| Implementation or interface | Role | Local evidence |
+| --- | --- | --- |
+| BattMo (MATLAB) | Original MATLAB/MRST implementation | [MATLAB reproduction](../REPRODUCTIONS/battmo.md) |
+| [BattMo.jl](battmo-jl.md) | Julia/Jutul implementation | [Default P2D discharge passed](../REPRODUCTIONS/battmo-jl.md) |
+| [PyBattMo](https://github.com/BattMoTeam/PyBattMo) | Python wrapper for BattMo.jl | No separate local test; not an additional solver project |
+| BattMoApp | Web application for the BattMo family | No separate local test; not an additional solver project |
+
+The family descriptions follow the upstream BattMo Family overview supplied during this review. Shared identity does not imply identical feature coverage: that overview describes Julia as still evolving toward the MATLAB feature set. Licenses and execution evidence remain implementation-specific (MATLAB: GPL-3.0; Julia: MIT). The technical details below concern MATLAB; the linked Julia page retains its own dependencies and limitations.
+
+## MATLAB implementation
+
 - Repo: <https://github.com/BattMoTeam/BattMo>
 - License: GPL-3.0 (COPYING)
 - Language/Framework: Mostly MATLAB (plus notebooks and a small amount of other languages)

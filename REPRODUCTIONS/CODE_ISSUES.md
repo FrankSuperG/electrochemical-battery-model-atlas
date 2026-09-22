@@ -25,9 +25,11 @@ Evidence:
 
 ### `p2d-solver-hanrach`
 
+- September update: native arm64 JAX 0.4.30 passes the reduced-grid probe with final normalized residual `5.41e-10`; original grid receives SIGKILL, without a captured OOM diagnosis. The upstream driver discards the Newton failure flag and performs a single solve with its time loop commented out. The new Atlas wrapper asserts residual and finite state explicitly.
+
 - The code relies heavily on removed JAX APIs such as `jax.ops.index_update` and `jax.ops.index[...]`. Modern JAX expects the `.at[index].set(value)` update style.
 - The `run_ex.py` path also imports `p2d_main_fn`, which imports removed `jax.experimental.host_callback`, even though `run_ex.py` does not need that module for its standalone Newton smoke run.
-- Many files use `from jax import config`. This may still work in some JAX versions, but together with `jax.ops` usage it strongly indicates the project needs an old pinned JAX environment.
+- Many files use the obsolete `from jax.config import config`; the compatibility replacement is `from jax import config`.
 - No dependency manifest was found (`requirements.txt`, `environment.yml`, `pyproject.toml`, or `setup.py`). That makes the intended JAX version unrecoverable from the repo itself.
 - The final original-grid `run_main.py` attempt reached `computed jacobian` but exited with code 137, so the documented entry remains unreproduced locally.
 - Basic cases do run after temporary modern-JAX compatibility shims: `run_ex.py` converges on the original 50x standalone Newton case, and `run_main.py` converges on a reduced 10x/5x grid.
@@ -44,7 +46,7 @@ Evidence:
 
 - MATLAB gets past plotting and enters the Newton loop, but repeatedly warns about a nearly singular matrix.
 - There is a definite indexing typo in `reduced_temperature_model/assemble_vDv.m`: `Dv(id_cn+1:id_T+1)=...` uses MATLAB linear indexing and should be `Dv(id_cn+1,id_T+1)=...`.
-- That typo was patched locally, but the initial Jacobian remains rank deficient: `lenU=2247`, `rankFull=2077`, `condest=4.46336e+20`.
+- After that local patch, the earlier diagnostic reported `lenU=2247`, numerical `rankFull=2077`, and `condest=4.46336e+20`. Numerical rank depends on scaling and tolerance; it is not by itself proof of missing equations.
 - A 2026-05-05 all-variant retest promoted `MATLAB:nearlySingularMatrix` to an error. `ficks_model/script.m`, `reduced_temperature_model/script.m`, `reduced_big_Phi_model/script.m`, and `two_term_approximation_model/script.m` all failed at the first Newton linear solve with `RCOND` values between `2.240467e-21` and `3.576152e-24`.
 - No clean basic full-script case was found. The repeated first-solve singularity may involve initial guesses, but it also points to boundary equation or Jacobian/matrix assembly issues.
 - The main solve loop has no maximum iteration guard, no damping or line search, and no fallback when `J=A+Dv` is singular or badly conditioned.

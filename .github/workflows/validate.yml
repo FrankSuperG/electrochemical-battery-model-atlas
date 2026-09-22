@@ -21,6 +21,9 @@ jobs:
       - name: Run lightweight checks
         run: node scripts/models.js check
 
+      - name: Check status classification
+        run: node scripts/test-models.js
+
       - name: Ensure generated files are committed
         run: |
           git diff --exit-code

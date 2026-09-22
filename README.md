@@ -9,10 +9,10 @@
 
 <p align="center">
   <a href="https://github.com/FrankSuperG/electrochemical-battery-model-atlas/actions/workflows/validate.yml"><img alt="Validate Atlas" src="https://github.com/FrankSuperG/electrochemical-battery-model-atlas/actions/workflows/validate.yml/badge.svg" /></a>
-  <a href="https://doi.org/10.5281/zenodo.20097542"><img alt="DOI: 10.5281/zenodo.20097542" src="https://zenodo.org/badge/1159146384.svg" /></a>
+  <a href="https://doi.org/10.5281/zenodo.20097542"><img alt="DOI: 10.5281/zenodo.20097542" src="https://zenodo.org/badge/DOI/10.5281/zenodo.20097542.svg" /></a>
   <a href="LICENSE"><img alt="License: CC BY 4.0" src="https://img.shields.io/badge/license-CC--BY--4.0-blue" /></a>
-  <img alt="Models indexed: 19" src="https://img.shields.io/badge/models-19-2f855a" />
-  <img alt="Successful reproductions: 16" src="https://img.shields.io/badge/reproduced-16%2F19-2b6cb0" />
+  <img alt="Projects indexed: 21" src="https://img.shields.io/badge/projects-21-2f855a" />
+  <img alt="Successful reproductions: 19" src="https://img.shields.io/badge/reproduced-19%2F22-2b6cb0" />
 </p>
 
 **Electrochemical Battery Model Atlas (E-BatMA)** is a curated, reproducibility-focused guide to publicly available electrochemical battery model repositories and workflows. It emphasizes the **Doyle-Fuller-Newman / pseudo-two-dimensional (DFN/P2D)** family and reduced or extended variants: **Single Particle Model (SPM)**, **Single Particle Model with electrolyte (SPMe)**, thermal coupling, and degradation/aging.
@@ -40,14 +40,17 @@ The project is built for three audiences:
 
 | Metric | Current state |
 | --- | --- |
-| Model entries | 19 public model repositories or workflows. |
-| Successful reproductions | 16 entries with command-level evidence. |
+| Model entries | 21 projects covering 22 implementations or workflows. |
+| Successful reproductions | 19 entries with command-level evidence. |
 | Partial reproductions | 0 entries where only a reduced or incomplete run completed. |
 | Unreproduced after targeted attempts | 3 entries with documented blockers. |
-| Curated reference set | 35 BibTeX entries with a staged reading roadmap. |
+| Not tested | 0 entries reviewed from upstream sources only. |
+| Curated reference set | 37 BibTeX entries with a staged reading roadmap. |
 | Validation | `node scripts/models.js check` regenerates docs, validates metadata, checks links, validates BibTeX anchors, and checks README snapshot counts. |
 
 ## Start Here
+
+The [September 2026 review](REVIEW_2026-09.md) records new source-reviewed entries, upstream commit checks, and the scope and limitations of legacy retests. The DOI badge links to the archived v1.0.1 snapshot; current `main` includes later changes.
 
 | Goal | Recommended path |
 | --- | --- |
@@ -71,7 +74,7 @@ If acronym-heavy pages feel dense, start with [`GLOSSARY.md`](GLOSSARY.md).
 ## Reproduction Status
 
 <!-- REPRODUCTION_STATUS_START -->
-Reproduction records are maintained in [REPRODUCTIONS/](REPRODUCTIONS/). As of 2026-05-05, the Atlas has 16 successful reproductions, 3 unreproduced entries, 0 partial entries, and 0 blocked entries.
+Reproduction records are maintained in [REPRODUCTIONS/](REPRODUCTIONS/). As of 2026-09-22, the Atlas has 19 successful reproductions, 3 unreproduced entries, 0 partial entries, 0 blocked entries, and 0 not-tested entries. Dates of individual runs are recorded on the linked reproduction pages; this is the dashboard update date.
 
 Start with the [reproduction dashboard](REPRODUCTIONS/SUMMARY.md) for a high-level view, then use the [dependency matrix](REPRODUCTIONS/DEPENDENCIES.md) and [coverage matrix](REPRODUCTIONS/COVERAGE.md) for exact environments and blockers.
 <!-- REPRODUCTION_STATUS_END -->
@@ -107,31 +110,35 @@ Rule: keep PyBaMM itself as the primary framework entry; keep PyBaMM-backed pape
 ## Model index (core info in one view)
 All entries below link to a short review page with **Quickstart**, **entry point(s)**, and **beginner notes**.
 
+BattMo counts as **one project**, including its MATLAB and Julia implementations, Python wrapper (PyBattMo) and web application (BattMoApp). Its single project page links the implementation details. Licenses, feature coverage and reproduction results remain implementation-specific. Extension lists in grouped rows are a union, not a promise of feature parity. The Atlas has **21 projects**; the 22 implementation-level reproduction records are test records, not 22 different projects. Wrappers and user interfaces do not add to either count here.
+
 > Note on licensing rigor: upstream licenses are listed explicitly in the model index. Some public repositories do not include a standard open-source license file; those entries are marked as `NO-LICENSE`. Noncommercial or restrictive licenses are not equivalent to permissive open-source licenses.
 
 <!-- MODEL_INDEX_START -->
 
-| Slug                          | Name                | Family       | Language     | License      | Reuse risk | Extensions           | Best for                                         | Page                                                                           |
-|-------------------------------|---------------------|--------------|--------------|--------------|------------|----------------------|--------------------------------------------------|--------------------------------------------------------------------------------|
-| `batp2dfoam`                  | batP2dFoam          | DFN          | C++          | GPL-3.0      | copyleft   | —                    | solver, openfoam, performance                    | [MODELS/batp2dfoam.md](MODELS/batp2dfoam.md)                                   |
-| `battmo`                      | BattMo              | DFN          | MATLAB       | GPL-3.0      | copyleft   | thermal, degradation | framework, continuum, research                   | [MODELS/battmo.md](MODELS/battmo.md)                                           |
-| `battsimpy`                   | battsimpy           | SPM/DFN      | Python       | GPL-3.0      | copyleft   | —                    | framework, educational                           | [MODELS/battsimpy.md](MODELS/battsimpy.md)                                     |
-| `cpg-spmt`                    | CPG-SPMT            | SPM          | Python       | Apache-2.0   | permissive | thermal              | fast-simulation, control, estimation             | [MODELS/cpg-spmt.md](MODELS/cpg-spmt.md)                                       |
-| `dfn-scott-moura`             | dfn                 | DFN/P2D      | MATLAB       | NO-LICENSE   | no-license | —                    | reference-implementation, educational, research  | [MODELS/dfn-scott-moura.md](MODELS/dfn-scott-moura.md)                         |
-| `fastdfn`                     | fastDFN             | DFN/P2D      | MATLAB       | NO-LICENSE   | no-license | thermal              | fast-simulation, solver, research                | [MODELS/fastdfn.md](MODELS/fastdfn.md)                                         |
-| `jubat`                       | JuBat               | DFN/SPM/SPMe | Julia        | GPL-3.0      | copyleft   | —                    | framework                                        | [MODELS/jubat.md](MODELS/jubat.md)                                             |
-| `lionsimba`                   | LIONSIMBA           | DFN          | MATLAB       | MIT          | permissive | —                    | framework, control, educational                  | [MODELS/lionsimba.md](MODELS/lionsimba.md)                                     |
-| `mpet`                        | MPET                | P2D/DFN      | Python       | MIT          | permissive | —                    | framework, research                              | [MODELS/mpet.md](MODELS/mpet.md)                                               |
-| `p2d-li-ion-battery-decaluwe` | p2d_li_ion_battery  | DFN          | Python       | BSD-3-Clause | permissive | —                    | reference-implementation, educational            | [MODELS/p2d-li-ion-battery-decaluwe.md](MODELS/p2d-li-ion-battery-decaluwe.md) |
-| `p2d-model-dkong8s93`         | p2d-model           | DFN          | MATLAB       | NO-LICENSE   | no-license | —                    | finite-difference, educational                   | [MODELS/p2d-model-dkong8s93.md](MODELS/p2d-model-dkong8s93.md)                 |
-| `p2d-solver-hanrach`          | p2d_solver          | DFN          | Python       | NO-LICENSE   | no-license | —                    | solver, finite-difference, jax                   | [MODELS/p2d-solver-hanrach.md](MODELS/p2d-solver-hanrach.md)                   |
-| `petlion-jl`                  | PETLION.jl          | P2D/DFN      | Julia        | MIT          | permissive | —                    | solver, performance, research                    | [MODELS/petlion-jl.md](MODELS/petlion-jl.md)                                   |
-| `pseudo-sim-liuyang12`        | Pseudo_sim          | DFN          | MATLAB       | NO-LICENSE   | no-license | —                    | educational                                      | [MODELS/pseudo-sim-liuyang12.md](MODELS/pseudo-sim-liuyang12.md)               |
-| `pybamm`                      | PyBaMM              | DFN/SPM/SPMe | Python       | BSD-3-Clause | permissive | thermal, degradation | framework, research, reproducibility             | [MODELS/pybamm.md](MODELS/pybamm.md)                                           |
-| `slide`                       | SLIDE               | SPM          | C++ + MATLAB | BSD-3-Clause | permissive | thermal, degradation | fast-simulation, degradation                     | [MODELS/slide.md](MODELS/slide.md)                                             |
-| `spectral-li-ion-spm`         | Spectral_li-ion_SPM | SPM          | MATLAB       | BSD-3-Clause | permissive | —                    | spectral-method, educational                     | [MODELS/spectral-li-ion-spm.md](MODELS/spectral-li-ion-spm.md)                 |
-| `spme-oed`                    | SPMe_OED            | SPMe         | Python       | NO-LICENSE   | no-license | —                    | parameter-inference, optimal-experimental-design | [MODELS/spme-oed.md](MODELS/spme-oed.md)                                       |
-| `spmet`                       | SPMeT               | SPMe         | MATLAB       | GPL-3.0      | copyleft   | thermal              | control, estimation, educational                 | [MODELS/spmet.md](MODELS/spmet.md)                                             |
+| Project                       | Name                | Family       | Language       | License by implementation     | Reuse risk            | Extensions           | Best for                                         | Project page                                                |
+|-------------------------------|---------------------|--------------|----------------|-------------------------------|-----------------------|----------------------|--------------------------------------------------|-------------------------------------------------------------|
+| `batp2dfoam`                  | batP2dFoam          | DFN          | C++            | GPL-3.0                       | copyleft              | —                    | solver, openfoam, performance                    | [batP2dFoam](MODELS/batp2dfoam.md)                          |
+| `battmo`                      | BattMo              | DFN          | MATLAB + Julia | MATLAB: GPL-3.0<br>Julia: MIT | copyleft / permissive | thermal, degradation | framework, continuum, research                   | [BattMo](MODELS/battmo.md)                                  |
+| `battsimpy`                   | battsimpy           | SPM/DFN      | Python         | GPL-3.0                       | copyleft              | —                    | framework, educational                           | [battsimpy](MODELS/battsimpy.md)                            |
+| `cidemod`                     | cideMOD             | DFN          | Python         | AGPL-3.0-or-later             | copyleft              | thermal, degradation | framework, continuum, research                   | [cideMOD](MODELS/cidemod.md)                                |
+| `cpg-spmt`                    | CPG-SPMT            | SPM          | Python         | Apache-2.0                    | permissive            | thermal              | fast-simulation, control, estimation             | [CPG-SPMT](MODELS/cpg-spmt.md)                              |
+| `dfn-scott-moura`             | dfn                 | DFN/P2D      | MATLAB         | NO-LICENSE                    | no-license            | —                    | reference-implementation, educational, research  | [dfn](MODELS/dfn-scott-moura.md)                            |
+| `difflib`                     | DiffLiB             | DFN          | Python         | GPL-3.0                       | copyleft              | —                    | framework, research, parameter-inference         | [DiffLiB](MODELS/difflib.md)                                |
+| `fastdfn`                     | fastDFN             | DFN/P2D      | MATLAB         | NO-LICENSE                    | no-license            | thermal              | fast-simulation, solver, research                | [fastDFN](MODELS/fastdfn.md)                                |
+| `jubat`                       | JuBat               | DFN/SPM/SPMe | Julia          | GPL-3.0                       | copyleft              | —                    | framework                                        | [JuBat](MODELS/jubat.md)                                    |
+| `lionsimba`                   | LIONSIMBA           | DFN          | MATLAB         | MIT                           | permissive            | —                    | framework, control, educational                  | [LIONSIMBA](MODELS/lionsimba.md)                            |
+| `mpet`                        | MPET                | P2D/DFN      | Python         | MIT                           | permissive            | —                    | framework, research                              | [MPET](MODELS/mpet.md)                                      |
+| `p2d-li-ion-battery-decaluwe` | p2d_li_ion_battery  | DFN          | Python         | BSD-3-Clause                  | permissive            | —                    | reference-implementation, educational            | [p2d_li_ion_battery](MODELS/p2d-li-ion-battery-decaluwe.md) |
+| `p2d-model-dkong8s93`         | p2d-model           | DFN          | MATLAB         | NO-LICENSE                    | no-license            | —                    | finite-difference, educational                   | [p2d-model](MODELS/p2d-model-dkong8s93.md)                  |
+| `p2d-solver-hanrach`          | p2d_solver          | DFN          | Python         | NO-LICENSE                    | no-license            | —                    | solver, finite-difference, jax                   | [p2d_solver](MODELS/p2d-solver-hanrach.md)                  |
+| `petlion-jl`                  | PETLION.jl          | P2D/DFN      | Julia          | MIT                           | permissive            | —                    | solver, performance, research                    | [PETLION.jl](MODELS/petlion-jl.md)                          |
+| `pseudo-sim-liuyang12`        | Pseudo_sim          | DFN          | MATLAB         | NO-LICENSE                    | no-license            | —                    | educational                                      | [Pseudo_sim](MODELS/pseudo-sim-liuyang12.md)                |
+| `pybamm`                      | PyBaMM              | DFN/SPM/SPMe | Python         | BSD-3-Clause                  | permissive            | thermal, degradation | framework, research, reproducibility             | [PyBaMM](MODELS/pybamm.md)                                  |
+| `slide`                       | SLIDE               | SPM          | C++ + MATLAB   | BSD-3-Clause                  | permissive            | thermal, degradation | fast-simulation, degradation                     | [SLIDE](MODELS/slide.md)                                    |
+| `spectral-li-ion-spm`         | Spectral_li-ion_SPM | SPM          | MATLAB         | BSD-3-Clause                  | permissive            | —                    | spectral-method, educational                     | [Spectral_li-ion_SPM](MODELS/spectral-li-ion-spm.md)        |
+| `spme-oed`                    | SPMe_OED            | SPMe         | Python         | NO-LICENSE                    | no-license            | —                    | parameter-inference, optimal-experimental-design | [SPMe_OED](MODELS/spme-oed.md)                              |
+| `spmet`                       | SPMeT               | SPMe         | MATLAB         | GPL-3.0                       | copyleft              | thermal              | control, estimation, educational                 | [SPMeT](MODELS/spmet.md)                                    |
 
 <!-- MODEL_INDEX_END -->
 

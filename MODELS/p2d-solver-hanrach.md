@@ -14,11 +14,12 @@
 
 ## Reproducibility
 - Unreproduced in this Atlas for the documented README entry point.
+- September 2026: native arm64 JAX 0.4.30 reduced-grid probe passes with final normalized residual `5.41e-10`; original 50-grid probe receives SIGKILL. See [dated record](../REPRODUCTIONS/p2d-solver-hanrach.md). The upstream driver executes one Newton solve, not a full discharge time loop.
 
 ### Quickstart
 - Install deps (not pinned upstream): `jax` + standard scientific Python stack
 - `run_ex.py` completes the original 50x standalone Newton case after modern JAX compatibility patches
-- `run_main.py` completes on a reduced grid, but the original 50x README entry exits 137 after slow XLA/Jacobian compilation in the current container
+- `run_main.py` completes on a reduced grid; the original 50x entry exited 137 in the May container and was killed by signal 9 in the September native attempt.
 - Basic-case verdict: runnable with compatibility shims. The unreproduced status applies to the full original-grid README entry, not to every script in the repository.
 
 ### Entry point(s)
