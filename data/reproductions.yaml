@@ -20,7 +20,7 @@
   likely_next_step: test thermal and geometry variants separately
   runtime: Julia 1.12.6; solver reports about 3.3-3.5 s excluding dependency precompilation
   dependencies: BattMo 0.2.9 at 95054b15e88a; Jutul 0.4.31; full Manifest supplied; no GLMakie
-  notes: 2026-09-22 Chen 2020 default 0.5C discharge passed; controller stop verified. 145 retained samples, last 7048.4375 s and 2.41708 V precedes the cutoff state. One BattMo project with separate implementation evidence.
+  notes: 2026-09-22 Julia default 0.5C discharge passed; controller stop verified. 145 retained samples, last 7048.4375 s and 2.41708 V precedes cutoff. Separate PyBattMo API audit is partial due to a constructor defect; its Python P2D cases pass. One BattMo project.
 
 - slug: cidemod
   status: success

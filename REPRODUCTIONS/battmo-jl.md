@@ -8,6 +8,8 @@
 ## Scope
 The official default Chen 2020 P2D / `cc_discharge` example completed at 0.5C on native macOS ARM64. The cutoff controller's final `stopnow` flag was asserted. No thermal, degradation, geometry variants, parameter calibration or MATLAB/Julia equivalence was tested.
 
+The Python wrapper is tested independently in the [PyBattMo interface record](pybattmo.md). Its API outcome is not inferred from this Julia-only success and does not add a project to the Atlas count.
+
 ## Environment and command
 
 Julia 1.12.6; BattMo 0.2.9 (commit above); Jutul 0.4.31; no graphics dependency. See the [environment recipe](environments/battmo-jl/README.md) and [assertion script](environments/battmo-jl/smoke.jl).

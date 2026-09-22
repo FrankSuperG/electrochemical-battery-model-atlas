@@ -15,7 +15,7 @@ Evidence level:
 | Slug | Main PDE spatial discretization | Time / nonlinear solve context | Evidence |
 | --- | --- | --- | --- |
 | `difflib` | Finite elements via JAX-FEM | Differentiable DFN solve; isothermal in reviewed source | 2026-09-22: 3620 s forward run and short single-component gradient check passed |
-| `battmo-jl` | Finite volume via Jutul | Automatic differentiation and coupled battery simulation | 2026-09-22: default P2D discharge and controller stop passed; other variants untested |
+| `battmo-jl` | Finite volume via Jutul | Automatic differentiation and coupled battery simulation; PyBattMo reuses this solver | 2026-09-22: Julia default P2D passed; [Python API audit](REPRODUCTIONS/pybattmo.md) records separate interface evidence and a constructor defect |
 | `cidemod` | Finite elements via FEniCSx/multiphenicsx | Coupled electrochemical/thermal/degradation models | 2026-09-22: Chen P2D reference comparison passed; thermal/degradation untested |
 | `cpg-spmt` | Parabolic approximation / polynomial profile for SPM solid diffusion | Low-order ODE state-space model integrated in Python | explicit |
 | `pybamm` | Default lithium-ion models use finite volume for macroscale and particle domains; other spatial methods are available | Default model solver is `IDAKLUSolver`; users can choose other solver classes | explicit, framework-default |

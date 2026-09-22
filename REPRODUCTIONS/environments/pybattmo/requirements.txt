@@ -1,0 +1,16 @@
+battmo @ git+https://github.com/BattMoTeam/PyBattMo.git@362a4b2ae1ed20cb05a35f9c86abe284b93c6f4d
+filelock==3.32.7
+iniconfig==2.3.0
+juliacall==0.9.36
+juliapkg==0.1.27
+numpy==2.5.3
+packaging==26.3
+pandas==3.0.6
+pluggy==1.6.0
+Pygments==2.21.0
+pytest==9.1.1
+python-dateutil==2.9.0.post0
+semver==3.1.0
+six==1.17.0
+tomli==2.4.1
+tomlkit==0.15.1

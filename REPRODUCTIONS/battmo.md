@@ -1,4 +1,6 @@
-# battmo
+# BattMo (MATLAB reproduction)
+
+This record covers only MATLAB/MRST. See the [BattMo family overview](../MODELS/battmo.md), [Julia record](battmo-jl.md), and [Python interface audit](pybattmo.md) for the other entry points. They remain one project.
 
 - Status: `success`
 - Date: 2026-05-01

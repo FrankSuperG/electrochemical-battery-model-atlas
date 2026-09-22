@@ -19,8 +19,8 @@ assert.equal(result.groups["not-tested"].length, 1);
 assert.equal(context.evidenceLevel(entries[2]), "source-review-only");
 assert.equal(context.evidenceLevel({ ...entries[2], evidence_level: "independent-local" }), "source-review-only");
 assert.equal(context.licenseRisk("AGPL-3.0-or-later"), "copyleft");
-assert.match(context.reproductionStatusText(entries), /1 not-tested entry/);
-assert.match(context.reproductionStatusText(entries), /1 successful reproductions/);
+assert.match(context.reproductionStatusText(entries), /1 not-tested projects/);
+assert.match(context.reproductionStatusText(entries), /1 projects with a reproduced core example/);
 console.log("OK: untested entries remain separate from execution evidence and success counts.");
 const projects = context.groupProjects([
   { slug: "battmo", project: "battmo", language: ["matlab"] },
@@ -31,9 +31,25 @@ assert.equal(projects.length, 2);
 assert.equal(projects[0][1].length, 2);
 assert.equal(projects[0][1][1].slug, "battmo-jl");
 console.log("OK: shared projects retain distinct implementation records.");
+const aggregated = context.projectReproductions([
+  { slug: "battmo", status: "success" },
+  { slug: "battmo-jl", status: "partial" },
+  { slug: "other", status: "unreproduced" },
+], [{ slug: "battmo", project: "battmo" }, { slug: "battmo-jl", project: "battmo" }, { slug: "other" }]);
+assert.equal(aggregated.length, 2);
+assert.equal(aggregated[0].status, "success");
+assert.equal(aggregated[0].variants.length, 2);
+assert.equal(aggregated[1].status, "unreproduced");
 const readme = fs.readFileSync(path.join(__dirname, "..", "README.md"), "utf8");
 const index = readme.split("<!-- MODEL_INDEX_START -->")[1].split("<!-- MODEL_INDEX_END -->")[0];
 assert.equal((index.match(/^\| `battmo`\s*\|/gm) || []).length, 1);
 assert.doesNotMatch(index, /^\| `battmo-jl`\s*\|/m);
 assert.match(index, /\[BattMo\]\(MODELS\/battmo\.md\)/);
+assert.match(index, /MATLAB \+ Julia \+ Python \(interface\)/);
 console.log("OK: the project index contains one BattMo family entry.");
+for (const name of ["COVERAGE.md", "DEPENDENCIES.md"]) {
+  const document = fs.readFileSync(path.join(__dirname, "..", "REPRODUCTIONS", name), "utf8");
+  assert.equal((document.match(/^\| `battmo`\s*\|/gm) || []).length, 1);
+  assert.doesNotMatch(document, /^\| `battmo-jl`\s*\|/m);
+}
+console.log("OK: coverage and dependencies use one row per project.");

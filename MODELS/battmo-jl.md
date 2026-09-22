@@ -2,6 +2,8 @@
 
 Part of the **BattMo project family** alongside [MATLAB/MRST BattMo](battmo.md). Versions are grouped in the project index; this page retains Julia-specific details and evidence.
 
+PyBattMo exposes this backend to Python. Its [independent interface record](../REPRODUCTIONS/pybattmo.md) is supplemental evidence within the same project, not another solver entry. Use the [family overview](battmo.md) to choose between MATLAB, Julia and Python.
+
 - Repo: <https://github.com/BattMoTeam/BattMo.jl>
 - License: MIT
 - Reviewed: 2026-09-22

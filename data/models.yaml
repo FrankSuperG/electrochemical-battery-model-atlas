@@ -21,6 +21,7 @@
   authors_or_org: BattMoTeam
   license: MIT
   language: [julia]
+  interface_languages: [python]
   family: [dfn]
   extensions: []
   focus: [framework, continuum, research]

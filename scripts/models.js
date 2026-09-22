@@ -208,7 +208,7 @@ function validateModels() {
       errors.push(`${where}: implementation_note must be a non-empty string when implementation_role is set`);
     }
 
-    for (const key of ["language", "family", "extensions", "focus"]) {
+    for (const key of ["language", "interface_languages", "family", "extensions", "focus"]) {
       if (key in e && !isStringArray(e[key])) errors.push(`${where}: ${key} must be an array of strings`);
     }
 
@@ -231,6 +231,13 @@ function validateModels() {
 
     checkAllowed("family");
     checkAllowed("language");
+    if (Array.isArray(e.interface_languages)) {
+      for (const value of e.interface_languages) {
+        if (!ALLOWED.language.has(String(value).toLowerCase())) {
+          errors.push(`${where}: unsupported interface language '${value}'`);
+        }
+      }
+    }
     checkAllowed("extensions");
     checkAllowed("focus");
 
@@ -287,7 +294,7 @@ function validateModels() {
     process.exit(1);
   }
 
-  console.log(`OK: ${groupProjects(entries).length} projects (${entries.length} implementation records) validated.`);
+  console.log(`OK: ${groupProjects(entries).length} projects validated.`);
   return entries;
 }
 
@@ -393,13 +400,27 @@ function evidenceLevel(entry) {
   return entry.status === "success" ? "independent-local" : "attempted-local";
 }
 
+function projectReproductions(entries, models = readYamlList(MODELS_YAML)) {
+  const identities = new Map(models.map((model) => [model.slug, model.project || model.slug]));
+  const grouped = new Map();
+  for (const entry of entries) {
+    const slug = identities.get(entry.slug) || entry.slug;
+    if (!grouped.has(slug)) grouped.set(slug, []);
+    grouped.get(slug).push(entry);
+  }
+  // A reproduced core path establishes project-level availability, not API completeness.
+  const priority = ["success", "partial", "unreproduced", "blocked", "not-tested"];
+  return [...grouped.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([slug, variants]) => ({
+    slug, variants, status: priority.find((status) => variants.some((entry) => entry.status === status)),
+  }));
+}
+
 function reproductionStatusText(entries) {
-  const { groups } = groupReproductions(entries);
-  const entryLabel = (count) => (count === 1 ? "entry" : "entries");
+  const { groups } = groupReproductions(projectReproductions(entries));
   return `Reproduction records are maintained in [` +
     `REPRODUCTIONS/](REPRODUCTIONS/). As of ${REPRODUCTION_DATE}, the Atlas has ` +
-    `${groups.success.length} successful reproductions, ${groups.unreproduced.length} unreproduced entries, ` +
-    `${groups.partial.length} partial ${entryLabel(groups.partial.length)}, ${groups.blocked.length} blocked ${entryLabel(groups.blocked.length)}, and ${groups['not-tested'].length} not-tested ${entryLabel(groups['not-tested'].length)}. Dates of individual runs are recorded on the linked reproduction pages; this is the dashboard update date.`;
+    `${groups.success.length} projects with a reproduced core example, ${groups.unreproduced.length} unreproduced projects, ` +
+    `${groups.partial.length} partial projects, ${groups.blocked.length} blocked projects, and ${groups['not-tested'].length} not-tested projects. Each project is counted once. A reproduced core path does not imply that all language interfaces or features pass. Dates of individual runs are recorded on the linked pages.`;
 }
 
 function implementationRoleText(entries) {
@@ -467,13 +488,13 @@ function renderReadme() {
   );
   const rows = groupProjects(entries).map(([project, variants]) => {
     const e = { ...variants[0] };
-    for (const field of ["extensions", "focus", "family", "language"]) {
+    for (const field of ["extensions", "focus", "family", "language", "interface_languages"]) {
       e[field] = [...new Set(variants.flatMap((v) => v[field] || []))];
     }
     const extensions = Array.isArray(e.extensions) && e.extensions.length ? e.extensions.join(", ") : "—";
     const focus = Array.isArray(e.focus) && e.focus.length ? e.focus.join(", ") : "—";
     const family = Array.isArray(e.family) ? e.family.map(displayFamily).join("/") : "—";
-    const language = Array.isArray(e.language) ? e.language.map(displayLanguage).join(" + ") : "—";
+    const language = [...e.language.map(displayLanguage), ...e.interface_languages.map((value) => `${displayLanguage(value)} (interface)`)].join(" + ") || "—";
     return [
       `\`${project}\``,
       e.project_name || e.name,
@@ -557,7 +578,10 @@ function toMarkdownTable(matrix) {
 function renderReproductions() {
   const entries = readYamlList(REPRODUCTIONS_YAML);
   const tools = readYamlList(REPRODUCTION_TOOLS_YAML);
-  const { order, groups } = groupReproductions(entries);
+  const projects = projectReproductions(entries);
+  const { order, groups } = groupReproductions(projects);
+
+  const interfaceNote = "All counts are project-based. A success means at least one documented core path was reproduced, not that every implementation or API passes. [PyBattMo interface evidence](pybattmo.md) belongs to BattMo and adds no project to the count.";
 
   const resultRows = order.map((status) => [
     status,
@@ -572,9 +596,9 @@ function renderReproductions() {
       "Modern dependency stack, active ecosystem, strong documentation, successful command-level run.",
     ],
     [
-      "MATLAB DFN framework",
+      "Multi-language DFN project",
       "`battmo`",
-      "Runs in MATLAB R2021b after submodules are available; more suitable than older MATLAB-only snapshots.",
+      "BattMo groups MATLAB/MRST, Julia/Jutul and the Python interface; see its family page for per-language results and the known Python constructor issue.",
     ],
     [
       "Lightweight DFN/SPMe educational examples",
@@ -603,20 +627,24 @@ function renderReproductions() {
     ],
   ];
 
-  const unreproducedRows = entries
-    .filter((entry) => entry.status !== "success")
-    .map((entry) => [`\`${entry.slug}\``, entry.status, entry.primary_blocker, entry.likely_next_step]);
+  const unreproducedRows = projects
+    .filter((project) => project.status !== "success")
+    .map((project) => [`\`${project.slug}\``, project.status,
+      project.variants.map((entry) => entry.primary_blocker).join("<br>"),
+      project.variants.map((entry) => entry.likely_next_step).join("<br>")]);
 
   const summary = [
     "# Reproduction Summary",
     "",
     `Date: ${REPRODUCTION_DATE}`,
     "",
-    `Scope: ${entries.length} Atlas entries. This summary is generated from \`data/reproductions.yaml\` and records reproduction attempts, including Docker, MATLAB, Octave, Julia, Python, and C++/CMake environments. See \`COVERAGE.md\` for per-entry evidence labels such as \`independent-local\` and \`attempted-local\`.`,
+    `Scope: ${projects.length} projects. This summary groups reproduction metadata by project identity. See \`COVERAGE.md\` and individual records for implementation-specific evidence.`,
+    "",
+    interfaceNote,
     "",
     "## Result",
     "",
-    toMarkdownTable([["Status", "Count", "Entries"], ...resultRows]),
+    toMarkdownTable([["Core-path status", "Project count", "Projects"], ...resultRows]),
     "",
     "## Recommended Starting Points",
     "",
@@ -638,31 +666,33 @@ function renderReproductions() {
     "",
   ].join("\n");
 
-  const coverageRows = entries.map((entry) => [
-    `\`${entry.slug}\``,
-    entry.language,
-    entry.status,
-    evidenceLevel(entry),
-    entry.environment,
-    entry.primary_blocker,
+  const coverageRows = projects.map((project) => [
+    `\`${project.slug}\``,
+    [...new Set(project.variants.map((entry) => entry.language))].join(" / "),
+    project.status,
+    [...new Set(project.variants.map(evidenceLevel))].join(" / "),
+    project.variants.map((entry) => `${entry.language}: ${entry.environment}`).join("<br>"),
+    project.variants.map((entry) => `${entry.language}: ${entry.primary_blocker}`).join("<br>"),
   ]);
   const coverage = [
     "# Full Coverage Matrix",
     "",
-    "This file tracks reproduction coverage for every Atlas entry. It is generated from `data/reproductions.yaml`.",
+    "This file tracks reproduction coverage by project. Implementation-specific environments remain visible within each project row. It is generated from `data/reproductions.yaml` and project identities in `data/models.yaml`.",
     "",
-    toMarkdownTable([["Slug", "Language", "Status", "Evidence", "Environment path", "Primary blocker"], ...coverageRows]),
+    interfaceNote,
+    "",
+    toMarkdownTable([["Project", "Core languages", "Core-path status", "Evidence", "Environments", "Scope / blockers"], ...coverageRows]),
     "",
   ].join("\n");
 
   const toolRows = tools.map((entry) => [entry.tool, entry.version]);
-  const dependencyRows = entries.map((entry) => [
-    `\`${entry.slug}\``,
-    entry.status,
-    entry.runtime,
-    entry.environment_file ? `[${entry.environment_file}](${path.relative(REPRODUCTIONS_DIR, path.join(ROOT, entry.environment_file))})` : "—",
-    entry.dependencies,
-    entry.notes,
+  const dependencyRows = projects.map((project) => [
+    `\`${project.slug}\``,
+    project.status,
+    project.variants.map((entry) => `${entry.language}: ${entry.runtime}`).join("<br>"),
+    project.variants.map((entry) => entry.environment_file ? `[${entry.language} recipe](${path.relative(REPRODUCTIONS_DIR, path.join(ROOT, entry.environment_file))})` : `${entry.language}: see record`).join("<br>"),
+    project.variants.map((entry) => `${entry.language}: ${entry.dependencies}`).join("<br>"),
+    project.variants.map((entry) => `${entry.language}: ${entry.notes}`).join("<br>"),
   ]);
   const dependencies = [
     "# Reproduction Dependency Matrix",
@@ -671,13 +701,15 @@ function renderReproductions() {
     "",
     "This file records software stacks from dated reproduction attempts. The global tool table describes the historical 2026-05-05 pass, not a fresh environment inventory. See individual records for subsequent attempts. It is generated from `data/reproductions.yaml` and `data/reproduction-tools.yaml`.",
     "",
+    interfaceNote,
+    "",
     "## Global Tool Versions",
     "",
     toMarkdownTable([["Tool", "Observed version"], ...toolRows]),
     "",
-    "## Per-Entry Dependencies",
+    "## Per-Project Dependencies",
     "",
-    toMarkdownTable([["Slug", "Status", "Runtime / software", "Recipe", "Key dependencies observed or required", "Notes"], ...dependencyRows]),
+    toMarkdownTable([["Project", "Core-path status", "Runtime / software", "Recipe", "Key dependencies observed or required", "Notes"], ...dependencyRows]),
     "",
   ].join("\n");
 
@@ -814,23 +846,24 @@ function checkReadmeSnapshot() {
   const modelEntries = readYamlList(MODELS_YAML);
   const reproductionEntries = readYamlList(REPRODUCTIONS_YAML);
   const projectCount = groupProjects(modelEntries).length;
-  const successCount = reproductionEntries.filter((entry) => entry.status === "success").length;
-  const partialCount = reproductionEntries.filter((entry) => entry.status === "partial").length;
-  const unreproducedCount = reproductionEntries.filter((entry) => entry.status === "unreproduced").length;
-  const notTestedCount = reproductionEntries.filter((entry) => entry.status === "not-tested").length;
+  const projects = projectReproductions(reproductionEntries, modelEntries);
+  const successCount = projects.filter((entry) => entry.status === "success").length;
+  const partialCount = projects.filter((entry) => entry.status === "partial").length;
+  const unreproducedCount = projects.filter((entry) => entry.status === "unreproduced").length;
+  const notTestedCount = projects.filter((entry) => entry.status === "not-tested").length;
   const bibCount = (fs.readFileSync(BIBTEX, "utf8").match(/^@\w+\s*\{/gm) || []).length;
   const errors = [];
 
   const expectedSnippets = [
     `Projects indexed: ${projectCount}`,
     `projects-${projectCount}-`,
-    `Successful reproductions: ${successCount}`,
-    `reproduced-${successCount}%2F${modelEntries.length}`,
-    `Model entries | ${projectCount} projects covering ${modelEntries.length} implementations or workflows.`,
-    `Successful reproductions | ${successCount} entries with command-level evidence.`,
-    `Partial reproductions | ${partialCount} ${partialCount === 1 ? "entry" : "entries"} where only a reduced or incomplete run completed.`,
-    `Unreproduced after targeted attempts | ${unreproducedCount} entries with documented blockers.`,
-    `Not tested | ${notTestedCount} entries reviewed from upstream sources only.`,
+    `Projects with a reproduced core example: ${successCount}`,
+    `reproduced-${successCount}%2F${projectCount}`,
+    `Projects indexed | ${projectCount} projects.`,
+    `Core example reproduced | ${successCount} projects with command-level evidence.`,
+    `Partial core reproduction | ${partialCount} projects.`,
+    `Unreproduced after targeted attempts | ${unreproducedCount} projects with documented blockers.`,
+    `Not tested | ${notTestedCount} projects.`,
     `Curated reference set | ${bibCount} BibTeX entries with a staged reading roadmap.`,
   ];
 

@@ -118,6 +118,12 @@ Evidence:
 - The MATLAB path works after submodule initialization.
 - Octave remains blocked by MATLAB-only class-property syntax (`SetAccess = immutable`), which is a portability issue rather than a MATLAB reproduction bug.
 
+### PyBattMo (within BattMo)
+
+- At `362a4b2ae1ed20cb05a35f9c86abe284b93c6f4d`, Python `FullSimulationInput()` calls Julia `SimulationSettings()` and returns the wrong type. The independent constructor regression test fails on unmodified source.
+- The ordinary parameter-loading/P2D solve/DataFrame path is a different API route. Its results must not be used to label every wrapper method correct.
+- See the [interface audit](pybattmo.md) and [test suite](environments/pybattmo/test_interface.py). The issue belongs to the wrapper, not the Julia battery equations.
+
 ## Local patch policy
 
 Local edits under `.upstream/` were used only to probe blockers and should not be treated as atlas source changes. Any permanent fixes should be proposed upstream in the corresponding model repositories or captured as explicit reproduction patches.

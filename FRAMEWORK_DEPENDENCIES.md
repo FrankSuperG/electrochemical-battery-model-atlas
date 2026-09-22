@@ -14,7 +14,7 @@ This page separates independent model implementations from entries that reuse a 
 
 ## Curation Rule
 
-`battmo-jl` uses Jutul and is distinct from the MATLAB/MRST `battmo` implementation. `cidemod` uses FEniCSx/multiphenicsx. Their numerical backends should be recorded without assuming feature parity across the BattMo family.
+BattMo is one project with MATLAB/MRST and Julia/Jutul implementations. PyBattMo is a Python/JuliaCall interface to the Julia solver, not another PDE solver or project. See the [family overview](MODELS/battmo.md) for separate language entry points and evidence. `cidemod` uses FEniCSx/multiphenicsx. Shared project identity does not imply feature parity across the BattMo family.
 
 Keep PyBaMM itself as the main framework entry. Keep PyBaMM-backed workflows as separate Atlas entries only when they add something materially different, such as optimal experimental design, parameter estimation, a dataset/protocol, or a reproducible research workflow.
 

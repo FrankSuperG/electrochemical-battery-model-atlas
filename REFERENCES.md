@@ -89,7 +89,7 @@ Ciria Aylagas, R.; Ganuza, C.; Parra, R.; Yanez, M.; Ayerbe, E. (2022). cideMOD:
 | Slug | Model | References |
 | --- | --- | --- |
 | [`batp2dfoam`](MODELS/batp2dfoam.md) | batP2dFoam | [`batp2dfoam2023`](#ref-batp2dfoam2023), [`doyle1993modeling`](#ref-doyle1993modeling), [`fuller1994simulation`](#ref-fuller1994simulation) |
-| [`battmo`](MODELS/battmo.md) | BattMo | _(no model-specific primary reference listed in upstream docs)_ |
+| [`battmo`](MODELS/battmo.md) | BattMo | [MATLAB repository](https://github.com/BattMoTeam/BattMo), [Julia documentation](https://battmoteam.github.io/BattMo.jl/dev/), and [PyBattMo interface](https://github.com/BattMoTeam/PyBattMo): one project family; see the Julia row for its software archive and example parameter citation. |
 | [`battsimpy`](MODELS/battsimpy.md) | battsimpy | [`torchio2016lionsimba`](#ref-torchio2016lionsimba) |
 | [`cpg-spmt`](MODELS/cpg-spmt.md) | CPG-SPMT | [`guo2026cpg`](#ref-guo2026cpg), [`guo2025control`](#ref-guo2025control), [`guo2025comparative`](#ref-guo2025comparative) |
 | [`dfn-scott-moura`](MODELS/dfn-scott-moura.md) | dfn | _(no model-specific primary reference listed in upstream docs)_ |

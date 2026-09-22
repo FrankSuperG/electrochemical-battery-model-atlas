@@ -3,3 +3,6 @@
 .envs/
 node_modules/
 saved_models/
+__pycache__/
+*.pyc
+.pytest_cache/

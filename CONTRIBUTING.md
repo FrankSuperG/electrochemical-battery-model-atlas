@@ -13,6 +13,8 @@ If the entry is based on a larger framework, add `implementation_role` and `impl
 
 For language implementations of the same project, use a shared `project` slug and `project_name`. Keep separate implementation slugs, pages, licenses and reproduction records. Do not use this field merely because unrelated projects implement the same mathematical model.
 
+Use `interface_languages` for thin language wrappers without adding another solver entry. Record independent interface tests as supplemental evidence linked from the family and reproduction pages; a backend's success does not prove every wrapper method works.
+
 ### 2) Fix or enrich existing entries
 - Open an Issue (please include links / citations)
 - Or submit a PR editing the relevant `MODELS/*.md` page and `data/models.yaml`

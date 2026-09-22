@@ -1,74 +1,113 @@
 # BattMo
 
-BattMo is counted as **one project** in this Atlas. Its language implementations and user interfaces belong to the same project family, not additional models in the project count.
+BattMo is a battery-modelling family counted as **one project** in this Atlas.
+MATLAB and Julia provide distinct solver implementations; PyBattMo exposes the
+Julia implementation to Python. Shared identity does not imply identical feature
+coverage, numerical results or runtime requirements.
 
 ## Project family
 
-| Implementation or interface | Role | Local evidence |
-| --- | --- | --- |
-| BattMo (MATLAB) | Original MATLAB/MRST implementation | [MATLAB reproduction](../REPRODUCTIONS/battmo.md) |
-| [BattMo.jl](battmo-jl.md) | Julia/Jutul implementation | [Default P2D discharge passed](../REPRODUCTIONS/battmo-jl.md) |
-| [PyBattMo](https://github.com/BattMoTeam/PyBattMo) | Python wrapper for BattMo.jl | No separate local test; not an additional solver project |
-| BattMoApp | Web application for the BattMo family | No separate local test; not an additional solver project |
+| Component | Repository | Backend | License | Local evidence |
+| --- | --- | --- | --- | --- |
+| BattMo (MATLAB) | [BattMoTeam/BattMo](https://github.com/BattMoTeam/BattMo) | MATLAB / MRST | GPL-3.0 | [P2D example passed](../REPRODUCTIONS/battmo.md) |
+| BattMo.jl | [BattMoTeam/BattMo.jl](https://github.com/BattMoTeam/BattMo.jl) | Julia / Jutul | MIT | [Default P2D discharge passed](../REPRODUCTIONS/battmo-jl.md) |
+| PyBattMo | [BattMoTeam/PyBattMo](https://github.com/BattMoTeam/PyBattMo) | Python / JuliaCall / BattMo.jl | MIT | [P2D path tested; constructor API issue](../REPRODUCTIONS/pybattmo.md) |
 
-The family descriptions follow the upstream BattMo Family overview supplied during this review. Shared identity does not imply identical feature coverage: that overview describes Julia as still evolving toward the MATLAB feature set. Licenses and execution evidence remain implementation-specific (MATLAB: GPL-3.0; Julia: MIT). The technical details below concern MATLAB; the linked Julia page retains its own dependencies and limitations.
-
-## MATLAB implementation
-
-- Repo: <https://github.com/BattMoTeam/BattMo>
-- License: GPL-3.0 (COPYING)
-- Language/Framework: Mostly MATLAB (plus notebooks and a small amount of other languages)
-- PyBaMM note: BattMo has PyBaMM comparison/loading utilities, but the core battery model implementation is MATLAB/MRST-based.
+BattMoApp is a web interface in the same family, not another solver project.
+Its browser workflow has not been tested in this Atlas.
 
 ## Model lineage
-- Family: continuum modelling for electrochemical devices
-- Discretization: finite volume method via MRST grids.
-- Note: This is a broader framework; battery DFN/P2D-style models are typically provided via specific modules/examples
+The battery models belong to the continuum DFN/P2D/PXD family. MATLAB uses finite
+volumes through MRST; Julia uses Jutul finite-volume infrastructure and automatic
+differentiation. PyBattMo is not an independent Python PDE solver. PyBaMM
+comparison/loading utilities in MATLAB do not make BattMo a PyBaMM wrapper.
 
-## Extensions (if any)
-- Targets continuum modelling for electrochemical devices; often multiphysics-oriented (thermal/degradation depend on the specific modules)
+MATLAB is the original implementation. The upstream family description presents
+Julia as evolving toward its feature set; thermal, degradation, geometry and
+calibration support must be checked per implementation and configuration.
+The tested Julia/Python baseline is isothermal P2D without current collectors.
+See [Julia-specific details](battmo-jl.md) and [numerical methods](../NUMERICS.md).
+
+## Choosing an interface
+
+- MATLAB: existing MATLAB/MRST workflows and features available in that implementation.
+- Julia: direct access to the Jutul-based solver and model/simulation API.
+- Python: Python-driven setup and NumPy/pandas analysis, with a compatible Julia runtime still required.
+
+## Quickstart
+
+### MATLAB / MRST
+
+Install Git LFS and obtain the upstream submodules:
+
+```sh
+git clone --recurse-submodules https://github.com/BattMoTeam/BattMo.git
+```
+
+From the checkout in MATLAB:
+
+```matlab
+startupBattMo
+runBatteryP2D
+```
+
+The Atlas used MATLAB R2021b. Octave is not a verified substitute; see the
+[MATLAB record](../REPRODUCTIONS/battmo.md). Other entry points are in `examples/`.
+
+### Julia / Jutul
+
+Use the [pinned Julia environment](../REPRODUCTIONS/environments/battmo-jl/README.md).
+The upstream default workflow is:
+
+```julia
+using BattMo
+parameters = load_cell_parameters(; from_default_set = "chen_2020")
+protocol = load_cycling_protocol(; from_default_set = "cc_discharge")
+simulation = Simulation(LithiumIonBattery(), parameters, protocol)
+output = solve(simulation)
+voltage = output.time_series["Voltage"]
+```
+
+### Python / JuliaCall
+
+The Python distribution is named `battmo`, not `pybattmo`. The equivalent public
+interface is:
+
+```python
+import battmo
+parameters = battmo.load_cell_parameters(from_default_set="chen_2020")
+protocol = battmo.load_cycling_protocol(from_default_set="cc_discharge")
+simulation = battmo.Simulation(battmo.LithiumIonBattery(), parameters, protocol)
+output = battmo.solve(simulation)
+frame = battmo.to_pandas(output.time_series)
+```
+
+Installing the Python package alone does not establish Julia backend compatibility.
+Python and Julia must use compatible CPU architectures; bridge versions and the
+Julia project must be recorded independently of the MATLAB environment.
+Use the [separate Python environment recipe](../REPRODUCTIONS/environments/pybattmo/README.md).
+The tested upstream `FullSimulationInput()` wrapper returns the wrong type; use
+the loader or the documented direct-Julia workaround rather than this constructor.
 
 ## Reproducibility
-- Reproduced in this Atlas using MATLAB R2021b after upstream submodules were available.
 
-### Quickstart
-- Prereq: install **Git LFS** (upstream requirement)
-- Clone with submodules: `git clone --recurse-submodules https://github.com/BattMoTeam/BattMo.git`
-- In MATLAB (from the repo root): run `startupBattMo`
-- Sanity-check example: run `runBatteryP2D`
+MATLAB and Julia have separate successful P2D records linked above, within one
+BattMo project. Python results must be established through Python calls and
+result conversion, not inferred from a Julia-only run. No MATLAB/Julia numerical
+equivalence, complete feature parity or full-paper reproduction is claimed.
 
-### Entry point(s)
-- `startupBattMo.m` — sets up BattMo/MRST paths
-- `runBatteryP2D.m` — quick installation check (example runner)
-- `examples/` — runnable MATLAB example scripts
-
-### Environment lock
-- No pinned MATLAB environment lock; major dependency is MRST (vendored via git submodules upstream).
-
-### Beginner notes
-- Run `startupBattMo` first and confirm MATLAB paths are configured before opening examples.
-- Start from `runBatteryP2D.m`; BattMo is framework-oriented, so jumping directly into internals is slower.
-
-### Numerics note
-- BattMo uses finite volume grids through the MRST ecosystem; see [`../NUMERICS.md`](../NUMERICS.md) for the Atlas method summary.
-
-## Strengths
-- A general continuum modelling framework (not just a single battery code)
-- Useful if you want to go beyond Li-ion batteries into other electrochemical devices
+The [independent PyBattMo audit](../REPRODUCTIONS/pybattmo.md) records Python-driven
+P2D output and a confirmed constructor-dispatch regression. Its overall API
+status is partial, not an unqualified pass for all Python methods.
 
 ## Known limitations
-- GPL license may be restrictive for some commercial use cases
-- Onboarding may require learning the framework structure and examples
-
-## Who is it for?
-- Users who want a continuum/multiphysics-oriented open-source framework for electrochemical device modelling
+- First-use Julia compilation is setup overhead, not steady-state solver runtime.
+- License obligations differ between MATLAB and the MIT-licensed Julia/Python components.
+- Plotting, 3D, thermal, degradation, calibration and web workflows need separate tests.
+- Parameter sets and controllers are configuration-specific; preserve source commits and inputs when comparing results.
 
 ## References
-- No primary reference was identified in upstream docs for this entry.
-
-## Optional grades
-- Reproducibility: B
-- Clarity: B
-- Extensibility: A
-
-Rationale: Active framework with documentation and examples; modular multiphysics design makes extensions straightforward, but setup requires MATLAB + framework familiarity.
+- [MATLAB repository and documentation entry](https://github.com/BattMoTeam/BattMo).
+- [Julia documentation](https://battmoteam.github.io/BattMo.jl/dev/).
+- [Python interface and family overview](https://github.com/BattMoTeam/PyBattMo).
+- Chen et al. (2020), [DOI 10.1149/1945-7111/ab9050](https://doi.org/10.1149/1945-7111/ab9050): parameter source for the tested default Julia/Python example, not a paper describing those implementations.

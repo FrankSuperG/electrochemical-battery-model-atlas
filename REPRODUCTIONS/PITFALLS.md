@@ -22,7 +22,7 @@ See `CODE_ISSUES.md` for cases where the blocker appears to be source-code or pa
 - `LIONSIMBA` requires the legacy SUNDIALS MATLAB/Octave interface. The reliable path found here is Debian bookworm Octave 7.3.0 plus CasADi 3.7.2 `linux64-octave7.3.0` plus a locally compiled SUNDIALS 2.6.2 `sundialsTB` IDAS MEX interface.
 
 ## Submodules and large stacks
-- BattMo requires submodules. Run `git submodule update --init --recursive` before startup.
+- BattMo's MATLAB implementation requires submodules. Run `git submodule update --init --recursive` before startup. The Julia and Python interfaces use separate package environments, not this MATLAB startup path.
 - OpenFOAM projects need the OpenFOAM toolchain first. `batP2dFoam` runs cleanly with Docker OpenFOAM 9. OpenFOAM 10 can compile it too, but the supplied case needs a `setFieldsDict` compatibility edit from `name` to `zone` in `zoneToCell` regions.
 - `mpet` depends on the native `daetools` stack. Minimal Docker images need system libraries such as `libgfortran5`, `libgl1`, and `PyQt5`; the SourceForge `daetools-2.3.0` download is slow but can complete if given enough time.
 - `battsimpy` is tied to Python 2 and old Assimulo binaries. The working Docker route was `python=2.7`, `assimulo=2.9`, `libx11-6`, patched absolute config paths, and `MPLBACKEND=Agg`.
